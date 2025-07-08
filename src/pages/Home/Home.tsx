@@ -1,26 +1,61 @@
-import { useState } from 'react'
-import { Counter, LogoLink } from '../../shared/components'
-import './Home.css'
+import { useEffect, useRef } from 'react';
+import './Home.css';
+import { PlaySection, CreateSection, MintSection, EarnSection } from './sections';
 
 function Home() {
-  const [count, setCount] = useState(0)
+  const playRef = useRef<HTMLElement>(null);
+  const earnRef = useRef<HTMLElement>(null);
+  const createRef = useRef<HTMLElement>(null);
+  const mintRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Make the hero section visible immediately
+    if (playRef.current) {
+      playRef.current.classList.add('animate-in');
+    }
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    const sections = [earnRef.current, createRef.current, mintRef.current];
+    sections.forEach((section) => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
+  }, []);
 
   return (
-    <div className="home">
-      <div className="logo-container">
-        <LogoLink
-          href="https://ar.io"
-          src="/ario_black.png"
-          alt="AR.IO Logo"
-        />
-        <LogoLink
-          href="https://react.dev"
-          src="/react.svg"
-          alt="React Logo"
-        />
-      </div>
-      <h1>AR.IO + React</h1>
-      <Counter count={count} setCount={setCount} />
+    <div className="gaming-home">
+      {/* Hero Section / Play Section */}
+      <PlaySection ref={playRef} />
+
+      {/* Earn Section */}
+      <EarnSection ref={earnRef} />
+
+      {/* Create Section */}
+      <CreateSection ref={createRef} />
+
+      {/* Mint Section */}
+      <MintSection ref={mintRef} />
     </div>
   )
 }

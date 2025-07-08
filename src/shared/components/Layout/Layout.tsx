@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom'
 import { ReactNode } from 'react'
-import './Layout.css'
 
 interface LayoutProps {
   children: ReactNode
@@ -8,12 +6,8 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="layout">
-      <nav className="layout-nav">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
-      <main className="layout-content">
+    <div className="min-h-screen bg-black text-white">
+      <main className="pt-20">
         {children}
       </main>
     </div>

@@ -1,11 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Light theme colors (Discord-like) */
+  --color-primary: #5865f2;
+  --color-primary-hover: #4752c4;
+  --color-success: #3ba55d;
+  --color-warning: #faa81a;
+  --color-danger: #ed4245;
+  
+  /* Gaming theme colors */
+  --gaming-purple: #a855f7;
+  --gaming-pink: #ec4899;
+  --gaming-cyan: #06b6d4;
+  --gaming-blue: #3b82f6;
+  --gaming-green: #10b981;
+  --gaming-emerald: #059669;
+  --gaming-yellow: #fbbf24;
+  
+  /* Light theme backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f2f3f5;
+  --bg-tertiary: #e3e5e8;
+  --bg-accent: #4f545c;
+  --bg-gaming: #000000;
+  
+  /* Light theme text */
+  --text-primary: #2e3338;
+  --text-secondary: #4e5058;
+  --text-muted: #6a6f77;
+  --text-link: #0068e1;
+  --text-gaming: #ffffff;
+  
+  /* Light theme borders */
+  --border-primary: #e3e5e8;
+  --border-secondary: #d1d5db;
+
+  color-scheme: light;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,15 +51,87 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark theme colors (Discord-like) */
+.dark {
+  --color-primary: #5865f2;
+  --color-primary-hover: #4752c4;
+  --color-success: #3ba55d;
+  --color-warning: #faa81a;
+  --color-danger: #ed4245;
+  
+  /* Dark theme backgrounds */
+  --bg-primary: #36393f;
+  --bg-secondary: #2f3136;
+  --bg-tertiary: #202225;
+  --bg-accent: #4f545c;
+  
+  /* Dark theme text */
+  --text-primary: #dcddde;
+  --text-secondary: #b9bbbe;
+  --text-muted: #72767d;
+  --text-link: #00aff4;
+  
+  /* Dark theme borders */
+  --border-primary: #40444b;
+  --border-secondary: #4f545c;
+
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Custom scrollbar for dark theme */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--bg-accent);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5c6169;
+}
+
+/* Light theme scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Scroll animations */
+.animate-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

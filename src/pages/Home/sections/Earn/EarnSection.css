@@ -1,0 +1,484 @@
+/* Earn Section Styles - Rewards/Golden Theme */
+.earn-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.earn-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Earn Section Animated Backgrounds - Golden/Rewards Theme */
+.earn-bg-layer-1 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(146, 64, 14, 0.4) 0%, 
+    rgba(251, 191, 36, 0.3) 50%, 
+    rgba(245, 158, 11, 0.4) 100%);
+}
+
+.earn-bg-layer-2 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 60%, 
+    rgba(251, 191, 36, 0.2) 0%, 
+    transparent 60%);
+}
+
+.earn-bg-layer-3 {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Floating Coin Elements */
+.coin-element {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.coin-stack-1 {
+  top: 15%;
+  left: 12%;
+  animation: coin-stack-bounce 5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.coin-stack-2 {
+  bottom: 20%;
+  right: 15%;
+  animation: coin-stack-bounce 6s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.coin-rain-1 {
+  top: 5%;
+  left: 70%;
+  animation: coin-rain 8s linear infinite;
+  animation-delay: 2s;
+}
+
+.coin-rain-2 {
+  top: 10%;
+  right: 30%;
+  animation: coin-rain 10s linear infinite;
+  animation-delay: 4s;
+}
+
+.earn-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.5;
+}
+
+/* Earn Section Floating Particles - Coin/Gold Theme */
+.earn-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.earn-particle-1 {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(45deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.9));
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+  animation: coin-float 3.5s ease-in-out infinite;
+}
+
+.earn-particle-2 {
+  position: absolute;
+  top: 65%;
+  right: 25%;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, rgba(245, 158, 11, 0.9), rgba(217, 119, 6, 0.9));
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.8);
+  animation: coin-float 2.8s ease-in-out infinite reverse;
+}
+
+.earn-particle-3 {
+  position: absolute;
+  bottom: 35%;
+  left: 80%;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(45deg, rgba(217, 119, 6, 0.9), rgba(251, 191, 36, 0.9));
+  border-radius: 50%;
+  box-shadow: 0 0 28px rgba(217, 119, 6, 0.8);
+  animation: coin-float 4s ease-in-out infinite;
+}
+
+.earn-particle-4 {
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, rgba(252, 211, 77, 0.9), rgba(251, 191, 36, 0.9));
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(252, 211, 77, 0.8);
+  animation: coin-float 3s ease-in-out infinite;
+}
+
+.earn-particle-5 {
+  position: absolute;
+  bottom: 15%;
+  right: 70%;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(45deg, rgba(251, 191, 36, 0.8), rgba(245, 158, 11, 0.8));
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.7);
+  animation: coin-float 4.2s ease-in-out infinite reverse;
+}
+
+.earn-particle-6 {
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(45deg, rgba(245, 158, 11, 0.9), rgba(252, 211, 77, 0.9));
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.8);
+  animation: coin-float 2.5s ease-in-out infinite;
+}
+
+/* Earn Section Geometric Shapes - Treasure/Coin Theme */
+.earn-shape-1 {
+  position: absolute;
+  top: 18%;
+  right: 12%;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(45deg, rgba(251, 191, 36, 0.4), rgba(245, 158, 11, 0.4));
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: golden-glow 4s ease-in-out infinite;
+}
+
+.earn-shape-2 {
+  position: absolute;
+  bottom: 30%;
+  left: 8%;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(245, 158, 11, 0.6);
+  transform: rotate(45deg);
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+.earn-shape-3 {
+  position: absolute;
+  top: 55%;
+  right: 85%;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(45deg, 
+    rgba(251, 191, 36, 0.4), 
+    rgba(245, 158, 11, 0.4));
+  border-radius: 50%;
+  animation: bounce 1.8s infinite;
+  animation-delay: 0.3s;
+}
+
+.earn-shape-4 {
+  position: absolute;
+  top: 35%;
+  left: 2%;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(252, 211, 77, 0.7);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: ping 4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Earn Section Content */
+.earn-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.earn-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, 
+    rgba(251, 191, 36, 1) 0%, 
+    rgba(245, 158, 11, 1) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: golden-glow 3.5s ease-in-out infinite;
+  text-align: center;
+}
+
+.earn-description {
+  font-size: 1.25rem;
+  color: #d1d5db;
+  max-width: 768px;
+  margin: 0 auto 64px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* Earn Rewards Grid */
+.earn-rewards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.earn-reward-card {
+  position: relative;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.7) 0%, 
+    rgba(30, 41, 59, 0.7) 100%);
+  border: 2px solid rgba(251, 191, 36, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  text-align: center;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.earn-reward-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(251, 191, 36, 0.1) 0%, 
+    rgba(245, 158, 11, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.earn-reward-card:hover::before {
+  opacity: 1;
+}
+
+.earn-reward-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 30px 60px -12px rgba(251, 191, 36, 0.4);
+}
+
+.earn-reward-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  display: block;
+  position: relative;
+  z-index: 2;
+  animation: golden-glow 4s ease-in-out infinite;
+}
+
+.earn-reward-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: rgba(251, 191, 36, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.earn-reward-card:nth-child(2) .earn-reward-title {
+  color: rgba(245, 158, 11, 1);
+}
+
+.earn-reward-card:nth-child(3) .earn-reward-title {
+  color: rgba(217, 119, 6, 1);
+}
+
+.earn-reward-card:nth-child(4) .earn-reward-title {
+  color: rgba(252, 211, 77, 1);
+}
+
+.earn-reward-amount {
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.earn-reward-description {
+  color: #9ca3af;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+  font-size: 0.95rem;
+}
+
+/* Earn CTA */
+.earn-cta {
+  text-align: center;
+}
+
+.earn-cta-button {
+  position: relative;
+  padding: 24px 72px;
+  background: linear-gradient(90deg, 
+    rgba(251, 191, 36, 1) 0%, 
+    rgba(245, 158, 11, 1) 100%);
+  border: none;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: rgba(15, 23, 42, 1);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.earn-cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    rgba(251, 191, 36, 1) 0%, 
+    rgba(245, 158, 11, 1) 100%);
+  border-radius: 24px;
+  filter: blur(25px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.earn-cta-button:hover::before {
+  opacity: 0.8;
+}
+
+.earn-cta-button:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.6);
+}
+
+.earn-cta-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes golden-glow {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+  }
+  50% {
+    opacity: 0.85;
+    filter: brightness(1.3) drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
+  }
+}
+
+@keyframes coin-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-12px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1);
+  }
+  75% {
+    transform: translateY(-8px) rotate(270deg) scale(1.05);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Coin Animation Keyframes */
+@keyframes coin-stack-bounce {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+@keyframes coin-rain {
+  0% {
+    transform: translateY(-20px) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}

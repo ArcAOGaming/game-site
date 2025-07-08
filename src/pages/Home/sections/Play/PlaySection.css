@@ -1,59 +1,4 @@
-/* Gaming Home Page Styles */
-
-.gaming-home {
-  background: 
-    /* Smooth section transitions with gradients */
-    linear-gradient(180deg,
-      /* Play section - Purple/Pink theme */
-      rgba(168, 85, 247, 0.15) 0%,
-      rgba(168, 85, 247, 0.1) 20%,
-      rgba(168, 85, 247, 0.05) 25%,
-      
-      /* Earn section - Golden/Yellow theme */
-      rgba(251, 191, 36, 0.05) 30%,
-      rgba(251, 191, 36, 0.1) 40%,
-      rgba(251, 191, 36, 0.05) 50%,
-      
-      /* Create section - Blue/Cyan theme */
-      rgba(59, 130, 246, 0.05) 55%,
-      rgba(59, 130, 246, 0.1) 65%,
-      rgba(59, 130, 246, 0.05) 75%,
-      
-      /* Mint section - Green/Emerald theme */
-      rgba(34, 197, 94, 0.05) 80%,
-      rgba(34, 197, 94, 0.1) 90%,
-      rgba(34, 197, 94, 0.05) 100%
-    ),
-    /* Base dark background */
-    linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
-  background-attachment: fixed;
-  color: var(--text-gaming);
-  position: relative;
-  overflow-x: hidden;
-}
-
-.gaming-home::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-  background-size: 100px 100px;
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.gaming-home > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Hero Section */
+/* Play Section Styles */
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -92,12 +37,71 @@
 .hero-bg-layer-3 {
   position: absolute;
   inset: 0;
-  background: conic-gradient(from 0deg at 50% 50%, 
-    rgba(168, 85, 247, 0.1) 0deg,
-    rgba(59, 130, 246, 0.1) 120deg,
-    rgba(34, 197, 94, 0.1) 240deg,
-    rgba(168, 85, 247, 0.1) 360deg);
-  animation: spin 20s linear infinite;
+  overflow: hidden;
+}
+
+/* Game Characters Animation */
+.game-character {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.character-runner-1 {
+  top: 20%;
+  left: -5%;
+  animation: chase-horizontal 15s linear infinite;
+  animation-delay: 0s;
+}
+
+.character-chaser-1 {
+  top: 20%;
+  left: -8%;
+  animation: chase-horizontal 15s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.character-runner-2 {
+  top: 60%;
+  right: -5%;
+  animation: chase-horizontal-reverse 18s linear infinite;
+  animation-delay: 2s;
+}
+
+.character-chaser-2 {
+  top: 60%;
+  right: -8%;
+  animation: chase-horizontal-reverse 18s linear infinite;
+  animation-delay: 2.5s;
+}
+
+.character-runner-3 {
+  top: 80%;
+  left: -5%;
+  animation: chase-diagonal 20s linear infinite;
+  animation-delay: 4s;
+}
+
+.character-chaser-3 {
+  top: 80%;
+  left: -8%;
+  animation: chase-diagonal 20s linear infinite;
+  animation-delay: 4.5s;
+}
+
+.character-flying-1 {
+  top: 10%;
+  right: -5%;
+  animation: fly-across 12s linear infinite;
+  animation-delay: 1s;
+}
+
+.character-flying-2 {
+  top: 40%;
+  left: -5%;
+  animation: fly-wave 16s linear infinite;
+  animation-delay: 3s;
 }
 
 .grid-overlay {
@@ -180,9 +184,9 @@
   right: 20%;
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  transform: rotate(45deg);
-  animation: spin 8s linear infinite;
+  background: linear-gradient(45deg, rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4));
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: pulse 4s ease-in-out infinite;
 }
 
 .geometric-shape-2 {
@@ -412,35 +416,6 @@
   letter-spacing: 0.1em;
 }
 
-/* Section Styles */
-.section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease-out;
-}
-
-.section.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-create {
-  background: linear-gradient(135deg, 
-    rgba(30, 58, 138, 0.3) 0%, 
-    rgba(6, 182, 212, 0.3) 100%);
-}
-
-.section-mint {
-  background: linear-gradient(135deg, 
-    rgba(5, 46, 22, 0.3) 0%, 
-    rgba(5, 150, 105, 0.3) 100%);
-}
-
 /* Animations */
 @keyframes spin {
   from {
@@ -475,5 +450,86 @@
   50% {
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Game Character Animations */
+@keyframes chase-horizontal {
+  0% {
+    left: -10%;
+    transform: scaleX(1);
+  }
+  100% {
+    left: 110%;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes chase-horizontal-reverse {
+  0% {
+    right: -10%;
+    transform: scaleX(-1);
+  }
+  100% {
+    right: 110%;
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes chase-diagonal {
+  0% {
+    left: -10%;
+    top: 80%;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 50%;
+    top: 40%;
+    transform: scaleX(1);
+  }
+  100% {
+    left: 110%;
+    top: 10%;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fly-across {
+  0% {
+    right: -10%;
+    transform: scaleX(-1) translateY(0px);
+  }
+  25% {
+    transform: scaleX(-1) translateY(-10px);
+  }
+  50% {
+    transform: scaleX(-1) translateY(5px);
+  }
+  75% {
+    transform: scaleX(-1) translateY(-8px);
+  }
+  100% {
+    right: 110%;
+    transform: scaleX(-1) translateY(0px);
+  }
+}
+
+@keyframes fly-wave {
+  0% {
+    left: -10%;
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  75% {
+    transform: translateY(-15px);
+  }
+  100% {
+    left: 110%;
+    transform: translateY(0px);
   }
 }
