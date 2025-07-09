@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { VideoCarousel } from './components';
 import './PlaySection.css';
 
 interface PlaySectionProps {
@@ -7,6 +8,7 @@ interface PlaySectionProps {
 
 const PlaySection = forwardRef<HTMLElement, PlaySectionProps>(
   ({ className = '' }, ref) => {
+
     return (
       <section 
         ref={ref}
@@ -53,6 +55,11 @@ const PlaySection = forwardRef<HTMLElement, PlaySectionProps>(
               Experience next-generation blockchain gaming where you truly own your assets, 
               create immersive worlds, and mint legendary NFTs that hold real value.
             </p>
+          </div>
+
+          {/* Video Carousel */}
+          <div className="hero-video">
+            <VideoCarousel />
           </div>
 
           <div className="hero-buttons">

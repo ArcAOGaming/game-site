@@ -253,6 +253,17 @@
   line-height: 1.75;
 }
 
+/* Video Section */
+.hero-video {
+  margin: 48px auto;
+}
+
+@media (max-width: 768px) {
+  .hero-video {
+    margin: 32px auto;
+  }
+}
+
 /* Buttons */
 .hero-buttons {
   display: flex;
