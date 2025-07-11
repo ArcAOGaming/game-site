@@ -5,8 +5,9 @@ import { ThemeProvider } from './shared/contexts/ThemeContext'
 import { createRoute } from './utils/routing'
 import Home from './pages/Home/Home'
 
-// Create route with automatic eager loading
-const About = createRoute(() => import('./pages/About/About'))
+// Create routes with automatic eager loading
+const Mint = createRoute(() => import('./pages/Mint/Mint'))
+const Earn = createRoute(() => import('./pages/Earn/Earn'))
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
             <Suspense fallback={<Loading />}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/mint" element={<Mint />} />
+                <Route path="/earn" element={<Earn />} />
               </Routes>
             </Suspense>
           </Layout>

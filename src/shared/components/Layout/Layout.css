@@ -75,7 +75,7 @@ html {
 }
 
 .layout-main {
-  padding-top: 5rem; /* pt-20 equivalent */
+  /* TopBar is now an overlay - no padding needed */
 }
 
 /* Override gaming-home scrollbar */

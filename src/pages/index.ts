@@ -1,2 +1,3 @@
 export * from './Home'
-export * from './About'
+export * from './Mint'
+export * from './Earn'

@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 import './Home.css';
-import { PlaySection, CreateSection, MintSection, EarnSection } from './sections';
+import { PlaySection, OwnSection, CreateSection, MintSection, EarnSection } from './sections';
 
 function Home() {
   const playRef = useRef<HTMLElement>(null);
+  const ownRef = useRef<HTMLElement>(null);
   const earnRef = useRef<HTMLElement>(null);
   const createRef = useRef<HTMLElement>(null);
   const mintRef = useRef<HTMLElement>(null);
@@ -27,7 +28,7 @@ function Home() {
       });
     }, observerOptions);
 
-    const sections = [earnRef.current, createRef.current, mintRef.current];
+    const sections = [ownRef.current, earnRef.current, createRef.current, mintRef.current];
     sections.forEach((section) => {
       if (section) {
         observer.observe(section);
@@ -47,6 +48,9 @@ function Home() {
     <div className="gaming-home">
       {/* Hero Section / Play Section */}
       <PlaySection ref={playRef} />
+
+      {/* Own Section */}
+      <OwnSection ref={ownRef} />
 
       {/* Earn Section */}
       <EarnSection ref={earnRef} />

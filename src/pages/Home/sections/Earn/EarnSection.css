@@ -1,4 +1,4 @@
-/* Earn Section Styles - Rewards/Golden Theme */
+/* Home Earn Section Styles - Rewards/Golden Theme */
 .earn-section {
   min-height: 100vh;
   display: flex;
@@ -16,8 +16,8 @@
   transform: translateY(0);
 }
 
-/* Earn Section Animated Backgrounds - Golden/Rewards Theme */
-.earn-bg-layer-1 {
+/* Home Earn Section Animated Backgrounds - Golden/Rewards Theme */
+.earn-section .earn-bg-layer-1 {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, 
@@ -26,7 +26,7 @@
     rgba(245, 158, 11, 0.4) 100%);
 }
 
-.earn-bg-layer-2 {
+.earn-section .earn-bg-layer-2 {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 40% 60%, 
@@ -34,49 +34,49 @@
     transparent 60%);
 }
 
-.earn-bg-layer-3 {
+.earn-section .earn-bg-layer-3 {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
 
-/* Floating Coin Elements */
-.coin-element {
+/* Home Earn Section Floating Coin Elements */
+.earn-section .coin-element {
   position: absolute;
   font-size: 2rem;
   opacity: 0.4;
   pointer-events: none;
 }
 
-.coin-stack-1 {
+.earn-section .coin-stack-1 {
   top: 15%;
   left: 12%;
-  animation: coin-stack-bounce 5s ease-in-out infinite;
+  animation: home-earn-coin-stack-bounce 5s ease-in-out infinite;
   animation-delay: 0s;
 }
 
-.coin-stack-2 {
+.earn-section .coin-stack-2 {
   bottom: 20%;
   right: 15%;
-  animation: coin-stack-bounce 6s ease-in-out infinite;
+  animation: home-earn-coin-stack-bounce 6s ease-in-out infinite;
   animation-delay: 1.5s;
 }
 
-.coin-rain-1 {
+.earn-section .coin-rain-1 {
   top: 5%;
   left: 70%;
-  animation: coin-rain 8s linear infinite;
+  animation: home-earn-coin-rain 8s linear infinite;
   animation-delay: 2s;
 }
 
-.coin-rain-2 {
+.earn-section .coin-rain-2 {
   top: 10%;
   right: 30%;
-  animation: coin-rain 10s linear infinite;
+  animation: home-earn-coin-rain 10s linear infinite;
   animation-delay: 4s;
 }
 
-.earn-grid-overlay {
+.earn-section .earn-grid-overlay {
   position: absolute;
   inset: 0;
   background-image: 
@@ -86,15 +86,15 @@
   opacity: 0.5;
 }
 
-/* Earn Section Floating Particles - Coin/Gold Theme */
-.earn-particles {
+/* Home Earn Section Floating Particles - Coin/Gold Theme */
+.earn-section .earn-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
-.earn-particle-1 {
+.earn-section .earn-particle-1 {
   position: absolute;
   top: 25%;
   left: 10%;
@@ -103,10 +103,10 @@
   background: linear-gradient(45deg, rgba(251, 191, 36, 0.9), rgba(245, 158, 11, 0.9));
   border-radius: 50%;
   box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
-  animation: coin-float 3.5s ease-in-out infinite;
+  animation: home-earn-coin-float 3.5s ease-in-out infinite;
 }
 
-.earn-particle-2 {
+.earn-section .earn-particle-2 {
   position: absolute;
   top: 65%;
   right: 25%;
@@ -115,10 +115,10 @@
   background: linear-gradient(45deg, rgba(245, 158, 11, 0.9), rgba(217, 119, 6, 0.9));
   border-radius: 50%;
   box-shadow: 0 0 25px rgba(245, 158, 11, 0.8);
-  animation: coin-float 2.8s ease-in-out infinite reverse;
+  animation: home-earn-coin-float 2.8s ease-in-out infinite reverse;
 }
 
-.earn-particle-3 {
+.earn-section .earn-particle-3 {
   position: absolute;
   bottom: 35%;
   left: 80%;
@@ -127,10 +127,10 @@
   background: linear-gradient(45deg, rgba(217, 119, 6, 0.9), rgba(251, 191, 36, 0.9));
   border-radius: 50%;
   box-shadow: 0 0 28px rgba(217, 119, 6, 0.8);
-  animation: coin-float 4s ease-in-out infinite;
+  animation: home-earn-coin-float 4s ease-in-out infinite;
 }
 
-.earn-particle-4 {
+.earn-section .earn-particle-4 {
   position: absolute;
   top: 40%;
   left: 5%;
@@ -139,10 +139,10 @@
   background: linear-gradient(45deg, rgba(252, 211, 77, 0.9), rgba(251, 191, 36, 0.9));
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(252, 211, 77, 0.8);
-  animation: coin-float 3s ease-in-out infinite;
+  animation: home-earn-coin-float 3s ease-in-out infinite;
 }
 
-.earn-particle-5 {
+.earn-section .earn-particle-5 {
   position: absolute;
   bottom: 15%;
   right: 70%;
@@ -151,10 +151,10 @@
   background: linear-gradient(45deg, rgba(251, 191, 36, 0.8), rgba(245, 158, 11, 0.8));
   border-radius: 50%;
   box-shadow: 0 0 35px rgba(251, 191, 36, 0.7);
-  animation: coin-float 4.2s ease-in-out infinite reverse;
+  animation: home-earn-coin-float 4.2s ease-in-out infinite reverse;
 }
 
-.earn-particle-6 {
+.earn-section .earn-particle-6 {
   position: absolute;
   top: 80%;
   left: 30%;
@@ -163,11 +163,11 @@
   background: linear-gradient(45deg, rgba(245, 158, 11, 0.9), rgba(252, 211, 77, 0.9));
   border-radius: 50%;
   box-shadow: 0 0 18px rgba(245, 158, 11, 0.8);
-  animation: coin-float 2.5s ease-in-out infinite;
+  animation: home-earn-coin-float 2.5s ease-in-out infinite;
 }
 
-/* Earn Section Geometric Shapes - Treasure/Coin Theme */
-.earn-shape-1 {
+/* Home Earn Section Geometric Shapes - Treasure/Coin Theme */
+.earn-section .earn-shape-1 {
   position: absolute;
   top: 18%;
   right: 12%;
@@ -175,10 +175,10 @@
   height: 42px;
   background: linear-gradient(45deg, rgba(251, 191, 36, 0.4), rgba(245, 158, 11, 0.4));
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  animation: golden-glow 4s ease-in-out infinite;
+  animation: home-earn-golden-glow 4s ease-in-out infinite;
 }
 
-.earn-shape-2 {
+.earn-section .earn-shape-2 {
   position: absolute;
   bottom: 30%;
   left: 8%;
@@ -186,10 +186,10 @@
   height: 30px;
   border: 2px solid rgba(245, 158, 11, 0.6);
   transform: rotate(45deg);
-  animation: pulse 2.8s ease-in-out infinite;
+  animation: home-earn-pulse 2.8s ease-in-out infinite;
 }
 
-.earn-shape-3 {
+.earn-section .earn-shape-3 {
   position: absolute;
   top: 55%;
   right: 85%;
@@ -199,11 +199,11 @@
     rgba(251, 191, 36, 0.4), 
     rgba(245, 158, 11, 0.4));
   border-radius: 50%;
-  animation: bounce 1.8s infinite;
+  animation: home-earn-bounce 1.8s infinite;
   animation-delay: 0.3s;
 }
 
-.earn-shape-4 {
+.earn-section .earn-shape-4 {
   position: absolute;
   top: 35%;
   left: 2%;
@@ -211,11 +211,11 @@
   height: 26px;
   border: 1px solid rgba(252, 211, 77, 0.7);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  animation: ping 4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation: home-earn-ping 4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Earn Section Content */
-.earn-content {
+/* Home Earn Section Content */
+.earn-section .earn-content {
   position: relative;
   z-index: 10;
   max-width: 1536px;
@@ -223,7 +223,7 @@
   padding: 0 24px;
 }
 
-.earn-title {
+.earn-section .earn-title {
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 900;
   margin-bottom: 24px;
@@ -233,11 +233,11 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: golden-glow 3.5s ease-in-out infinite;
+  animation: home-earn-golden-glow 3.5s ease-in-out infinite;
   text-align: center;
 }
 
-.earn-description {
+.earn-section .earn-description {
   font-size: 1.25rem;
   color: #d1d5db;
   max-width: 768px;
@@ -246,29 +246,37 @@
   text-align: center;
 }
 
-/* Earn Rewards Grid */
-.earn-rewards {
+/* Home Earn Section Rewards Grid */
+.earn-section .earn-rewards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   margin-bottom: 64px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.earn-reward-card {
+@media (min-width: 1024px) {
+  .earn-section .earn-rewards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Earn Feature Cards - Matching Create Section Style */
+.earn-section .earn-card {
   position: relative;
-  padding: 32px 24px;
-  background: linear-gradient(135deg, 
-    rgba(15, 23, 42, 0.7) 0%, 
-    rgba(30, 41, 59, 0.7) 100%);
-  border: 2px solid rgba(251, 191, 36, 0.2);
-  border-radius: 20px;
+  padding: 32px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 24px;
   backdrop-filter: blur(16px);
-  text-align: center;
   transition: all 0.4s ease;
   overflow: hidden;
+  cursor: pointer;
 }
 
-.earn-reward-card::before {
+.earn-section .earn-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -279,61 +287,169 @@
   transition: opacity 0.4s ease;
 }
 
-.earn-reward-card:hover::before {
+.earn-section .earn-card:hover::before {
   opacity: 1;
 }
 
-.earn-reward-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  border-color: rgba(251, 191, 36, 0.6);
-  box-shadow: 0 30px 60px -12px rgba(251, 191, 36, 0.4);
+.earn-section .earn-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(251, 191, 36, 0.3);
 }
 
-.earn-reward-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+.earn-section .earn-card-icon {
+  font-size: 3rem;
+  margin-bottom: 24px;
   display: block;
   position: relative;
   z-index: 2;
-  animation: golden-glow 4s ease-in-out infinite;
 }
 
-.earn-reward-title {
-  font-size: 1.4rem;
+.earn-section .earn-card-title {
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: rgba(251, 191, 36, 1);
+  margin-bottom: 16px;
   position: relative;
   z-index: 2;
 }
 
-.earn-reward-card:nth-child(2) .earn-reward-title {
-  color: rgba(245, 158, 11, 1);
-}
-
-.earn-reward-card:nth-child(3) .earn-reward-title {
-  color: rgba(217, 119, 6, 1);
-}
-
-.earn-reward-card:nth-child(4) .earn-reward-title {
-  color: rgba(252, 211, 77, 1);
-}
-
-.earn-reward-amount {
-  font-size: 2rem;
-  font-weight: 900;
-  color: white;
-  margin-bottom: 8px;
+.earn-section .earn-card-amount {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
   position: relative;
   z-index: 2;
+  color: #d1d5db;
 }
 
-.earn-reward-description {
+.earn-section .earn-card-description {
   color: #9ca3af;
   line-height: 1.6;
   position: relative;
   z-index: 2;
-  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Stake Card - Green Theme */
+.earn-section .earn-card-stake .earn-card-title {
+  color: rgba(52, 211, 153, 1);
+}
+
+.earn-section .earn-card-stake:hover {
+  border-color: rgba(52, 211, 153, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(52, 211, 153, 0.3);
+}
+
+.earn-section .earn-card-stake::before {
+  background: linear-gradient(135deg, 
+    rgba(52, 211, 153, 0.1) 0%, 
+    rgba(16, 185, 129, 0.1) 100%);
+}
+
+/* Play Card - Blue Theme */
+.earn-section .earn-card-play .earn-card-title {
+  color: rgba(59, 130, 246, 1);
+}
+
+.earn-section .earn-card-play:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.3);
+}
+
+.earn-section .earn-card-play::before {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    rgba(37, 99, 235, 0.1) 100%);
+}
+
+/* Stream Card - Purple Theme with Special Hover */
+.earn-section .earn-card-stream {
+  position: relative;
+}
+
+.earn-section .earn-card-stream .earn-card-title {
+  color: rgba(147, 51, 234, 1);
+}
+
+.earn-section .earn-card-stream:hover {
+  border-color: rgba(147, 51, 234, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(147, 51, 234, 0.3);
+}
+
+.earn-section .earn-card-stream::before {
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.1) 0%, 
+    rgba(126, 34, 206, 0.1) 100%);
+}
+
+/* Stream Card Hover Overlay */
+.earn-section .earn-card-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.95) 0%, 
+    rgba(126, 34, 206, 0.95) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+}
+
+.earn-section .earn-card-cta {
+  position: relative;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 16px 32px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(147, 51, 234, 0.4);
+}
+
+.earn-section .earn-card-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.earn-section .earn-card-stream:hover .earn-card-cta {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(147, 51, 234, 0.6);
+}
+
+.earn-section .earn-card-stream:hover .earn-card-cta::before {
+  opacity: 1;
+}
+
+.earn-section .earn-card-stream:hover .earn-card-hover-overlay {
+  opacity: 1;
+}
+
+.earn-section .earn-card-stream:hover .earn-card-icon,
+.earn-section .earn-card-stream:hover .earn-card-title,
+.earn-section .earn-card-stream:hover .earn-card-amount,
+.earn-section .earn-card-stream:hover .earn-card-description {
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
 }
 
 /* Earn CTA */
@@ -391,8 +507,8 @@
   gap: 16px;
 }
 
-/* Animations */
-@keyframes spin {
+/* Home Earn Section Animations */
+@keyframes home-earn-spin {
   from {
     transform: rotate(0deg);
   }
@@ -401,7 +517,7 @@
   }
 }
 
-@keyframes golden-glow {
+@keyframes home-earn-golden-glow {
   0%, 100% {
     opacity: 1;
     filter: brightness(1) drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
@@ -412,7 +528,7 @@
   }
 }
 
-@keyframes coin-float {
+@keyframes home-earn-coin-float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg) scale(1);
   }
@@ -427,7 +543,7 @@
   }
 }
 
-@keyframes pulse {
+@keyframes home-earn-pulse {
   0%, 100% {
     opacity: 1;
     transform: scale(1);
@@ -438,7 +554,7 @@
   }
 }
 
-@keyframes bounce {
+@keyframes home-earn-bounce {
   0%, 100% {
     transform: translateY(-25%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
@@ -449,15 +565,15 @@
   }
 }
 
-@keyframes ping {
+@keyframes home-earn-ping {
   75%, 100% {
     transform: scale(2);
     opacity: 0;
   }
 }
 
-/* Coin Animation Keyframes */
-@keyframes coin-stack-bounce {
+/* Home Earn Section Coin Animation Keyframes */
+@keyframes home-earn-coin-stack-bounce {
   0%, 100% {
     transform: translateY(0px) scale(1);
   }
@@ -466,7 +582,7 @@
   }
 }
 
-@keyframes coin-rain {
+@keyframes home-earn-coin-rain {
   0% {
     transform: translateY(-20px) translateX(0px) rotate(0deg);
     opacity: 0;

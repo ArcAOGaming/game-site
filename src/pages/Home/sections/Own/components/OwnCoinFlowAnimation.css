@@ -1,0 +1,418 @@
+/* Own Section Magnetic Animation - Central square attracts green circles from all sides */
+.own-magnetic-animation {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 1;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Central purple-blue square that acts as a magnet */
+.own-central-magnet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  border: 4px solid #fff;
+  box-shadow: 
+    0 0 40px rgba(142, 68, 173, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ownMagnetPulse 2s ease-in-out infinite;
+  z-index: 5;
+}
+
+.own-magnet-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Green circles that are attracted to the center */
+.own-attracted-token {
+  position: absolute;
+  z-index: 3;
+}
+
+.own-green-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(39, 174, 96, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.own-circle-logo {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Top side tokens */
+.own-token-top-1 {
+  top: 10px;
+  left: 40%;
+  animation: ownAttractFromTop1 3.5s ease-in-out infinite;
+}
+
+.own-token-top-2 {
+  top: 20px;
+  left: 60%;
+  animation: ownAttractFromTop2 3.5s ease-in-out infinite 1.2s;
+}
+
+/* Right side tokens */
+.own-token-right-1 {
+  top: 40%;
+  right: 10px;
+  animation: ownAttractFromRight1 3.5s ease-in-out infinite 0.8s;
+}
+
+.own-token-right-2 {
+  top: 60%;
+  right: 20px;
+  animation: ownAttractFromRight2 3.5s ease-in-out infinite 2.1s;
+}
+
+/* Bottom side tokens */
+.own-token-bottom-1 {
+  bottom: 10px;
+  left: 45%;
+  animation: ownAttractFromBottom1 3.5s ease-in-out infinite 1.5s;
+}
+
+.own-token-bottom-2 {
+  bottom: 20px;
+  left: 55%;
+  animation: ownAttractFromBottom2 3.5s ease-in-out infinite 0.4s;
+}
+
+/* Left side tokens */
+.own-token-left-1 {
+  top: 35%;
+  left: 10px;
+  animation: ownAttractFromLeft1 3.5s ease-in-out infinite 1.8s;
+}
+
+.own-token-left-2 {
+  top: 65%;
+  left: 20px;
+  animation: ownAttractFromLeft2 3.5s ease-in-out infinite 0.6s;
+}
+
+/* Keyframe Animations */
+@keyframes ownMagnetPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    box-shadow: 0 0 40px rgba(142, 68, 173, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    box-shadow: 0 0 60px rgba(142, 68, 173, 1), inset 0 0 40px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Attraction animations from top */
+@keyframes ownAttractFromTop1 {
+  0% { 
+    transform: translateY(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateY(40px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateY(80px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(120px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+@keyframes ownAttractFromTop2 {
+  0% { 
+    transform: translateY(0) translateX(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateY(35px) translateX(-20px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateY(70px) translateX(-40px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(105px) translateX(-60px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+/* Attraction animations from right */
+@keyframes ownAttractFromRight1 {
+  0% { 
+    transform: translateX(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateX(-40px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateX(-80px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(-120px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+@keyframes ownAttractFromRight2 {
+  0% { 
+    transform: translateX(0) translateY(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateX(-35px) translateY(-20px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateX(-70px) translateY(-40px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(-105px) translateY(-60px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+/* Attraction animations from bottom */
+@keyframes ownAttractFromBottom1 {
+  0% { 
+    transform: translateY(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateY(-40px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateY(-80px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(-120px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+@keyframes ownAttractFromBottom2 {
+  0% { 
+    transform: translateY(0) translateX(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateY(-35px) translateX(-15px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateY(-70px) translateX(-30px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(-105px) translateX(-45px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+/* Attraction animations from left */
+@keyframes ownAttractFromLeft1 {
+  0% { 
+    transform: translateX(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateX(40px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateX(80px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(120px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+@keyframes ownAttractFromLeft2 {
+  0% { 
+    transform: translateX(0) translateY(0) scale(0.6); 
+    opacity: 0.4; 
+  }
+  30% { 
+    transform: translateX(35px) translateY(-25px) scale(1); 
+    opacity: 1; 
+  }
+  70% { 
+    transform: translateX(70px) translateY(-50px) scale(1.1); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(105px) translateY(-75px) scale(0.3); 
+    opacity: 0.2; 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .own-magnetic-animation {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .own-central-magnet {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+  }
+  
+  .own-magnet-logo {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .own-green-circle {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .own-circle-logo {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .own-magnetic-animation {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .own-central-magnet {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  
+  .own-magnet-logo {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .own-green-circle {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .own-circle-logo {
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Adjust animation distances for smaller screens */
+  @keyframes ownAttractFromTop1 {
+    0% { 
+      transform: translateY(0) scale(0.6); 
+      opacity: 0.4; 
+    }
+    30% { 
+      transform: translateY(30px) scale(1); 
+      opacity: 1; 
+    }
+    70% { 
+      transform: translateY(60px) scale(1.1); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateY(90px) scale(0.3); 
+      opacity: 0.2; 
+    }
+  }
+  
+  @keyframes ownAttractFromRight1 {
+    0% { 
+      transform: translateX(0) scale(0.6); 
+      opacity: 0.4; 
+    }
+    30% { 
+      transform: translateX(-30px) scale(1); 
+      opacity: 1; 
+    }
+    70% { 
+      transform: translateX(-60px) scale(1.1); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateX(-90px) scale(0.3); 
+      opacity: 0.2; 
+    }
+  }
+  
+  @keyframes ownAttractFromBottom1 {
+    0% { 
+      transform: translateY(0) scale(0.6); 
+      opacity: 0.4; 
+    }
+    30% { 
+      transform: translateY(-30px) scale(1); 
+      opacity: 1; 
+    }
+    70% { 
+      transform: translateY(-60px) scale(1.1); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateY(-90px) scale(0.3); 
+      opacity: 0.2; 
+    }
+  }
+  
+  @keyframes ownAttractFromLeft1 {
+    0% { 
+      transform: translateX(0) scale(0.6); 
+      opacity: 0.4; 
+    }
+    30% { 
+      transform: translateX(30px) scale(1); 
+      opacity: 1; 
+    }
+    70% { 
+      transform: translateX(60px) scale(1.1); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateX(90px) scale(0.3); 
+      opacity: 0.2; 
+    }
+  }
+}

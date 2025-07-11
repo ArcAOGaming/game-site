@@ -1,5 +1,5 @@
-/* Mint Section Styles - NFT/Blockchain Theme */
-.mint-section {
+/* Mint Page Styles - NFT/Blockchain Theme */
+.mint-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,12 +11,12 @@
   transition: all 1s ease-out;
 }
 
-.mint-section.animate-in {
+.mint-page.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Mint Section Animated Backgrounds - Treasure/Blockchain Theme */
+/* Mint Page Animated Backgrounds - Treasure/Blockchain Theme */
 .mint-bg-layer-1 {
   position: absolute;
   inset: 0;
@@ -93,7 +93,7 @@
   opacity: 0.4;
 }
 
-/* Mint Section Floating Particles - Gem/Treasure Theme */
+/* Mint Page Floating Particles - Gem/Treasure Theme */
 .mint-particles {
   position: absolute;
   inset: 0;
@@ -161,7 +161,7 @@
   animation: treasure-float 4.5s ease-in-out infinite reverse;
 }
 
-/* Mint Section Geometric Shapes - Blockchain/Diamond Theme */
+/* Mint Page Geometric Shapes - Blockchain/Diamond Theme */
 .mint-shape-1 {
   position: absolute;
   top: 20%;
@@ -210,7 +210,7 @@
   animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Mint Section Content */
+/* Mint Page Content */
 .mint-content {
   position: relative;
   z-index: 10;
@@ -351,89 +351,30 @@
   }
 }
 
-/* Mint Layout */
-.mint-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .mint-layout {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-}
-
-/* Mint Features */
-.mint-features {
+/* Mint Interface */
+.mint-interface {
+  margin: 48px 0;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.mint-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-.mint-feature-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, 
-    rgba(34, 197, 94, 1) 0%, 
-    rgba(5, 150, 105, 1) 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  box-shadow: 0 8px 25px -8px rgba(34, 197, 94, 0.4);
 }
 
-.mint-feature-content h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: rgba(34, 197, 94, 1);
-}
-
-.mint-feature:nth-child(2) .mint-feature-content h3 {
-  color: rgba(5, 150, 105, 1);
-}
-
-.mint-feature:nth-child(3) .mint-feature-content h3 {
-  color: rgba(16, 185, 129, 1);
-}
-
-.mint-feature-content p {
-  color: #9ca3af;
-  line-height: 1.6;
-}
-
-/* Token Showcase Card */
-.mint-showcase {
-  position: relative;
-}
-
-.mint-token-card {
-  position: relative;
-  padding: 32px;
+.mint-interface-card {
   background: linear-gradient(135deg, 
     rgba(15, 23, 42, 0.8) 0%, 
     rgba(30, 41, 59, 0.8) 100%);
   border: 2px solid rgba(34, 197, 94, 0.3);
   border-radius: 24px;
+  padding: 40px;
   backdrop-filter: blur(16px);
   text-align: center;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
 }
 
-.mint-token-card::before {
+.mint-interface-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -444,362 +385,240 @@
   transition: opacity 0.4s ease;
 }
 
-.mint-token-card:hover::before {
+.mint-interface-card:hover::before {
   opacity: 1;
 }
 
-.mint-token-card:hover {
+.mint-interface-card:hover {
   transform: translateY(-8px);
   border-color: rgba(34, 197, 94, 0.6);
   box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.4);
 }
 
-.mint-token-logo {
-  width: 128px;
-  height: 128px;
-  margin: 0 auto 24px;
-  background: linear-gradient(135deg, 
-    rgba(160, 160, 160, 0.9) 0%, 
-    rgba(140, 140, 140, 0.9) 25%,
-    rgba(180, 180, 180, 0.9) 50%,
-    rgba(140, 140, 140, 0.9) 75%,
-    rgba(120, 120, 120, 0.9) 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mint-interface-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(34, 197, 94, 1);
+  margin-bottom: 16px;
   position: relative;
   z-index: 2;
-  animation: treasure-glow 4s ease-in-out infinite;
-  padding: 32px;
-  box-shadow: 0 6px 24px rgba(160, 160, 160, 0.2);
 }
 
-.token-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
+.mint-interface-description {
+  color: #9ca3af;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
 }
 
-.mint-token-title {
+.mint-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.mint-stat {
+  text-align: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.mint-stat:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.mint-stat-value {
   font-size: 1.5rem;
   font-weight: 700;
   color: rgba(34, 197, 94, 1);
   margin-bottom: 8px;
-  position: relative;
-  z-index: 2;
 }
 
-.mint-token-supply {
-  color: #9ca3af;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 2;
-}
-
-.mint-token-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 2;
-}
-
-.stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  background: rgba(15, 23, 42, 0.5);
-  border-radius: 8px;
-  border: 1px solid rgba(34, 197, 94, 0.2);
-}
-
-.stat-label {
+.mint-stat-label {
   color: #9ca3af;
   font-size: 0.9rem;
-}
-
-.stat-value {
-  color: rgba(34, 197, 94, 1);
-  font-weight: 600;
-}
-
-/* Contract Verification Section */
-.contract-verification-section {
-  margin: 16px 0;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-}
-
-.contract-info {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  border-radius: 12px;
-  padding: 18px 23px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-  width: 100%;
-  max-width: 345px;
-}
-
-.contract-info:hover {
-  border-color: rgba(34, 197, 94, 0.4);
-  background: rgba(15, 23, 42, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.2);
-}
-
-.contract-label {
-  display: block;
-  color: #d1d5db;
-  font-size: 0.875rem;
-  margin-bottom: 12px;
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-align: center;
 }
 
-.contract-actions {
+.mint-actions {
   display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 16px;
   justify-content: center;
-}
-
-.contract-address-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  border-radius: 12px;
-  color: rgba(34, 197, 94, 1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: monospace;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.contract-address-btn:hover {
-  border-color: rgba(34, 197, 94, 0.6);
-  background: rgba(34, 197, 94, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
-}
-
-.contract-address-text {
-  flex: 1;
-  text-align: left;
-}
-
-.copy-icon {
-  font-size: 1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-  margin-left: 8px;
-}
-
-.contract-address-btn:hover .copy-icon {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.branta-verify-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 12px 16px;
-  background: rgba(180, 145, 69, 0.1);
-  border: 1px solid rgba(180, 145, 69, 0.3);
-  border-radius: 12px;
-  color: rgba(180, 145, 69, 1);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 100px;
-}
-
-.branta-verify-btn:hover {
-  border-color: rgba(180, 145, 69, 0.6);
-  background: rgba(180, 145, 69, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(180, 145, 69, 0.2);
-  color: rgba(180, 145, 69, 1);
-  text-decoration: none;
-}
-
-.branta-logo {
-  height: 14px;
-  width: auto;
-  filter: brightness(0) saturate(100%) invert(70%) sepia(50%) saturate(500%) hue-rotate(25deg) brightness(95%) contrast(90%);
-  transition: transform 0.3s ease;
-}
-
-.branta-verify-btn:hover .branta-logo {
-  transform: scale(1.1);
-}
-
-.copy-success {
-  display: block;
-  color: rgba(34, 197, 94, 1);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 8px;
-  animation: fade-in-out 2s ease-in-out;
-}
-
-/* Botega Buy Section */
-.botega-buy-section {
-  margin: 16px 0;
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-}
-
-.botega-buy-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 18px 23px;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.1) 0%, 
-    rgba(139, 92, 246, 0.1) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  border-radius: 12px;
-  color: rgba(99, 102, 241, 1);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  width: 100%;
-  max-width: 345px;
-}
-
-.botega-buy-btn:hover {
-  border-color: rgba(99, 102, 241, 0.6);
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.15) 0%, 
-    rgba(139, 92, 246, 0.15) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
-  color: rgba(99, 102, 241, 1);
-  text-decoration: none;
-}
-
-.botega-logo {
-  height: 16px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.botega-buy-btn:hover .botega-logo {
-  transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .mint-content {
-    padding: 0 16px;
-  }
-  
-  .contract-info,
-  .botega-buy-btn,
-  .mint-token-button {
-    max-width: 100%;
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 480px) {
-  .mint-content {
-    padding: 0 12px;
-  }
-  
-  .contract-actions {
+  .mint-actions {
     flex-direction: column;
-    gap: 12px;
-  }
-  
-  .contract-address-btn,
-  .branta-verify-btn {
-    width: 100%;
-    justify-content: center;
-    min-width: unset;
-  }
-  
-  .contract-address-text {
-    text-align: center;
-  }
-  
-  .contract-info,
-  .botega-buy-btn,
-  .mint-token-button {
-    padding: 16px 20px;
-    font-size: 0.85rem;
-  }
-  
-  .mint-token-card {
-    padding: 24px 16px;
   }
 }
 
-/* Mint Token Button Section */
-.mint-token-button-section {
-  margin: 8px 0;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-}
-
-.mint-token-button {
+.connect-wallet-btn,
+.mint-tokens-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 20px 25px;
-  background: linear-gradient(135deg, 
-    rgba(34, 197, 94, 0.1) 0%, 
-    rgba(5, 150, 105, 0.1) 100%);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 16px 24px;
+  border: none;
   border-radius: 12px;
-  color: rgba(34, 197, 94, 1);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 160px;
+}
+
+.connect-wallet-btn {
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1) 0%, 
+    rgba(99, 102, 241, 0.1) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: rgba(59, 130, 246, 1);
+}
+
+.connect-wallet-btn:hover {
+  border-color: rgba(59, 130, 246, 0.6);
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.15) 0%, 
+    rgba(99, 102, 241, 0.15) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.mint-tokens-btn {
+  background: linear-gradient(90deg, 
+    rgba(34, 197, 94, 1) 0%, 
+    rgba(5, 150, 105, 1) 100%);
+  color: white;
+}
+
+.mint-tokens-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(34, 197, 94, 0.5);
+}
+
+/* Mint Details */
+.mint-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 48px;
+  margin-top: 64px;
+}
+
+@media (max-width: 768px) {
+  .mint-details {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.mint-detail-section {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 20px;
+  padding: 32px;
   backdrop-filter: blur(8px);
-  width: 100%;
-  max-width: 345px;
+  transition: all 0.3s ease;
+}
+
+.mint-detail-section:hover {
+  border-color: rgba(34, 197, 94, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px -8px rgba(34, 197, 94, 0.2);
+}
+
+.mint-detail-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(34, 197, 94, 1);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.mint-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.mint-detail-item {
+  text-align: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mint-detail-item:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  transform: translateY(-2px);
+}
+
+.mint-detail-label {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-.mint-token-button:hover {
-  border-color: rgba(34, 197, 94, 0.6);
-  background: linear-gradient(135deg, 
-    rgba(34, 197, 94, 0.15) 0%, 
-    rgba(5, 150, 105, 0.15) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+.mint-detail-value {
   color: rgba(34, 197, 94, 1);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.mint-utility-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mint-utility-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mint-utility-item:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  transform: translateY(-2px);
+}
+
+.mint-utility-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.mint-utility-content h4 {
+  color: rgba(34, 197, 94, 1);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.mint-utility-content p {
+  color: #9ca3af;
+  line-height: 1.5;
 }
 
 /* Animations */
@@ -923,20 +742,5 @@
   }
   50% {
     background-position: 200% center;
-  }
-}
-
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.8);
-  }
-  20%, 80% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.8);
   }
 }

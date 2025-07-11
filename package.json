@@ -12,7 +12,7 @@
     "deploy-undername": "npm run build && permaweb-deploy --deploy-folder ./dist --arns-name $DEPLOY_ARNS_NAME --undername $DEPLOY_UNDERNAME"
   },
   "dependencies": {
-    "@arcaogaming/project-links": "1.0.24",
+    "@arcaogaming/project-links": "1.0.26",
     "@fortawesome/free-brands-svg-icons": "6.7.2",
     "@fortawesome/free-regular-svg-icons": "6.7.2",
     "@fortawesome/free-solid-svg-icons": "6.7.2",

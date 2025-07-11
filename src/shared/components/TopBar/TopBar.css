@@ -1,0 +1,282 @@
+/* TopBar Styles - Minimal and Non-intrusive */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+/* Visibility states */
+.topbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.topbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Background states - Very minimal */
+.topbar-at-top {
+  background: transparent;
+}
+
+.topbar-scrolled {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* Content container */
+.topbar-content {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Logo section - Center positioned */
+.topbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.topbar-logo:hover {
+  transform: translateX(-50%) scale(1.05);
+  filter: brightness(1.2);
+}
+
+.topbar-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Navigation Links - More prominent styling */
+.topbar-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.topbar-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.topbar-link-text {
+  display: block;
+}
+
+/* Left positioned link - Close to center */
+.topbar-link-left {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-140px);
+}
+
+.topbar-link-left:hover {
+  transform: translateX(-140px) translateY(-2px);
+}
+
+/* Right positioned link - Close to center */
+.topbar-link-right {
+  position: absolute;
+  right: 50%;
+  transform: translateX(140px);
+}
+
+.topbar-link-right:hover {
+  transform: translateX(140px) translateY(-2px);
+}
+
+/* Minimalistic dot indicators */
+.topbar-dot {
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    rgba(168, 85, 247, 1) 0%, 
+    rgba(59, 130, 246, 1) 50%, 
+    rgba(6, 182, 212, 1) 100%);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: dot-glow 2s ease-in-out infinite;
+}
+
+.topbar-dot-center {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: 0;
+}
+
+/* Override the dot positioning for center logo to account for parent transform */
+.topbar-logo .topbar-dot-center {
+  left: 20px; /* Half of logo width (40px) */
+  transform: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .topbar-content {
+    padding: 0 16px;
+    height: 60px;
+  }
+  
+  .topbar-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Adjust center dot for mobile logo size */
+  .topbar-logo .topbar-dot-center {
+    left: 16px; /* Half of mobile logo width (32px) */
+  }
+  
+  .topbar-link {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
+  
+  /* Adjust positioning for mobile - account for larger buttons */
+  .topbar-link-left {
+    transform: translateX(-100px);
+  }
+  
+  .topbar-link-left:hover {
+    transform: translateX(-100px) translateY(-2px);
+  }
+  
+  .topbar-link-right {
+    transform: translateX(100px);
+  }
+  
+  .topbar-link-right:hover {
+    transform: translateX(100px) translateY(-2px);
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar-content {
+    padding: 0 12px;
+    height: 55px;
+  }
+  
+  .topbar-logo-img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Adjust center dot for small mobile logo size */
+  .topbar-logo .topbar-dot-center {
+    left: 14px; /* Half of small mobile logo width (28px) */
+  }
+  
+  .topbar-link {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+  
+  /* Closer positioning for small mobile */
+  .topbar-link-left {
+    transform: translateX(-75px);
+  }
+  
+  .topbar-link-left:hover {
+    transform: translateX(-75px) translateY(-2px);
+  }
+  
+  .topbar-link-right {
+    transform: translateX(75px);
+  }
+  
+  .topbar-link-right:hover {
+    transform: translateX(75px) translateY(-2px);
+  }
+}
+
+/* Smooth animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* Hover effects for better UX */
+.topbar-at-top .topbar-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.topbar-scrolled .topbar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Dot glow animation */
+@keyframes dot-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Focus states for accessibility */
+.topbar-link:focus {
+  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline-offset: 2px;
+}
+
+.topbar-logo:focus {
+  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}

@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { VideoCarousel } from './components';
+import { VideoCarousel, StatsSection, HeroButtons, CoinFlowAnimation } from './components';
 import './PlaySection.css';
 
 interface PlaySectionProps {
@@ -50,10 +50,14 @@ const PlaySection = forwardRef<HTMLElement, PlaySectionProps>(
         <div className="hero-content">
           <div>
             <h1 className="hero-title">$GAME</h1>
+            
+            {/* Coin Flow Animation */}
+            <CoinFlowAnimation />
+            
             <p className="hero-subtitle">THE FUTURE OF DECENTRALIZED GAMING</p>
             <p className="hero-description">
-              Experience next-generation blockchain gaming where you truly own your assets, 
-              create immersive worlds, and mint legendary NFTs that hold real value.
+              Experience next-generation blockchain gaming where you truly own your in-game assets, 
+              grow their value with the ecosystem, create immersive worlds, and earn by playing and streaming.
             </p>
           </div>
 
@@ -62,37 +66,10 @@ const PlaySection = forwardRef<HTMLElement, PlaySectionProps>(
             <VideoCarousel />
           </div>
 
-          <div className="hero-buttons">
-            <button className="btn-primary">
-              <div className="btn-content">
-                <span className="btn-icon">🎮</span>
-                <span className="btn-text">START PLAYING</span>
-              </div>
-            </button>
-            
-            <button className="btn-secondary">
-              <div className="btn-content">
-                <span className="btn-icon">📖</span>
-                <span className="btn-text">LEARN MORE</span>
-              </div>
-            </button>
-          </div>
+          <HeroButtons />
 
           {/* Stats */}
-          <div className="hero-stats">
-            <div className="stat-item">
-              <div className="stat-number purple">10K+</div>
-              <div className="stat-label">Active Players</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number cyan">500+</div>
-              <div className="stat-label">NFTs Minted</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number pink">∞</div>
-              <div className="stat-label">Possibilities</div>
-            </div>
-          </div>
+          <StatsSection />
         </div>
       </section>
     );

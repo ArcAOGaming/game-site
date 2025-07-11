@@ -1,4 +1,6 @@
 import { forwardRef } from 'react';
+import { ARCAO } from '@arcaogaming/project-links';
+import { CoinFlowAnimation } from './components';
 import './EarnSection.css';
 
 interface EarnSectionProps {
@@ -7,6 +9,21 @@ interface EarnSectionProps {
 
 const EarnSection = forwardRef<HTMLElement, EarnSectionProps>(
   ({ className = '' }, ref) => {
+    const scrollToMint = () => {
+      const mintSection = document.getElementById('mint');
+      if (mintSection) {
+        mintSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    const handlePlayClick = () => {
+      window.open(ARCAO.discord, '_blank');
+    };
+
+    const handleAmbassadorClick = () => {
+      window.open(ARCAO.ambassadorProgramSignup, '_blank');
+    };
+
     return (
       <section 
         ref={ref}
@@ -42,60 +59,62 @@ const EarnSection = forwardRef<HTMLElement, EarnSectionProps>(
           <div className="earn-shape-3"></div>
           <div className="earn-shape-4"></div>
         </div>
-        
+
         <div className="earn-content">
           <h2 className="earn-title">EARN</h2>
+          
+          {/* Coin Flow Animation */}
+          <CoinFlowAnimation />
+          
           <p className="earn-description">
-            Turn your gaming skills into real rewards. Compete, win, and earn $GAME tokens 
-            through various gameplay mechanics, tournaments, and achievements.
+            Multiple ways to earn $GAME tokens and valuable rewards. Stake, play, and stream 
+            your way to financial freedom in the gaming ecosystem.
           </p>
 
           <div className="earn-rewards">
-            <div className="earn-reward-card">
-              <span className="earn-reward-icon">🏆</span>
-              <h3 className="earn-reward-title">Tournaments</h3>
-              <div className="earn-reward-amount">1000+</div>
-              <p className="earn-reward-description">
-                Compete in daily tournaments and win big prizes. Show your skills and climb the leaderboards.
+            {/* Stake Card - Green Theme */}
+            <div className="earn-card earn-card-stake" onClick={scrollToMint}>
+              <div className="earn-card-header">
+                <div className="earn-card-icon">💰</div>
+                <h3 className="earn-card-title">Stake</h3>
+              </div>
+              <div className="earn-card-amount">$2M+ Deposited</div>
+              <p className="earn-card-description">
+                Stake to earn. $2M in fair launch deposits. Stake your $GAME tokens and earn passive income while securing the network.
               </p>
+              <div className="earn-card-glow"></div>
             </div>
             
-            <div className="earn-reward-card">
-              <span className="earn-reward-icon">🎯</span>
-              <h3 className="earn-reward-title">Daily Quests</h3>
-              <div className="earn-reward-amount">50-200</div>
-              <p className="earn-reward-description">
-                Complete daily and weekly quests for consistent rewards. Never run out of ways to earn.
+            {/* Play Card - Blue Theme */}
+            <div className="earn-card earn-card-play" onClick={handlePlayClick}>
+              <div className="earn-card-header">
+                <div className="earn-card-icon">🎮</div>
+                <h3 className="earn-card-title">Play</h3>
+              </div>
+              <div className="earn-card-amount">Unlimited</div>
+              <p className="earn-card-description">
+                Play to earn. Gain valuable in-game assets through gameplay. The more you play, the more you earn. Become eligible for exclusive airdrops and rare rewards.
               </p>
+              <div className="earn-card-glow"></div>
             </div>
             
-            <div className="earn-reward-card">
-              <span className="earn-reward-icon">💰</span>
-              <h3 className="earn-reward-title">Staking Rewards</h3>
-              <div className="earn-reward-amount">12% APY</div>
-              <p className="earn-reward-description">
-                Stake your $GAME tokens and earn passive income. Let your tokens work for you.
+            {/* Stream Card - Purple Theme */}
+            <div className="earn-card earn-card-stream" onClick={handleAmbassadorClick}>
+              <div className="earn-card-header">
+                <div className="earn-card-icon">📺</div>
+                <h3 className="earn-card-title">Stream</h3>
+              </div>
+              <div className="earn-card-amount">Ambassador</div>
+              <p className="earn-card-description">
+                Stream & record to earn. Join the $GAME Ambassador Program. Stream gameplay, create content, and earn rewards while building the gaming community.
               </p>
-            </div>
-            
-            <div className="earn-reward-card">
-              <span className="earn-reward-icon">🎮</span>
-              <h3 className="earn-reward-title">Play to Earn</h3>
-              <div className="earn-reward-amount">10-50/hr</div>
-              <p className="earn-reward-description">
-                Earn tokens just by playing your favorite games. The more you play, the more you earn.
-              </p>
+              <div className="earn-card-hover-overlay">
+                <span className="earn-card-cta">Apply Now</span>
+              </div>
+              <div className="earn-card-glow"></div>
             </div>
           </div>
 
-          <div className="earn-cta">
-            <button className="earn-cta-button">
-              <div className="earn-cta-content">
-                <span>💰</span>
-                <span>START EARNING</span>
-              </div>
-            </button>
-          </div>
         </div>
       </section>
     );

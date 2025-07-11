@@ -1,0 +1,736 @@
+/* Earn Section Station Animation - Triangle stations with traveling gold logo */
+.earn-station-animation {
+  position: relative;
+  width: 350px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 1;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Three stations forming a triangle */
+.earn-station {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.earn-station-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Blue station at top (Play) */
+.earn-blue-station {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  box-shadow: 
+    0 0 30px rgba(52, 152, 219, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: earnBlueStationPulse 3s ease-in-out infinite;
+}
+
+/* Green station at bottom left (Stake) */
+.earn-green-station {
+  bottom: 20px;
+  left: 50px;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  box-shadow: 
+    0 0 30px rgba(39, 174, 96, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: earnGreenStationPulse 3s ease-in-out infinite 1s;
+}
+
+/* Purple station at bottom right (Stream) */
+.earn-purple-station {
+  bottom: 20px;
+  right: 50px;
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  box-shadow: 
+    0 0 30px rgba(142, 68, 173, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: earnPurpleStationPulse 3s ease-in-out infinite 2s;
+}
+
+/* Gold traveling logo */
+.earn-traveler {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f1c40f, #f39c12);
+  border: 3px solid #fff;
+  box-shadow: 
+    0 0 25px rgba(241, 196, 15, 0.9),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  animation: earnTravelerJourney 12s linear infinite;
+}
+
+.earn-traveler-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Follower tokens */
+.earn-follower {
+  position: absolute;
+  z-index: 6;
+}
+
+.earn-blue-circle, .earn-green-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earn-purple-square {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earn-blue-circle {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
+}
+
+.earn-green-circle {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  box-shadow: 0 0 10px rgba(39, 174, 96, 0.7);
+}
+
+.earn-purple-square {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  box-shadow: 0 0 10px rgba(142, 68, 173, 0.7);
+}
+
+.earn-follower-logo {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+/* Blue followers - magnetic attraction to traveler */
+.earn-blue-follower-1 {
+  animation: earnMagneticBlue1 12s linear infinite;
+}
+
+.earn-blue-follower-2 {
+  animation: earnMagneticBlue2 12s linear infinite;
+}
+
+.earn-blue-follower-3 {
+  animation: earnMagneticBlue3 12s linear infinite;
+}
+
+.earn-blue-follower-4 {
+  animation: earnMagneticBlue4 12s linear infinite;
+}
+
+/* Green followers - magnetic attraction to traveler */
+.earn-green-follower-1 {
+  animation: earnMagneticGreen1 12s linear infinite;
+}
+
+.earn-green-follower-2 {
+  animation: earnMagneticGreen2 12s linear infinite;
+}
+
+.earn-green-follower-3 {
+  animation: earnMagneticGreen3 12s linear infinite;
+}
+
+.earn-green-follower-4 {
+  animation: earnMagneticGreen4 12s linear infinite;
+}
+
+/* Purple followers - magnetic attraction to traveler */
+.earn-purple-follower-1 {
+  animation: earnMagneticPurple1 12s linear infinite;
+}
+
+.earn-purple-follower-2 {
+  animation: earnMagneticPurple2 12s linear infinite;
+}
+
+.earn-purple-follower-3 {
+  animation: earnMagneticPurple3 12s linear infinite;
+}
+
+.earn-purple-follower-4 {
+  animation: earnMagneticPurple4 12s linear infinite;
+}
+
+/* Keyframe Animations */
+@keyframes earnBlueStationPulse {
+  0%, 100% { 
+    transform: translateX(-50%) scale(1); 
+    box-shadow: 0 0 30px rgba(52, 152, 219, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: translateX(-50%) scale(1.05); 
+    box-shadow: 0 0 40px rgba(52, 152, 219, 1), inset 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes earnGreenStationPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 30px rgba(39, 174, 96, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 40px rgba(39, 174, 96, 1), inset 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes earnPurpleStationPulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 30px rgba(142, 68, 173, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 40px rgba(142, 68, 173, 1), inset 0 0 25px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Traveler journey - moves in triangle pattern with 3 stops and 3 movements */
+@keyframes earnTravelerJourney {
+  0% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(1.1); 
+  }
+  16% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(1.1); 
+  }
+  33% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(1.1); 
+  }
+  50% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(1.1); 
+  }
+  66% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(1.1); 
+  }
+  83% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(1.1); 
+  }
+  100% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(1.1); 
+  }
+}
+
+/* Magnetic Blue followers - spawn on top of blue station and travel toward gold traveler */
+@keyframes earnMagneticBlue1 {
+  0% { 
+    top: 5px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  2% { 
+    top: 5px; 
+    left: 175px; 
+    transform: scale(0.8); 
+    opacity: 0.8; 
+  }
+  16% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  17% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticBlue2 {
+  0% { 
+    top: 0px; 
+    left: 165px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  2.5% { 
+    top: 0px; 
+    left: 165px; 
+    transform: scale(0.7); 
+    opacity: 0.7; 
+  }
+  16% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  17% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticBlue3 {
+  0% { 
+    top: 0px; 
+    left: 185px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  1.5% { 
+    top: 0px; 
+    left: 185px; 
+    transform: scale(0.6); 
+    opacity: 0.6; 
+  }
+  16% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  17% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticBlue4 {
+  0% { 
+    top: 5px; 
+    left: 155px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  3% { 
+    top: 5px; 
+    left: 155px; 
+    transform: scale(0.5); 
+    opacity: 0.5; 
+  }
+  16% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  17% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 80px; 
+    left: 175px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+/* Magnetic Green followers - spawn to the lower left of green station and travel toward gold traveler */
+@keyframes earnMagneticGreen1 {
+  0% { 
+    top: 275px; 
+    left: 35px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  25% { 
+    top: 275px; 
+    left: 35px; 
+    transform: scale(0.8); 
+    opacity: 0.8; 
+  }
+  50% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  51% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticGreen2 {
+  0% { 
+    top: 285px; 
+    left: 45px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  26% { 
+    top: 285px; 
+    left: 45px; 
+    transform: scale(0.7); 
+    opacity: 0.7; 
+  }
+  50% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  51% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticGreen3 {
+  0% { 
+    top: 270px; 
+    left: 25px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  27% { 
+    top: 270px; 
+    left: 25px; 
+    transform: scale(0.6); 
+    opacity: 0.6; 
+  }
+  50% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  51% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticGreen4 {
+  0% { 
+    top: 280px; 
+    left: 15px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  28% { 
+    top: 280px; 
+    left: 15px; 
+    transform: scale(0.5); 
+    opacity: 0.5; 
+  }
+  50% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  51% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 100px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+/* Magnetic Purple followers - spawn to the lower right of purple station and travel toward gold traveler */
+@keyframes earnMagneticPurple1 {
+  0% { 
+    top: 275px; 
+    left: 315px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  60% { 
+    top: 275px; 
+    left: 315px; 
+    transform: scale(0.8); 
+    opacity: 0.8; 
+  }
+  83% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  84% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticPurple2 {
+  0% { 
+    top: 285px; 
+    left: 305px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  61% { 
+    top: 285px; 
+    left: 305px; 
+    transform: scale(0.7); 
+    opacity: 0.7; 
+  }
+  83% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  84% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticPurple3 {
+  0% { 
+    top: 270px; 
+    left: 325px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  59% { 
+    top: 270px; 
+    left: 325px; 
+    transform: scale(0.6); 
+    opacity: 0.6; 
+  }
+  83% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  84% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+@keyframes earnMagneticPurple4 {
+  0% { 
+    top: 280px; 
+    left: 335px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  62% { 
+    top: 280px; 
+    left: 335px; 
+    transform: scale(0.5); 
+    opacity: 0.5; 
+  }
+  83% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  84% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  100% { 
+    top: 180px; 
+    left: 250px; 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .earn-station-animation {
+    width: 280px;
+    height: 240px;
+  }
+  
+  .earn-station {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .earn-station-logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .earn-traveler {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .earn-traveler-logo {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .earn-blue-circle, .earn-green-circle, .earn-purple-square {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .earn-follower-logo {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .earn-station-animation {
+    width: 240px;
+    height: 200px;
+  }
+  
+  .earn-station {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .earn-station-logo {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .earn-traveler {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .earn-traveler-logo {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .earn-blue-circle, .earn-green-circle, .earn-purple-square {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .earn-follower-logo {
+    width: 8px;
+    height: 8px;
+  }
+}

@@ -1,0 +1,453 @@
+/* Base Coin Flow Animation Styles */
+.coin-flow-animation {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main coin styling */
+.coin-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.coin-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 3px solid #fff;
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: coinPulse 2s ease-in-out infinite;
+}
+
+.coin-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Flow coins styling */
+.flow-coin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-coin-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Flow trails */
+.flow-trail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* PLAY SECTION - Gaming ecosystem flow */
+.coin-flow-play {
+  top: 20%;
+  right: 10%;
+}
+
+.path-gaming {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.path-gaming .coin-1 {
+  top: 10%;
+  left: 20%;
+  animation: gameFlow1 4s ease-in-out infinite;
+}
+
+.path-gaming .coin-2 {
+  top: 60%;
+  left: 80%;
+  animation: gameFlow2 4s ease-in-out infinite 1.3s;
+}
+
+.path-gaming .coin-3 {
+  top: 80%;
+  left: 30%;
+  animation: gameFlow3 4s ease-in-out infinite 2.6s;
+}
+
+.trail-gaming {
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  animation: trailPulse 3s ease-in-out infinite;
+}
+
+/* OWN SECTION - Blockchain security flow */
+.coin-flow-own {
+  top: 30%;
+  left: 5%;
+}
+
+.path-blockchain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.path-blockchain .coin-1 {
+  top: 0%;
+  left: 50%;
+  animation: blockchainFlow1 5s linear infinite;
+}
+
+.path-blockchain .coin-2 {
+  top: 50%;
+  left: 0%;
+  animation: blockchainFlow2 5s linear infinite 1.7s;
+}
+
+.path-blockchain .coin-3 {
+  top: 50%;
+  left: 100%;
+  animation: blockchainFlow3 5s linear infinite 3.3s;
+}
+
+.trail-blockchain {
+  background: conic-gradient(from 0deg, rgba(255, 215, 0, 0.3), transparent, rgba(255, 215, 0, 0.3));
+  animation: blockchainRotate 8s linear infinite;
+}
+
+/* CREATE SECTION - Building/creation flow */
+.coin-flow-create {
+  top: 15%;
+  right: 15%;
+}
+
+.path-creation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.path-creation .coin-1 {
+  top: 20%;
+  left: 10%;
+  animation: creationFlow1 6s ease-in-out infinite;
+}
+
+.path-creation .coin-2 {
+  top: 70%;
+  left: 60%;
+  animation: creationFlow2 6s ease-in-out infinite 2s;
+}
+
+.path-creation .coin-3 {
+  top: 40%;
+  left: 90%;
+  animation: creationFlow3 6s ease-in-out infinite 4s;
+}
+
+.trail-creation {
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), transparent, rgba(255, 215, 0, 0.2));
+  animation: creationBuild 4s ease-in-out infinite;
+}
+
+/* MINT SECTION - Treasure/minting flow */
+.coin-flow-mint {
+  top: 25%;
+  left: 10%;
+}
+
+.path-treasure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.path-treasure .coin-1 {
+  top: 30%;
+  left: 20%;
+  animation: treasureFlow1 3s ease-in-out infinite;
+}
+
+.path-treasure .coin-2 {
+  top: 10%;
+  left: 70%;
+  animation: treasureFlow2 3s ease-in-out infinite 1s;
+}
+
+.path-treasure .coin-3 {
+  top: 70%;
+  left: 80%;
+  animation: treasureFlow3 3s ease-in-out infinite 2s;
+}
+
+.trail-treasure {
+  background: radial-gradient(ellipse, rgba(255, 215, 0, 0.3) 0%, transparent 60%);
+  animation: treasureGlow 2.5s ease-in-out infinite;
+}
+
+/* EARN SECTION - Earning/rewards flow */
+.coin-flow-earn {
+  top: 20%;
+  right: 8%;
+}
+
+.path-rewards {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.path-rewards .coin-1 {
+  top: 0%;
+  left: 30%;
+  animation: rewardsFlow1 4s ease-in-out infinite;
+}
+
+.path-rewards .coin-2 {
+  top: 40%;
+  left: 80%;
+  animation: rewardsFlow2 4s ease-in-out infinite 1.3s;
+}
+
+.path-rewards .coin-3 {
+  top: 80%;
+  left: 10%;
+  animation: rewardsFlow3 4s ease-in-out infinite 2.7s;
+}
+
+.trail-rewards {
+  background: conic-gradient(from 90deg, rgba(255, 215, 0, 0.4), transparent, rgba(255, 215, 0, 0.4));
+  animation: rewardsRotate 6s linear infinite;
+}
+
+/* Keyframe Animations */
+@keyframes coinPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes trailPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Play section animations */
+@keyframes gameFlow1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(100px, -50px) scale(0.8); opacity: 0.8; }
+  50% { transform: translate(150px, 50px) scale(1.2); opacity: 0.6; }
+  75% { transform: translate(50px, 100px) scale(0.9); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes gameFlow2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(-80px, -30px) scale(1.1); opacity: 0.8; }
+  50% { transform: translate(-120px, 40px) scale(0.7); opacity: 0.6; }
+  75% { transform: translate(-40px, 80px) scale(1.3); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes gameFlow3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(60px, -80px) scale(0.9); opacity: 0.8; }
+  50% { transform: translate(120px, -40px) scale(1.4); opacity: 0.6; }
+  75% { transform: translate(80px, -20px) scale(0.8); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+/* Own section animations */
+@keyframes blockchainFlow1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-100px, 100px) rotate(90deg); }
+  50% { transform: translate(-200px, 0) rotate(180deg); }
+  75% { transform: translate(-100px, -100px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes blockchainFlow2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(100px, -50px) rotate(90deg); }
+  50% { transform: translate(200px, 0) rotate(180deg); }
+  75% { transform: translate(100px, 50px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes blockchainFlow3 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-100px, -50px) rotate(-90deg); }
+  50% { transform: translate(-200px, 0) rotate(-180deg); }
+  75% { transform: translate(-100px, 50px) rotate(-270deg); }
+  100% { transform: translate(0, 0) rotate(-360deg); }
+}
+
+@keyframes blockchainRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Create section animations */
+@keyframes creationFlow1 {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  20% { transform: translate(50px, -30px) scale(1); opacity: 1; }
+  40% { transform: translate(120px, 20px) scale(1.2); opacity: 0.8; }
+  60% { transform: translate(180px, -10px) scale(0.9); opacity: 0.6; }
+  80% { transform: translate(220px, 30px) scale(1.1); opacity: 0.4; }
+  100% { transform: translate(250px, 0) scale(0.3); opacity: 0; }
+}
+
+@keyframes creationFlow2 {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  20% { transform: translate(-40px, -60px) scale(1); opacity: 1; }
+  40% { transform: translate(-80px, -100px) scale(1.3); opacity: 0.8; }
+  60% { transform: translate(-120px, -80px) scale(0.8); opacity: 0.6; }
+  80% { transform: translate(-160px, -120px) scale(1.1); opacity: 0.4; }
+  100% { transform: translate(-200px, -100px) scale(0.3); opacity: 0; }
+}
+
+@keyframes creationFlow3 {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  20% { transform: translate(-30px, 40px) scale(1); opacity: 1; }
+  40% { transform: translate(-80px, 80px) scale(1.1); opacity: 0.8; }
+  60% { transform: translate(-140px, 60px) scale(0.9); opacity: 0.6; }
+  80% { transform: translate(-180px, 100px) scale(1.2); opacity: 0.4; }
+  100% { transform: translate(-220px, 80px) scale(0.3); opacity: 0; }
+}
+
+@keyframes creationBuild {
+  0%, 100% { transform: scaleY(1); opacity: 0.2; }
+  50% { transform: scaleY(1.5); opacity: 0.4; }
+}
+
+/* Mint section animations */
+@keyframes treasureFlow1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  33% { transform: translate(80px, -40px) scale(1.3) rotate(120deg); opacity: 0.8; }
+  66% { transform: translate(40px, 60px) scale(0.7) rotate(240deg); opacity: 0.6; }
+  100% { transform: translate(0, 0) scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes treasureFlow2 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  33% { transform: translate(-60px, 80px) scale(1.2) rotate(-120deg); opacity: 0.8; }
+  66% { transform: translate(-20px, -40px) scale(0.8) rotate(-240deg); opacity: 0.6; }
+  100% { transform: translate(0, 0) scale(1) rotate(-360deg); opacity: 1; }
+}
+
+@keyframes treasureFlow3 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  33% { transform: translate(-80px, -60px) scale(1.4) rotate(120deg); opacity: 0.8; }
+  66% { transform: translate(-40px, 20px) scale(0.6) rotate(240deg); opacity: 0.6; }
+  100% { transform: translate(0, 0) scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes treasureGlow {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+/* Earn section animations */
+@keyframes rewardsFlow1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(60px, 80px) scale(1.2); opacity: 0.9; }
+  50% { transform: translate(120px, 40px) scale(0.8); opacity: 0.7; }
+  75% { transform: translate(80px, -20px) scale(1.1); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes rewardsFlow2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(-100px, 40px) scale(0.9); opacity: 0.9; }
+  50% { transform: translate(-60px, 100px) scale(1.3); opacity: 0.7; }
+  75% { transform: translate(-30px, 60px) scale(0.7); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes rewardsFlow3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  25% { transform: translate(80px, -60px) scale(1.1); opacity: 0.9; }
+  50% { transform: translate(140px, -20px) scale(0.9); opacity: 0.7; }
+  75% { transform: translate(100px, -100px) scale(1.2); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes rewardsRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .coin-flow-animation {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .coin-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .coin-logo {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .flow-coin {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .flow-coin-logo {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .coin-flow-animation {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .coin-circle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .coin-logo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .flow-coin {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .flow-coin-logo {
+    width: 15px;
+    height: 15px;
+  }
+}

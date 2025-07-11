@@ -1,0 +1,355 @@
+/* Play Section Coin Flow Animation - Gaming Economy Flow */
+.play-coin-flow-animation {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+  margin: 20px auto;
+}
+
+/* Main coin styling */
+.play-coin-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.play-coin-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 4px solid #fff;
+  box-shadow: 
+    0 0 25px rgba(255, 215, 0, 0.7),
+    inset 0 0 25px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: playMainCoinPulse 2.5s ease-in-out infinite;
+}
+
+.play-coin-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Gaming flow - tokens flowing in and out */
+.play-gaming-flow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tokens flowing IN (earned from playing) */
+.play-token-in {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00ff88, #00cc66);
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-token-in-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Tokens flowing OUT (spent on gameplay) */
+.play-token-out {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  border: 2px solid #fff;
+  box-shadow: 0 0 12px rgba(255, 107, 107, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-token-out-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Gaming controller/player representation */
+.play-game-controller {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  font-size: 24px;
+  animation: playControllerBounce 3s ease-in-out infinite;
+}
+
+/* Positioning and animations for incoming tokens (earnings) */
+.play-token-in-1 {
+  top: 10%;
+  left: 70%;
+  animation: playTokenFlowIn1 4s ease-in-out infinite;
+}
+
+.play-token-in-2 {
+  top: 30%;
+  left: 85%;
+  animation: playTokenFlowIn2 4s ease-in-out infinite 1.3s;
+}
+
+.play-token-in-3 {
+  top: 70%;
+  left: 75%;
+  animation: playTokenFlowIn3 4s ease-in-out infinite 2.6s;
+}
+
+/* Positioning and animations for outgoing tokens (costs) */
+.play-token-out-1 {
+  top: 60%;
+  left: 10%;
+  animation: playTokenFlowOut1 3.5s ease-in-out infinite;
+}
+
+.play-token-out-2 {
+  top: 80%;
+  left: 25%;
+  animation: playTokenFlowOut2 3.5s ease-in-out infinite 1.2s;
+}
+
+.play-token-out-3 {
+  top: 40%;
+  left: 5%;
+  animation: playTokenFlowOut3 3.5s ease-in-out infinite 2.4s;
+}
+
+/* Gaming trail effect */
+.play-gaming-trail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%, 
+    rgba(255, 215, 0, 0.1) 0%, 
+    rgba(0, 255, 136, 0.1) 30%,
+    rgba(255, 107, 107, 0.1) 60%,
+    transparent 80%
+  );
+  animation: playTrailRotate 8s linear infinite;
+  opacity: 0.6;
+}
+
+/* Keyframe Animations */
+@keyframes playMainCoinPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1) rotate(0deg); 
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), inset 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1) rotate(180deg); 
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), inset 0 0 35px rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes playControllerBounce {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes playTrailRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Incoming token animations (earnings) */
+@keyframes playTokenFlowIn1 {
+  0% { 
+    transform: translate(0, 0) scale(0.5); 
+    opacity: 0; 
+  }
+  20% { 
+    transform: translate(-30px, 20px) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(-80px, 60px) scale(1.2); 
+    opacity: 0.8; 
+  }
+  80% { 
+    transform: translate(-120px, 100px) scale(0.8); 
+    opacity: 0.4; 
+  }
+  100% { 
+    transform: translate(-150px, 130px) scale(0.3); 
+    opacity: 0; 
+  }
+}
+
+@keyframes playTokenFlowIn2 {
+  0% { 
+    transform: translate(0, 0) scale(0.5); 
+    opacity: 0; 
+  }
+  20% { 
+    transform: translate(-40px, 30px) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(-100px, 80px) scale(1.3); 
+    opacity: 0.8; 
+  }
+  80% { 
+    transform: translate(-140px, 120px) scale(0.7); 
+    opacity: 0.4; 
+  }
+  100% { 
+    transform: translate(-170px, 150px) scale(0.3); 
+    opacity: 0; 
+  }
+}
+
+@keyframes playTokenFlowIn3 {
+  0% { 
+    transform: translate(0, 0) scale(0.5); 
+    opacity: 0; 
+  }
+  20% { 
+    transform: translate(-35px, -20px) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(-90px, -60px) scale(1.1); 
+    opacity: 0.8; 
+  }
+  80% { 
+    transform: translate(-130px, -100px) scale(0.8); 
+    opacity: 0.4; 
+  }
+  100% { 
+    transform: translate(-160px, -130px) scale(0.3); 
+    opacity: 0; 
+  }
+}
+
+/* Outgoing token animations (costs) */
+@keyframes playTokenFlowOut1 {
+  0% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  30% { 
+    transform: translate(40px, -30px) scale(0.8); 
+    opacity: 0.8; 
+  }
+  60% { 
+    transform: translate(90px, -70px) scale(0.6); 
+    opacity: 0.5; 
+  }
+  100% { 
+    transform: translate(140px, -110px) scale(0.3); 
+    opacity: 0; 
+  }
+}
+
+@keyframes playTokenFlowOut2 {
+  0% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  30% { 
+    transform: translate(50px, -40px) scale(0.9); 
+    opacity: 0.8; 
+  }
+  60% { 
+    transform: translate(110px, -90px) scale(0.5); 
+    opacity: 0.5; 
+  }
+  100% { 
+    transform: translate(160px, -130px) scale(0.2); 
+    opacity: 0; 
+  }
+}
+
+@keyframes playTokenFlowOut3 {
+  0% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 1; 
+  }
+  30% { 
+    transform: translate(45px, -25px) scale(0.7); 
+    opacity: 0.8; 
+  }
+  60% { 
+    transform: translate(100px, -60px) scale(0.4); 
+    opacity: 0.5; 
+  }
+  100% { 
+    transform: translate(150px, -100px) scale(0.2); 
+    opacity: 0; 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .play-coin-flow-animation {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .play-coin-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .play-coin-logo {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .play-token-in, .play-token-out {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .play-token-in-logo, .play-token-out-logo {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .play-coin-flow-animation {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .play-coin-circle {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .play-coin-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .play-token-in, .play-token-out {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .play-token-in-logo, .play-token-out-logo {
+    width: 12px;
+    height: 12px;
+  }
+}

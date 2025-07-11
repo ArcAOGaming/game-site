@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { CoinFlowAnimation } from './components';
 import './CreateSection.css';
 
 interface CreateSectionProps {
@@ -42,9 +43,12 @@ const CreateSection = forwardRef<HTMLElement, CreateSectionProps>(
           <div className="create-shape-3"></div>
           <div className="create-shape-4"></div>
         </div>
-        
+
         <div className="create-content">
           <h2 className="create-title">CREATE</h2>
+          
+          {/* Coin Flow Animation */}
+          <CoinFlowAnimation />
           <p className="create-description">
             Build immersive worlds, design unique characters, and craft legendary items 
             with our powerful creation tools powered by cutting-edge technology.
@@ -52,17 +56,17 @@ const CreateSection = forwardRef<HTMLElement, CreateSectionProps>(
 
           <div className="create-features">
             <div className="create-feature-card">
-              <span className="create-feature-icon">🏗️</span>
-              <h3 className="create-feature-title">World Builder</h3>
+              <span className="create-feature-icon">🌍</span>
+              <h3 className="create-feature-title">Build Worlds</h3>
               <p className="create-feature-description">
                 Create stunning environments with our intuitive drag-and-drop world builder. 
-                Design landscapes, cities, and dungeons with unlimited creativity.
+                Design landscapes, cities, and dungeons with unlimited creativity using <a href="https://github.com/elliotsayes/Reality" target="_blank" rel="noopener noreferrer" className="reality-link">Reality Protocol</a>.
               </p>
             </div>
             
             <div className="create-feature-card">
-              <span className="create-feature-icon">👾</span>
-              <h3 className="create-feature-title">Character Designer</h3>
+              <span className="create-feature-icon">🎨</span>
+              <h3 className="create-feature-title">Design Characters</h3>
               <p className="create-feature-description">
                 Design unique avatars and NPCs with advanced customization options. 
                 Bring your characters to life with detailed appearance and personality traits.
@@ -70,22 +74,13 @@ const CreateSection = forwardRef<HTMLElement, CreateSectionProps>(
             </div>
             
             <div className="create-feature-card">
-              <span className="create-feature-icon">⚔️</span>
-              <h3 className="create-feature-title">Item Forge</h3>
+              <span className="create-feature-icon">💎</span>
+              <h3 className="create-feature-title">Craft Rare Items</h3>
               <p className="create-feature-description">
                 Craft powerful weapons, armor, and magical items with unique properties. 
                 Balance stats and create legendary equipment for epic adventures.
               </p>
             </div>
-          </div>
-
-          <div className="create-action">
-            <button className="create-btn">
-              <div className="create-btn-content">
-                <span>⚡</span>
-                <span>START CREATING</span>
-              </div>
-            </button>
           </div>
         </div>
       </section>
