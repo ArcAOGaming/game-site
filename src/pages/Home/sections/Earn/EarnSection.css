@@ -220,13 +220,13 @@
   z-index: 10;
   max-width: 1536px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(16px, 4vw, 24px);
 }
 
 .earn-section .earn-title {
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(2.5rem, 6vw, 7rem);
   font-weight: 900;
-  margin-bottom: 24px;
+  margin-bottom: clamp(16px, 4vw, 24px);
   background: linear-gradient(90deg, 
     rgba(251, 191, 36, 1) 0%, 
     rgba(245, 158, 11, 1) 100%);
@@ -238,23 +238,32 @@
 }
 
 .earn-section .earn-description {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: #d1d5db;
-  max-width: 768px;
-  margin: 0 auto 64px;
+  max-width: min(768px, 90vw);
+  margin: 0 auto clamp(32px, 8vw, 64px);
   line-height: 1.75;
   text-align: center;
+  padding: 0 16px;
 }
 
 /* Home Earn Section Rewards Grid */
 .earn-section .earn-rewards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  margin-bottom: 64px;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(16px, 4vw, 32px);
+  margin-bottom: clamp(32px, 8vw, 64px);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .earn-section .earn-rewards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 0;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -266,10 +275,10 @@
 /* Earn Feature Cards - Matching Create Section Style */
 .earn-section .earn-card {
   position: relative;
-  padding: 32px;
+  padding: clamp(20px, 5vw, 32px);
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(251, 191, 36, 0.2);
-  border-radius: 24px;
+  border-radius: clamp(16px, 4vw, 24px);
   backdrop-filter: blur(16px);
   transition: all 0.4s ease;
   overflow: hidden;
@@ -298,25 +307,25 @@
 }
 
 .earn-section .earn-card-icon {
-  font-size: 3rem;
-  margin-bottom: 24px;
+  font-size: clamp(2.5rem, 6vw, 3rem);
+  margin-bottom: clamp(16px, 4vw, 24px);
   display: block;
   position: relative;
   z-index: 2;
 }
 
 .earn-section .earn-card-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 3vw, 16px);
   position: relative;
   z-index: 2;
 }
 
 .earn-section .earn-card-amount {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 3vw, 16px);
   position: relative;
   z-index: 2;
   color: #d1d5db;
@@ -328,6 +337,7 @@
   position: relative;
   z-index: 2;
   margin: 0;
+  font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
 /* Stake Card - Green Theme */
@@ -404,13 +414,13 @@
 .earn-section .earn-card-cta {
   position: relative;
   color: white;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 3vw, 1.4rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 16px 32px;
+  padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  border-radius: clamp(8px, 2vw, 12px);
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(4px);
   transition: all 0.3s ease;
@@ -596,5 +606,124 @@
   100% {
     transform: translateY(100vh) translateX(50px) rotate(360deg);
     opacity: 0;
+  }
+}
+
+/* Mobile Responsive Media Queries */
+@media (max-width: 768px) {
+  .earn-section {
+    min-height: auto;
+    padding: clamp(40px, 10vw, 80px) 0;
+  }
+
+  .earn-section .coin-element {
+    font-size: 1.5rem;
+    opacity: 0.3;
+  }
+
+  .earn-section .earn-grid-overlay {
+    background-size: 50px 50px;
+    opacity: 0.3;
+  }
+
+  .earn-section .earn-rewards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .earn-section .earn-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .earn-section .earn-card-hover-overlay {
+    border-radius: clamp(16px, 4vw, 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  .earn-section {
+    padding: 60px 0 40px;
+  }
+
+  .earn-section .earn-content {
+    padding: 0 16px;
+  }
+
+  .earn-section .earn-description {
+    padding: 0 8px;
+    margin-bottom: 40px;
+  }
+
+  .earn-section .earn-rewards {
+    padding: 0 16px;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .earn-section .earn-card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .earn-section .earn-card:hover {
+    transform: translateY(-2px) scale(1.005);
+  }
+
+  .earn-section .coin-element {
+    font-size: 1.2rem;
+    opacity: 0.2;
+  }
+
+  /* Reduce animation intensity on mobile */
+  .earn-section .earn-particle-1,
+  .earn-section .earn-particle-2,
+  .earn-section .earn-particle-3,
+  .earn-section .earn-particle-4,
+  .earn-section .earn-particle-5,
+  .earn-section .earn-particle-6 {
+    opacity: 0.6;
+  }
+
+  .earn-section .earn-shape-1,
+  .earn-section .earn-shape-2,
+  .earn-section .earn-shape-3,
+  .earn-section .earn-shape-4 {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 320px) {
+  .earn-section .earn-rewards {
+    padding: 0 12px;
+  }
+
+  .earn-section .earn-card {
+    padding: 16px;
+  }
+
+  .earn-section .earn-description {
+    padding: 0 4px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .earn-section .earn-card:hover {
+    transform: none;
+    border-color: rgba(251, 191, 36, 0.2);
+    box-shadow: none;
+  }
+
+  .earn-section .earn-card:active {
+    transform: scale(0.98);
+  }
+
+  .earn-section .earn-card-stream:hover .earn-card-hover-overlay {
+    opacity: 0;
+  }
+
+  .earn-section .earn-card-stream:active .earn-card-hover-overlay {
+    opacity: 1;
   }
 }
