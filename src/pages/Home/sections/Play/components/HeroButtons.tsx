@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroButtons.css';
+import { RUNEREALM } from '@arcaogaming/project-links';
 
 interface HeroButtonsProps {
   className?: string;
@@ -7,7 +8,7 @@ interface HeroButtonsProps {
 
 const HeroButtons: React.FC<HeroButtonsProps> = ({ className = '' }) => {
   const handlePlayNow = () => {
-    window.open('https://runerealm.app', '_blank');
+    window.open(RUNEREALM.gameSite, '_blank');
   };
 
   const handleOwn = () => {

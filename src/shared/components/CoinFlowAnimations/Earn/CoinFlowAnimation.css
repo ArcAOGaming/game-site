@@ -1,11 +1,11 @@
 /* Earn Section Station Animation - Triangle stations with traveling gold logo */
 .earn-station-animation {
   position: relative;
-  width: 350px;
-  height: 300px;
+  width: clamp(240px, 60vw, 350px);
+  height: clamp(200px, 50vw, 300px);
   pointer-events: none;
   z-index: 1;
-  margin: 20px auto;
+  margin: clamp(15px, 4vw, 20px) auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,171 +225,171 @@
 /* Traveler journey - moves in triangle pattern with 3 stops and 3 movements */
 @keyframes earnTravelerJourney {
   0% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(1.1); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   16% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(1.1); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   33% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(1.1); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   50% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(1.1); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   66% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(1.1); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   83% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(1.1); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(1.1); 
   }
   100% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(1.1); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(1.1); 
   }
 }
 
 /* Magnetic Blue followers - spawn on top of blue station and travel toward gold traveler */
 @keyframes earnMagneticBlue1 {
   0% { 
-    top: 5px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 2%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   2% { 
-    top: 5px; 
-    left: 175px; 
-    transform: scale(0.8); 
+    top: 2%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0.8); 
     opacity: 0.8; 
   }
   16% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   17% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticBlue2 {
   0% { 
-    top: 0px; 
-    left: 165px; 
-    transform: scale(0); 
+    top: 0%; 
+    left: 47%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   2.5% { 
-    top: 0px; 
-    left: 165px; 
-    transform: scale(0.7); 
+    top: 0%; 
+    left: 47%; 
+    transform: translateX(-50%) scale(0.7); 
     opacity: 0.7; 
   }
   16% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   17% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticBlue3 {
   0% { 
-    top: 0px; 
-    left: 185px; 
-    transform: scale(0); 
+    top: 0%; 
+    left: 53%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   1.5% { 
-    top: 0px; 
-    left: 185px; 
-    transform: scale(0.6); 
+    top: 0%; 
+    left: 53%; 
+    transform: translateX(-50%) scale(0.6); 
     opacity: 0.6; 
   }
   16% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   17% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticBlue4 {
   0% { 
-    top: 5px; 
-    left: 155px; 
-    transform: scale(0); 
+    top: 2%; 
+    left: 44%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   3% { 
-    top: 5px; 
-    left: 155px; 
-    transform: scale(0.5); 
+    top: 2%; 
+    left: 44%; 
+    transform: translateX(-50%) scale(0.5); 
     opacity: 0.5; 
   }
   16% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   17% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 80px; 
-    left: 175px; 
-    transform: scale(0); 
+    top: 27%; 
+    left: 50%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
@@ -397,132 +397,132 @@
 /* Magnetic Green followers - spawn to the lower left of green station and travel toward gold traveler */
 @keyframes earnMagneticGreen1 {
   0% { 
-    top: 275px; 
-    left: 35px; 
-    transform: scale(0); 
+    top: 92%; 
+    left: 10%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   25% { 
-    top: 275px; 
-    left: 35px; 
-    transform: scale(0.8); 
+    top: 92%; 
+    left: 10%; 
+    transform: translateX(-50%) scale(0.8); 
     opacity: 0.8; 
   }
   50% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   51% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticGreen2 {
   0% { 
-    top: 285px; 
-    left: 45px; 
-    transform: scale(0); 
+    top: 95%; 
+    left: 13%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   26% { 
-    top: 285px; 
-    left: 45px; 
-    transform: scale(0.7); 
+    top: 95%; 
+    left: 13%; 
+    transform: translateX(-50%) scale(0.7); 
     opacity: 0.7; 
   }
   50% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   51% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticGreen3 {
   0% { 
-    top: 270px; 
-    left: 25px; 
-    transform: scale(0); 
+    top: 90%; 
+    left: 7%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   27% { 
-    top: 270px; 
-    left: 25px; 
-    transform: scale(0.6); 
+    top: 90%; 
+    left: 7%; 
+    transform: translateX(-50%) scale(0.6); 
     opacity: 0.6; 
   }
   50% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   51% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticGreen4 {
   0% { 
-    top: 280px; 
-    left: 15px; 
-    transform: scale(0); 
+    top: 93%; 
+    left: 4%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   28% { 
-    top: 280px; 
-    left: 15px; 
-    transform: scale(0.5); 
+    top: 93%; 
+    left: 4%; 
+    transform: translateX(-50%) scale(0.5); 
     opacity: 0.5; 
   }
   50% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   51% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 100px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 29%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
@@ -530,132 +530,132 @@
 /* Magnetic Purple followers - spawn to the lower right of purple station and travel toward gold traveler */
 @keyframes earnMagneticPurple1 {
   0% { 
-    top: 275px; 
-    left: 315px; 
-    transform: scale(0); 
+    top: 92%; 
+    left: 90%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   60% { 
-    top: 275px; 
-    left: 315px; 
-    transform: scale(0.8); 
+    top: 92%; 
+    left: 90%; 
+    transform: translateX(-50%) scale(0.8); 
     opacity: 0.8; 
   }
   83% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   84% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticPurple2 {
   0% { 
-    top: 285px; 
-    left: 305px; 
-    transform: scale(0); 
+    top: 95%; 
+    left: 87%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   61% { 
-    top: 285px; 
-    left: 305px; 
-    transform: scale(0.7); 
+    top: 95%; 
+    left: 87%; 
+    transform: translateX(-50%) scale(0.7); 
     opacity: 0.7; 
   }
   83% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   84% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticPurple3 {
   0% { 
-    top: 270px; 
-    left: 325px; 
-    transform: scale(0); 
+    top: 90%; 
+    left: 93%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   59% { 
-    top: 270px; 
-    left: 325px; 
-    transform: scale(0.6); 
+    top: 90%; 
+    left: 93%; 
+    transform: translateX(-50%) scale(0.6); 
     opacity: 0.6; 
   }
   83% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   84% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }
 
 @keyframes earnMagneticPurple4 {
   0% { 
-    top: 280px; 
-    left: 335px; 
-    transform: scale(0); 
+    top: 93%; 
+    left: 96%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   62% { 
-    top: 280px; 
-    left: 335px; 
-    transform: scale(0.5); 
+    top: 93%; 
+    left: 96%; 
+    transform: translateX(-50%) scale(0.5); 
     opacity: 0.5; 
   }
   83% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   84% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
   100% { 
-    top: 180px; 
-    left: 250px; 
-    transform: scale(0); 
+    top: 60%; 
+    left: 71%; 
+    transform: translateX(-50%) scale(0); 
     opacity: 0; 
   }
 }

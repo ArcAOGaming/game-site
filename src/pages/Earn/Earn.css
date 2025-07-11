@@ -246,50 +246,78 @@
   text-align: center;
 }
 
-/* Earn Rewards Grid - New Layout */
+/* Earn Rewards Grid - Optimized for 3 Cards */
 .earn-rewards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 32px;
   margin-bottom: 64px;
-  max-width: 1400px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .earn-rewards {
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 28px;
+    padding: 0 24px;
+  }
+  
+  /* Center the third card when in 2-column layout */
+  .earn-rewards .earn-reward-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .earn-rewards {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 0 40px;
+  }
+  
+  /* Reset the third card styling for 3-column layout */
+  .earn-rewards .earn-reward-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .earn-rewards {
+    gap: 40px;
+    padding: 0;
   }
 }
 
 /* Base Card Styles */
 .earn-reward-card {
   position: relative;
-  padding: 40px 28px;
+  padding: 36px 24px;
   backdrop-filter: blur(16px);
   text-align: center;
   transition: all 0.4s ease;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 20px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Card 1 - Play to Earn (Gaming Theme - Blue/Purple) */
+/* Card 1 - Stream & Create (Content Theme - Purple) */
 .earn-reward-card:nth-child(1) {
   background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.15) 0%, 
-    rgba(147, 51, 234, 0.15) 100%);
-  border: 2px solid rgba(59, 130, 246, 0.3);
-  border-radius: 24px;
-  transform: rotate(-1deg);
+    rgba(147, 51, 234, 0.15) 0%, 
+    rgba(139, 92, 246, 0.15) 100%);
+  border: 2px solid rgba(147, 51, 234, 0.3);
+  transform: rotate(-0.5deg);
 }
 
 .earn-reward-card:nth-child(1)::before {
@@ -297,65 +325,33 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.1) 0%, 
-    rgba(147, 51, 234, 0.1) 100%);
+    rgba(147, 51, 234, 0.1) 0%, 
+    rgba(139, 92, 246, 0.1) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
+  border-radius: 20px;
 }
 
 .earn-reward-card:nth-child(1):hover {
   transform: rotate(0deg) translateY(-8px) scale(1.02);
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4);
+  border-color: rgba(147, 51, 234, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(147, 51, 234, 0.3);
 }
 
 .earn-reward-card:nth-child(1):hover::before {
   opacity: 1;
 }
 
-/* Card 2 - Stream & Create (Content Theme - Red/Orange) */
+/* Card 2 - Affiliate Sales (Business Theme - Green/Emerald) */
 .earn-reward-card:nth-child(2) {
-  background: linear-gradient(135deg, 
-    rgba(239, 68, 68, 0.15) 0%, 
-    rgba(249, 115, 22, 0.15) 100%);
-  border: 2px solid rgba(239, 68, 68, 0.3);
-  border-radius: 16px;
-  transform: rotate(1deg);
-  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-}
-
-.earn-reward-card:nth-child(2)::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, 
-    rgba(239, 68, 68, 0.1) 0%, 
-    rgba(249, 115, 22, 0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.earn-reward-card:nth-child(2):hover {
-  transform: rotate(0deg) translateY(-8px) scale(1.02);
-  border-color: rgba(239, 68, 68, 0.6);
-  box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.4);
-}
-
-.earn-reward-card:nth-child(2):hover::before {
-  opacity: 1;
-}
-
-/* Card 3 - Affiliate Sales (Business Theme - Green/Emerald) */
-.earn-reward-card:nth-child(3) {
   background: linear-gradient(135deg, 
     rgba(34, 197, 94, 0.15) 0%, 
     rgba(16, 185, 129, 0.15) 100%);
   border: 2px solid rgba(34, 197, 94, 0.3);
-  border-radius: 32px 8px 32px 8px;
-  transform: rotate(-0.5deg);
+  transform: rotate(0.5deg);
 }
 
-.earn-reward-card:nth-child(3)::before {
+.earn-reward-card:nth-child(2)::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -364,50 +360,48 @@
     rgba(16, 185, 129, 0.1) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
+  border-radius: 20px;
 }
 
-.earn-reward-card:nth-child(3):hover {
+.earn-reward-card:nth-child(2):hover {
   transform: rotate(0deg) translateY(-8px) scale(1.02);
   border-color: rgba(34, 197, 94, 0.6);
   box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.4);
 }
 
-.earn-reward-card:nth-child(3):hover::before {
+.earn-reward-card:nth-child(2):hover::before {
   opacity: 1;
 }
 
-/* Card 4 - Ambassador (Premium Theme - Gold/Yellow) */
-.earn-reward-card:nth-child(4) {
+/* Card 3 - ARCAO Ambassador (Premium Theme - Gold/Yellow) */
+.earn-reward-card:nth-child(3) {
   background: linear-gradient(135deg, 
     rgba(251, 191, 36, 0.15) 0%, 
     rgba(245, 158, 11, 0.15) 100%);
-  border: 3px solid rgba(251, 191, 36, 0.4);
-  border-radius: 20px;
-  transform: rotate(0.5deg);
+  border: 2px solid rgba(251, 191, 36, 0.4);
+  transform: rotate(-0.3deg);
   position: relative;
 }
 
-.earn-reward-card:nth-child(4)::before {
+.earn-reward-card:nth-child(3)::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: linear-gradient(45deg, 
-    rgba(251, 191, 36, 0.3), 
-    rgba(245, 158, 11, 0.3), 
-    rgba(251, 191, 36, 0.3));
-  border-radius: 20px;
-  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(251, 191, 36, 0.1) 0%, 
+    rgba(245, 158, 11, 0.1) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
+  border-radius: 20px;
 }
 
-.earn-reward-card:nth-child(4):hover {
-  transform: rotate(0deg) translateY(-12px) scale(1.05);
-  border-color: rgba(251, 191, 36, 0.8);
-  box-shadow: 0 30px 60px -12px rgba(251, 191, 36, 0.6);
+.earn-reward-card:nth-child(3):hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.03);
+  border-color: rgba(251, 191, 36, 0.7);
+  box-shadow: 0 30px 60px -12px rgba(251, 191, 36, 0.5);
 }
 
-.earn-reward-card:nth-child(4):hover::before {
+.earn-reward-card:nth-child(3):hover::before {
   opacity: 1;
 }
 
@@ -475,18 +469,14 @@
 
 /* Card-specific title colors */
 .earn-reward-card:nth-child(1) .earn-reward-title {
-  color: rgba(59, 130, 246, 1);
+  color: rgba(147, 51, 234, 1);
 }
 
 .earn-reward-card:nth-child(2) .earn-reward-title {
-  color: rgba(239, 68, 68, 1);
-}
-
-.earn-reward-card:nth-child(3) .earn-reward-title {
   color: rgba(34, 197, 94, 1);
 }
 
-.earn-reward-card:nth-child(4) .earn-reward-title {
+.earn-reward-card:nth-child(3) .earn-reward-title {
   color: rgba(251, 191, 36, 1);
 }
 
@@ -512,14 +502,19 @@
   margin-top: 80px;
   padding: 60px 40px;
   background: linear-gradient(135deg, 
-    rgba(15, 23, 42, 0.8) 0%, 
-    rgba(30, 41, 59, 0.8) 100%);
+    rgba(15, 23, 42, 0.95) 0%, 
+    rgba(30, 41, 59, 0.9) 50%,
+    rgba(51, 65, 85, 0.95) 100%);
   border: 2px solid rgba(251, 191, 36, 0.3);
   border-radius: 24px;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 
+    0 0 40px rgba(0, 0, 0, 0.3),
+    0 0 80px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(148, 163, 184, 0.1);
 }
 
 .ambassador-application::before {
@@ -527,9 +522,25 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, 
-    rgba(251, 191, 36, 0.05) 0%, 
-    rgba(245, 158, 11, 0.05) 100%);
+    rgba(15, 23, 42, 0.8) 0%, 
+    rgba(30, 41, 59, 0.6) 50%,
+    rgba(51, 65, 85, 0.8) 100%);
   opacity: 1;
+  border-radius: 24px;
+}
+
+.ambassador-application::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, 
+    rgba(251, 191, 36, 0.2), 
+    rgba(148, 163, 184, 0.1), 
+    rgba(251, 191, 36, 0.2));
+  border-radius: 24px;
+  z-index: -1;
+  opacity: 0.8;
+  animation: golden-border-glow 6s ease-in-out infinite;
 }
 
 .ambassador-section-title {
@@ -707,5 +718,16 @@
   100% {
     transform: translateY(100vh) translateX(50px) rotate(360deg);
     opacity: 0;
+  }
+}
+
+@keyframes golden-border-glow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: brightness(1) blur(0px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2) blur(1px);
   }
 }

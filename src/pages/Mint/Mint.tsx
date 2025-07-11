@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
 import './Mint.css';
 
 const Mint = () => {
@@ -42,6 +43,7 @@ const Mint = () => {
       
       <div className="mint-content">
         <h1 className="mint-title">$GAME TOKEN MINTING</h1>
+        <MintCoinFlowAnimation />
         <p className="mint-description">
           Experience the future of gaming finance with $GAME token. Built on cutting-edge blockchain technology 
           with a fair launch model inspired by Bitcoin's proven distribution mechanism.

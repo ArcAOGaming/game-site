@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { EarnCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Earn';
 import './Earn.css';
 
 const Earn = () => {
@@ -27,10 +28,6 @@ const Earn = () => {
     if (applicationSection) {
       applicationSection.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const handlePlayClick = () => {
-    scrollToApplication();
   };
 
   const handleStreamClick = () => {
@@ -78,22 +75,14 @@ const Earn = () => {
       </div>
       
       <div className="earn-content">
-        <h1 className="earn-title">EARN WITH ARCAO</h1>
+        <h1 className="earn-title">$GAME*</h1>
+        <EarnCoinFlowAnimation />
         <p className="earn-description">
           Multiple ways to earn rewards and build your gaming empire. Play, stream, refer, and lead 
           your way to success in the ARCAO ecosystem.
         </p>
 
         <div className="earn-rewards">
-          <div className="earn-reward-card earn-reward-card-clickable" onClick={handlePlayClick}>
-            <span className="earn-reward-icon">🎮</span>
-            <h3 className="earn-reward-title">Play to Earn</h3>
-            <div className="earn-reward-amount">Unlimited Rewards</div>
-            <p className="earn-reward-description">
-              Play to earn valuable in-game assets through gameplay. The more you play, the more you earn. 
-              Become eligible for exclusive airdrops, rare rewards, and special community benefits.
-            </p>
-          </div>
           
           <div className="earn-reward-card earn-reward-card-clickable" onClick={handleStreamClick}>
             <span className="earn-reward-icon">📺</span>

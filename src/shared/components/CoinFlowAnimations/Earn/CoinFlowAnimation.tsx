@@ -1,5 +1,5 @@
 import React from 'react';
-import './EarnCoinFlowAnimation.css';
+import './CoinFlowAnimation.css';
 
 interface CoinFlowAnimationProps {
   className?: string;

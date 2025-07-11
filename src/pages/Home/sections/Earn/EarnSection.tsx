@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { ARCAO } from '@arcaogaming/project-links';
-import { CoinFlowAnimation } from './components';
 import './EarnSection.css';
+import CoinFlowAnimation from '../../../../shared/components/CoinFlowAnimations/Earn/CoinFlowAnimation';
 
 interface EarnSectionProps {
   className?: string;

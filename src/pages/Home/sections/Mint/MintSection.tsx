@@ -1,8 +1,9 @@
 import { forwardRef, useState } from 'react';
 import { AO } from '@arcaogaming/project-links';
 import { CONTRACT_ADDRESSES, EXTERNAL_LINKS } from '../../../../shared/constants';
-import { CoinFlowAnimation } from './components';
 import './MintSection.css';
+import CoinFlowAnimation from '../../../../shared/components/CoinFlowAnimations/Mint/CoinFlowAnimation';
+import { Link } from 'react-router-dom';
 
 interface MintSectionProps {
   className?: string;
@@ -112,7 +113,7 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
             <div className="mint-showcase">
               <div className="mint-token-card">
                 <div className="mint-token-logo">
-                  <img src="/logo-white-transparent.png" alt="$GAME Token" className="token-logo" />
+                  <img src="/logo-black-transparent.png" alt="$GAME Token" className="token-logo" />
                 </div>
                 <h3 className="mint-token-title">$GAME Token</h3>
                 <p className="mint-token-supply">Fair Launch • Deflationary</p>
@@ -132,16 +133,18 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
                         </span>
                         <span className="copy-icon">📋</span>
                       </button>
-                      <a 
-                        href={EXTERNAL_LINKS.BRANTA_VERIFY}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="branta-verify-btn"
-                        title="Verify contract on Branta"
-                      >
-                        <span>Verify</span>
-                        <img src="/branta-logo-white.svg" alt="Branta" className="branta-logo" />
-                      </a>
+                      <div className="branta-verify-wrapper">
+                        <a 
+                          href={EXTERNAL_LINKS.BRANTA_VERIFY}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="branta-verify-btn"
+                          title="Verify contract on Branta"
+                        >
+                          <span>Verify</span>
+                          <img src="/branta-logo-white.svg" alt="Branta" className="branta-logo" />
+                        </a>
+                      </div>
                     </div>
                     {copySuccess && <span className="copy-success">Address copied to clipboard!</span>}
                   </div>
@@ -160,13 +163,14 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
                     <img src="/botega-logo.png" alt="Botega" className="botega-logo" />
                   </a>
                 </div>
-
-                <div className="mint-token-button-section">
-                  <div className="mint-token-button">
-                    <span>⚡</span>
-                    <span>MINT $GAME</span>
+                <Link to="/mint" className="mint-link">
+                  <div className="mint-token-button-section">
+                    <div className="mint-token-button">
+                      <span>⚡</span>
+                      <span>MINT $GAME</span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

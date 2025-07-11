@@ -1,11 +1,11 @@
 /* Own Section Magnetic Animation - Central square attracts green circles from all sides */
 .own-magnetic-animation {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: clamp(200px, 50vw, 300px);
+  height: clamp(200px, 50vw, 300px);
   pointer-events: none;
   z-index: 1;
-  margin: 20px auto;
+  margin: clamp(15px, 4vw, 20px) auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,14 +17,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
+  width: clamp(60px, 15vw, 90px);
+  height: clamp(60px, 15vw, 90px);
+  border-radius: clamp(8px, 2vw, 12px);
   background: linear-gradient(135deg, #8e44ad, #3498db);
-  border: 4px solid #fff;
+  border: clamp(3px, 1vw, 4px) solid #fff;
   box-shadow: 
-    0 0 40px rgba(142, 68, 173, 0.8),
-    inset 0 0 30px rgba(255, 255, 255, 0.3);
+    0 0 clamp(30px, 8vw, 40px) rgba(142, 68, 173, 0.8),
+    inset 0 0 clamp(20px, 6vw, 30px) rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,8 +33,8 @@
 }
 
 .own-magnet-logo {
-  width: 55px;
-  height: 55px;
+  width: clamp(36px, 9vw, 55px);
+  height: clamp(36px, 9vw, 55px);
   object-fit: contain;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
 }
@@ -46,20 +46,20 @@
 }
 
 .own-green-circle {
-  width: 28px;
-  height: 28px;
+  width: clamp(20px, 5vw, 28px);
+  height: clamp(20px, 5vw, 28px);
   border-radius: 50%;
   background: linear-gradient(135deg, #27ae60, #2ecc71);
-  border: 2px solid #fff;
-  box-shadow: 0 0 15px rgba(39, 174, 96, 0.7);
+  border: clamp(1px, 0.5vw, 2px) solid #fff;
+  box-shadow: 0 0 clamp(10px, 3vw, 15px) rgba(39, 174, 96, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .own-circle-logo {
-  width: 16px;
-  height: 16px;
+  width: clamp(12px, 3vw, 16px);
+  height: clamp(12px, 3vw, 16px);
   object-fit: contain;
 }
 
@@ -286,57 +286,31 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .own-magnetic-animation {
-    width: 250px;
-    height: 250px;
+    margin: 15px auto;
   }
   
+  /* Reduce animation intensity on tablets */
   .own-central-magnet {
-    width: 70px;
-    height: 70px;
-    border-radius: 10px;
-  }
-  
-  .own-magnet-logo {
-    width: 42px;
-    height: 42px;
-  }
-  
-  .own-green-circle {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .own-circle-logo {
-    width: 14px;
-    height: 14px;
+    box-shadow: 
+      0 0 clamp(25px, 6vw, 35px) rgba(142, 68, 173, 0.7),
+      inset 0 0 clamp(15px, 4vw, 25px) rgba(255, 255, 255, 0.3);
   }
 }
 
 @media (max-width: 480px) {
   .own-magnetic-animation {
-    width: 200px;
-    height: 200px;
+    margin: 10px auto;
   }
   
+  /* Reduce animation intensity on mobile */
   .own-central-magnet {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-  }
-  
-  .own-magnet-logo {
-    width: 36px;
-    height: 36px;
+    box-shadow: 
+      0 0 clamp(20px, 5vw, 30px) rgba(142, 68, 173, 0.6),
+      inset 0 0 clamp(12px, 3vw, 20px) rgba(255, 255, 255, 0.3);
   }
   
   .own-green-circle {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .own-circle-logo {
-    width: 12px;
-    height: 12px;
+    box-shadow: 0 0 clamp(8px, 2vw, 12px) rgba(39, 174, 96, 0.6);
   }
   
   /* Adjust animation distances for smaller screens */
@@ -346,15 +320,15 @@
       opacity: 0.4; 
     }
     30% { 
-      transform: translateY(30px) scale(1); 
+      transform: translateY(clamp(25px, 6vw, 30px)) scale(1); 
       opacity: 1; 
     }
     70% { 
-      transform: translateY(60px) scale(1.1); 
+      transform: translateY(clamp(50px, 12vw, 60px)) scale(1.1); 
       opacity: 1; 
     }
     100% { 
-      transform: translateY(90px) scale(0.3); 
+      transform: translateY(clamp(75px, 18vw, 90px)) scale(0.3); 
       opacity: 0.2; 
     }
   }
@@ -365,15 +339,15 @@
       opacity: 0.4; 
     }
     30% { 
-      transform: translateX(-30px) scale(1); 
+      transform: translateX(clamp(-25px, -6vw, -30px)) scale(1); 
       opacity: 1; 
     }
     70% { 
-      transform: translateX(-60px) scale(1.1); 
+      transform: translateX(clamp(-50px, -12vw, -60px)) scale(1.1); 
       opacity: 1; 
     }
     100% { 
-      transform: translateX(-90px) scale(0.3); 
+      transform: translateX(clamp(-75px, -18vw, -90px)) scale(0.3); 
       opacity: 0.2; 
     }
   }
@@ -384,15 +358,15 @@
       opacity: 0.4; 
     }
     30% { 
-      transform: translateY(-30px) scale(1); 
+      transform: translateY(clamp(-25px, -6vw, -30px)) scale(1); 
       opacity: 1; 
     }
     70% { 
-      transform: translateY(-60px) scale(1.1); 
+      transform: translateY(clamp(-50px, -12vw, -60px)) scale(1.1); 
       opacity: 1; 
     }
     100% { 
-      transform: translateY(-90px) scale(0.3); 
+      transform: translateY(clamp(-75px, -18vw, -90px)) scale(0.3); 
       opacity: 0.2; 
     }
   }
@@ -403,16 +377,37 @@
       opacity: 0.4; 
     }
     30% { 
-      transform: translateX(30px) scale(1); 
+      transform: translateX(clamp(25px, 6vw, 30px)) scale(1); 
       opacity: 1; 
     }
     70% { 
-      transform: translateX(60px) scale(1.1); 
+      transform: translateX(clamp(50px, 12vw, 60px)) scale(1.1); 
       opacity: 1; 
     }
     100% { 
-      transform: translateX(90px) scale(0.3); 
+      transform: translateX(clamp(75px, 18vw, 90px)) scale(0.3); 
       opacity: 0.2; 
     }
+  }
+}
+
+@media (max-width: 320px) {
+  .own-magnetic-animation {
+    margin: 8px auto;
+  }
+}
+
+/* Performance optimization for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .own-central-magnet {
+    animation: none;
+  }
+  
+  .own-attracted-token {
+    animation: none;
+  }
+  
+  .own-green-circle {
+    opacity: 0.8;
   }
 }
