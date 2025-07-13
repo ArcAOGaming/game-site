@@ -14,7 +14,7 @@ export type {
 } from './types';
 
 // Export the contract address constant
-export { DAI_STAKING_CONTRACT_ADDRESS } from './constants';
+export { DAI_STAKING_CONTRACT_ADDRESS, DAI_TOKEN_ADDRESS } from './constants';
 
 // Export the ABI for direct use if needed
 export { DISTRIBUTION_ABI as DAI_STAKING_ABI } from '../shared/abis';

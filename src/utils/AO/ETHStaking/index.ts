@@ -14,7 +14,7 @@ export type {
 } from './types';
 
 // Export the contract address constant
-export { ETH_STAKING_CONTRACT_ADDRESS } from './constants';
+export { ETH_STAKING_CONTRACT_ADDRESS, STETH_TOKEN_ADDRESS } from './constants';
 
 // Export the ABI for direct use if needed
 export { DISTRIBUTION_ABI as ETH_STAKING_ABI } from '../shared/abis';

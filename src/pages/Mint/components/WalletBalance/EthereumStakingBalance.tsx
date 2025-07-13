@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAOSTETHStaking } from '../../../../shared/contexts';
 import { ethStaking } from '../../../../utils/AO';
 import './WalletBalance.css';
@@ -6,22 +6,9 @@ import './WalletBalance.css';
 export const EthereumStakingBalance: React.FC = () => {
     const {
         isConnected,
-        address,
         stakingBalance,
-        debugInfo,
         refetch
     } = useAOSTETHStaking();
-
-    // Debug logging for component
-    useEffect(() => {
-        console.log('🎯 EthereumStakingBalance Component Debug:', {
-            isConnected,
-            address,
-            stakingBalance,
-            debugInfo,
-            timestamp: new Date().toISOString()
-        });
-    }, [isConnected, address, stakingBalance, debugInfo]);
 
     if (!isConnected) {
         return (
@@ -38,7 +25,6 @@ export const EthereumStakingBalance: React.FC = () => {
     }
 
     const handleRefresh = () => {
-        console.log('🔄 Manual refresh triggered from component');
         refetch();
     };
 
@@ -75,8 +61,6 @@ export const EthereumStakingBalance: React.FC = () => {
                         ) : (
                             <>
                                 Error: {stakingBalance.error.message}
-                                <br />
-                                <small>Contract: {debugInfo.contractAddress}</small>
                             </>
                         )}
                     </div>
@@ -98,12 +82,6 @@ export const EthereumStakingBalance: React.FC = () => {
                             <div className="wallet-balance-label">Total Staked</div>
                             <div className="wallet-balance-value">
                                 {stakingBalance.totalStaked ? ethStaking.formatAmount(stakingBalance.totalStaked) : '0.00'} ETH
-                            </div>
-                        </div>
-                        <div className="wallet-balance-item">
-                            <div className="wallet-balance-label">Debug Info</div>
-                            <div className="wallet-balance-value" style={{ fontSize: '10px', opacity: 0.7 }}>
-                                Last fetch: {debugInfo.lastFetchTime?.toLocaleTimeString() || 'Never'}
                             </div>
                         </div>
                     </>

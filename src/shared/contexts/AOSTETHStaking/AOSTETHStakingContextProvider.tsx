@@ -10,7 +10,7 @@ export const AOSTETHStakingProvider: React.FC<AOSTETHStakingProviderProps> = ({ 
     const [contractExists, setContractExists] = useState<boolean | null>(null);
     const publicClient = usePublicClient();
 
-    // Check if contract exists and investigate proxy
+    // Check if contract exists
     useEffect(() => {
         const checkContract = async () => {
             if (!publicClient) return;
@@ -21,89 +21,28 @@ export const AOSTETHStakingProvider: React.FC<AOSTETHStakingProviderProps> = ({ 
                 });
                 const exists = bytecode && bytecode !== '0x';
 
-                console.log('🔍 Contract investigation:', {
-                    address: ETH_STAKING_CONTRACT_ADDRESS,
-                    exists,
-                    bytecode: bytecode?.slice(0, 50) + '...',
-                    fullBytecodeLength: bytecode?.length
-                });
-
                 if (exists) {
-                    // Check if it's a proxy by looking for common proxy patterns
-                    const isProxy = bytecode?.includes('360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc') || // EIP-1967 implementation slot
-                        bytecode?.includes('a3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50') || // EIP-1967 beacon slot
-                        bytecode?.includes('b53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103'); // EIP-1967 admin slot
-
-                    console.log('🔍 Proxy detection:', {
-                        isProxy,
-                        bytecodeSnippet: bytecode?.slice(0, 100)
-                    });
-
-                    // Try to read implementation address if it's a proxy
-                    if (isProxy) {
-                        try {
-                            // EIP-1967 implementation slot
-                            const implementationSlot = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc';
-                            const implementationAddress = await publicClient.getStorageAt({
-                                address: ETH_STAKING_CONTRACT_ADDRESS,
-                                slot: implementationSlot,
-                            });
-
-                            console.log('🔍 Proxy implementation:', {
-                                implementationAddress,
-                                implementationSlot
-                            });
-                        } catch (proxyError) {
-                            console.log('⚠️ Could not read proxy implementation:', proxyError);
-                        }
-                    }
-
-                    // Test a simple function call to see what happens
+                    // Test a simple function call to see if contract is working
                     try {
-                        const totalDepositedResult = await publicClient.readContract({
+                        await publicClient.readContract({
                             address: ETH_STAKING_CONTRACT_ADDRESS,
                             abi: ethStaking.getDistributionABI(),
                             functionName: 'totalDepositedInPublicPools',
                         });
-                        console.log('✅ Direct contract call successful:', { totalDepositedResult });
                         setContractExists(true);
-                    } catch (contractError) {
-                        console.log('❌ Direct contract call failed:', {
-                            error: contractError,
-                            message: contractError.message,
-                            cause: contractError.cause
-                        });
-
-                        // If it's a proxy, try with proxy ABI
-                        if (isProxy) {
-                            console.log('🔄 Trying proxy fallback...');
-                            setContractExists(false); // For now, mark as not working
-                        } else {
-                            setContractExists(false);
-                        }
+                    } catch {
+                        setContractExists(false);
                     }
                 } else {
                     setContractExists(false);
                 }
-            } catch (error) {
-                console.error('❌ Error checking contract existence:', error);
+            } catch {
                 setContractExists(false);
             }
         };
 
         checkContract();
     }, [publicClient]);
-
-    // Debug logging
-    useEffect(() => {
-        console.log('🔍 AOSTETHStaking Debug - Connection State:', {
-            isConnected,
-            address,
-            contractAddress: ETH_STAKING_CONTRACT_ADDRESS,
-            contractExists,
-            timestamp: new Date().toISOString()
-        });
-    }, [isConnected, address, contractExists]);
 
     // Read user staking data with debugging
     const userDataQuery = useReadContract({
@@ -149,50 +88,6 @@ export const AOSTETHStakingProvider: React.FC<AOSTETHStakingProviderProps> = ({ 
         },
     });
 
-    // Debug contract queries
-    useEffect(() => {
-        console.log('🔍 AOSTETHStaking Debug - Contract Queries:', {
-            userData: {
-                data: userDataQuery.data,
-                isLoading: userDataQuery.isLoading,
-                error: userDataQuery.error,
-                config: ethStaking.createUserDataConfig(address!, 0)
-            },
-            currentReward: {
-                data: currentRewardQuery.data,
-                isLoading: currentRewardQuery.isLoading,
-                error: currentRewardQuery.error,
-                config: ethStaking.createCurrentUserRewardConfig(address!, 0)
-            },
-            totalDeposited: {
-                data: totalDepositedQuery.data,
-                isLoading: totalDepositedQuery.isLoading,
-                error: totalDepositedQuery.error,
-                config: ethStaking.createTotalDepositedConfig()
-            },
-            poolData: {
-                data: poolDataQuery.data,
-                isLoading: poolDataQuery.isLoading,
-                error: poolDataQuery.error,
-                config: ethStaking.createPoolDataConfig(0)
-            },
-            timestamp: new Date().toISOString()
-        });
-    }, [
-        userDataQuery.data,
-        userDataQuery.isLoading,
-        userDataQuery.error,
-        currentRewardQuery.data,
-        currentRewardQuery.isLoading,
-        currentRewardQuery.error,
-        totalDepositedQuery.data,
-        totalDepositedQuery.isLoading,
-        totalDepositedQuery.error,
-        poolDataQuery.data,
-        poolDataQuery.isLoading,
-        poolDataQuery.error,
-        address
-    ]);
 
     // Extract data from queries for reuse
     const userData = userDataQuery.data as readonly [bigint, bigint, bigint, bigint] | undefined;
@@ -270,8 +165,6 @@ export const AOSTETHStakingProvider: React.FC<AOSTETHStakingProviderProps> = ({ 
 
     // Refetch all queries
     const refetch = async () => {
-        console.log('🔄 AOSTETHStaking Debug - Manual Refetch Triggered');
-
         // Only refetch if contract exists
         if (contractExists === true) {
             await Promise.all([
@@ -280,8 +173,6 @@ export const AOSTETHStakingProvider: React.FC<AOSTETHStakingProviderProps> = ({ 
                 totalDepositedQuery.refetch(),
                 poolDataQuery.refetch(),
             ]);
-        } else {
-            console.log('⚠️ Skipping refetch - contract not available');
         }
     };
 

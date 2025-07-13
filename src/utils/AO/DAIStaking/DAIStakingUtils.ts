@@ -115,7 +115,8 @@ export class DAIStakingUtils {
     createStakeConfig(poolId: number = 0, amount: string, arweaveAddress: string) {
         const amountWei = parseEther(amount);
         // Convert arweave address string to bytes32
-        const arweaveBytes32 = `0x${arweaveAddress.padEnd(64, '0')}` as `0x${string}`;
+        // Arweave addresses are base64url encoded, we need to convert them properly
+        const arweaveBytes32 = this.convertArweaveAddressToBytes32(arweaveAddress);
 
         return {
             address: this.config.stakingContractAddress,
@@ -134,7 +135,8 @@ export class DAIStakingUtils {
     createWithdrawConfig(poolId: number = 0, amount: string, arweaveAddress: string) {
         const amountWei = parseEther(amount);
         // Convert arweave address string to bytes32
-        const arweaveBytes32 = `0x${arweaveAddress.padEnd(64, '0')}` as `0x${string}`;
+        // Arweave addresses are base64url encoded, we need to convert them properly
+        const arweaveBytes32 = this.convertArweaveAddressToBytes32(arweaveAddress);
 
         return {
             address: this.config.stakingContractAddress,
@@ -142,6 +144,34 @@ export class DAIStakingUtils {
             functionName: 'withdraw',
             args: [BigInt(poolId), amountWei, arweaveBytes32],
         } as const;
+    }
+
+    /**
+     * Convert Arweave address to bytes32 format
+     * @param arweaveAddress - Arweave address string
+     * @returns bytes32 formatted address
+     */
+    private convertArweaveAddressToBytes32(arweaveAddress: string): `0x${string}` {
+        // Arweave addresses are 43 characters long and base64url encoded
+        // We need to convert them to exactly 32 bytes (64 hex characters)
+
+        // Remove any padding and ensure it's exactly 43 characters
+        const cleanAddress = arweaveAddress.replace(/[^A-Za-z0-9_-]/g, '').substring(0, 43);
+
+        // Convert to hex by encoding each character
+        let hex = '';
+        for (let i = 0; i < cleanAddress.length; i++) {
+            hex += cleanAddress.charCodeAt(i).toString(16).padStart(2, '0');
+        }
+
+        // Truncate or pad to exactly 64 characters (32 bytes)
+        if (hex.length > 64) {
+            hex = hex.substring(0, 64);
+        } else {
+            hex = hex.padEnd(64, '0');
+        }
+
+        return `0x${hex}` as `0x${string}`;
     }
 
     /**

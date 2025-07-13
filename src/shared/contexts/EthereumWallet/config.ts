@@ -38,14 +38,15 @@ const wagmiAdapter = new WagmiAdapter({
 });
 
 // Singleton pattern to ensure AppKit is only created once
-let appKitInstance: any = null;
+let appKitInitialized = false;
+let appKitInstance: ReturnType<typeof createAppKit> | null = null;
 
 const initializeAppKit = () => {
-  if (!appKitInstance) {
+  if (!appKitInitialized) {
     // Create modal with enhanced wallet support
     appKitInstance = createAppKit({
       adapters: [wagmiAdapter],
-      networks,
+      networks: [mainnet],
       projectId,
       metadata,
       features: {
@@ -54,6 +55,7 @@ const initializeAppKit = () => {
         socials: [], // Disable social logins for cleaner wallet selection
       }
     });
+    appKitInitialized = true;
   }
   return appKitInstance;
 };
