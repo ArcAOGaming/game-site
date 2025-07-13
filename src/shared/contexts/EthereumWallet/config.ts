@@ -2,7 +2,7 @@ import { createAppKit } from '@reown/appkit/react';
 import { mainnet } from '@reown/appkit/networks';
 import { QueryClient } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { injected, walletConnect, coinbaseWallet } from 'wagmi/connectors';
+import { walletConnect } from 'wagmi/connectors';
 
 // Setup queryClient
 const queryClient = new QueryClient();
@@ -37,17 +37,25 @@ const wagmiAdapter = new WagmiAdapter({
   ],
 });
 
-// Create modal with enhanced wallet support
-createAppKit({
-  adapters: [wagmiAdapter],
-  networks,
-  projectId,
-  metadata,
-  features: {
-    analytics: true,
-    email: false, // Disable email login for cleaner wallet selection
-    socials: [], // Disable social logins for cleaner wallet selection
-  }
-});
+// Singleton pattern to ensure AppKit is only created once
+let appKitInstance: any = null;
 
-export { wagmiAdapter, queryClient, networks };
+const initializeAppKit = () => {
+  if (!appKitInstance) {
+    // Create modal with enhanced wallet support
+    appKitInstance = createAppKit({
+      adapters: [wagmiAdapter],
+      networks,
+      projectId,
+      metadata,
+      features: {
+        analytics: true,
+        email: false, // Disable email login for cleaner wallet selection
+        socials: [], // Disable social logins for cleaner wallet selection
+      }
+    });
+  }
+  return appKitInstance;
+};
+
+export { wagmiAdapter, queryClient, networks, initializeAppKit };

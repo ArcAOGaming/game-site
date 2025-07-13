@@ -1,5 +1,5 @@
 export { EthereumWalletProvider } from './EthereumWalletContext';
-export { wagmiAdapter, queryClient, networks } from './config';
+export { wagmiAdapter, queryClient, networks, initializeAppKit } from './config';
 // Re-export wagmi hooks for convenience
 export {
   useAccount,
