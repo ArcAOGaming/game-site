@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout, Analytics, Loading } from './shared/components'
-import { ThemeProvider } from './shared/contexts/ThemeContext'
+import { ThemeProvider,  EthereumWalletProvider, BazarProvider, DelegationProvider, ArweaveAOWalletProvider } from './shared/contexts'
 import { createRoute } from './utils/routing'
 import Home from './pages/Home/Home'
 
@@ -12,19 +12,27 @@ const Earn = createRoute(() => import('./pages/Earn/Earn'))
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Analytics>
-          <Layout>
-            <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/mint" element={<Mint />} />
-                <Route path="/earn" element={<Earn />} />
-              </Routes>
-            </Suspense>
-          </Layout>
-        </Analytics>
-      </BrowserRouter>
+      <ArweaveAOWalletProvider>
+        <EthereumWalletProvider>
+          <BazarProvider>
+            <DelegationProvider>
+              <BrowserRouter>
+                <Analytics>
+                  <Layout>
+                    <Suspense fallback={<Loading />}>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/mint" element={<Mint />} />
+                        <Route path="/earn" element={<Earn />} />
+                      </Routes>
+                    </Suspense>
+                  </Layout>
+                </Analytics>
+              </BrowserRouter>
+            </DelegationProvider>
+          </BazarProvider>
+        </EthereumWalletProvider>
+      </ArweaveAOWalletProvider>
     </ThemeProvider>
   )
 }

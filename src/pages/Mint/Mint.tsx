@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
+import { ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance } from './components';
 import './Mint.css';
 
 const Mint = () => {
@@ -49,6 +50,22 @@ const Mint = () => {
           with a fair launch model inspired by Bitcoin's proven distribution mechanism.
         </p>
 
+        {/* Mint Headliners */}
+        <div className="mint-headliners">
+          <div className="mint-headline">
+            <div className="mint-headline-value">$2M+</div>
+            <div className="mint-headline-label">Total Deposited</div>
+          </div>
+          <div className="mint-headline">
+            <div className="mint-headline-value">Bitcoin Model</div>
+            <div className="mint-headline-label">Release Rate</div>
+          </div>
+          <div className="mint-headline">
+            <div className="mint-headline-value">Fair Launch</div>
+            <div className="mint-headline-label">Distribution</div>
+          </div>
+        </div>
+
         {/* Minting Interface */}
         <div className="mint-interface">
           <div className="mint-interface-card">
@@ -57,26 +74,16 @@ const Mint = () => {
               Connect your wallet and participate in the fair launch. No pre-mine, no insider allocations.
             </p>
             
-            <div className="mint-stats">
-              <div className="mint-stat">
-                <div className="mint-stat-value">$2M+</div>
-                <div className="mint-stat-label">Total Deposited</div>
-              </div>
-              <div className="mint-stat">
-                <div className="mint-stat-value">Bitcoin Model</div>
-                <div className="mint-stat-label">Release Rate</div>
-              </div>
-              <div className="mint-stat">
-                <div className="mint-stat-value">Fair Launch</div>
-                <div className="mint-stat-label">Distribution</div>
-              </div>
+            <div className="wallet-balances-section">
+              <ArweaveWalletBalance />
+              <EthereumWalletBalance />
             </div>
 
             <div className="mint-actions">
-              <button className="connect-wallet-btn">
-                <span>🔗</span>
-                <span>Connect Wallet</span>
-              </button>
+              <div className="wallet-buttons-container">
+                <ConnectArweaveAOWalletButton />
+                <ConnectEthereumWalletButton />
+              </div>
               <button className="mint-tokens-btn">
                 <span>⚡</span>
                 <span>MINT $GAME</span>

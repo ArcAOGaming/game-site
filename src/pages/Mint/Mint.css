@@ -451,15 +451,55 @@
 
 .mint-actions {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 24px;
   justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 2;
 }
 
+.wallet-balances-section {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .wallet-balances-section {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
+.wallet-buttons-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .wallet-buttons-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .mint-actions {
-    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .wallet-buttons-container {
+    gap: 16px;
   }
 }
 
