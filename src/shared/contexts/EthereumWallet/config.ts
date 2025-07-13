@@ -2,6 +2,7 @@ import { createAppKit } from '@reown/appkit/react';
 import { mainnet } from '@reown/appkit/networks';
 import { QueryClient } from '@tanstack/react-query';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
+import { injected, walletConnect, coinbaseWallet } from 'wagmi/connectors';
 
 // Setup queryClient
 const queryClient = new QueryClient();
@@ -20,21 +21,32 @@ const metadata = {
 // Set the networks (Ethereum mainnet only as requested)
 const networks = [mainnet];
 
-// Create Wagmi Adapter
+// Create Wagmi Adapter with explicit connectors for better wallet support
 const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId,
-  ssr: true
+  ssr: true,
+  connectors: [
+    // Injected connector for browser wallets (MetaMask, Rabby, etc.)
+    // WalletConnect for mobile wallets
+    walletConnect({
+      projectId,
+      metadata,
+      showQrModal: false,
+    }),
+  ],
 });
 
-// Create modal
+// Create modal with enhanced wallet support
 createAppKit({
   adapters: [wagmiAdapter],
   networks,
   projectId,
   metadata,
   features: {
-    analytics: true
+    analytics: true,
+    email: false, // Disable email login for cleaner wallet selection
+    socials: [], // Disable social logins for cleaner wallet selection
   }
 });
 

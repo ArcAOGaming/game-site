@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
-import { ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance } from './components';
+import { ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance } from './components';
 import './Mint.css';
 
 const Mint = () => {
@@ -16,10 +16,10 @@ const Mint = () => {
       <div className="mint-bg-layer-1"></div>
       <div className="mint-bg-layer-2"></div>
       <div className="mint-bg-layer-3"></div>
-      
+
       {/* Grid overlay */}
       <div className="mint-grid-overlay"></div>
-      
+
       {/* Treasure Elements */}
       <div className="treasure-element treasure-chest-1">🏴‍☠️</div>
       <div className="treasure-element treasure-chest-2">💰</div>
@@ -34,19 +34,19 @@ const Mint = () => {
         <div className="mint-particle-3"></div>
         <div className="mint-particle-4"></div>
         <div className="mint-particle-5"></div>
-        
+
         {/* Geometric shapes */}
         <div className="mint-shape-1"></div>
         <div className="mint-shape-2"></div>
         <div className="mint-shape-3"></div>
         <div className="mint-shape-4"></div>
       </div>
-      
+
       <div className="mint-content">
         <h1 className="mint-title">$GAME TOKEN MINTING</h1>
         <MintCoinFlowAnimation />
         <p className="mint-description">
-          Experience the future of gaming finance with $GAME token. Built on cutting-edge blockchain technology 
+          Experience the future of gaming finance with $GAME token. Built on cutting-edge blockchain technology
           with a fair launch model inspired by Bitcoin's proven distribution mechanism.
         </p>
 
@@ -73,10 +73,11 @@ const Mint = () => {
             <p className="mint-interface-description">
               Connect your wallet and participate in the fair launch. No pre-mine, no insider allocations.
             </p>
-            
+
             <div className="wallet-balances-section">
               <ArweaveWalletBalance />
               <EthereumWalletBalance />
+              <EthereumWalletTokenBalance />
             </div>
 
             <div className="mint-actions">

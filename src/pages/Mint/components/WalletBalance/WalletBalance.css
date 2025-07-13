@@ -72,12 +72,112 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
+}
+
+/* Token Balance Specific Styles */
+.wallet-balance {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 0;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  min-width: 280px;
+}
+
+.wallet-balance:hover {
+  border-color: rgba(34, 197, 94, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
+}
+
+.wallet-balance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.wallet-balance-header h3 {
+  font-weight: 600;
+  color: rgba(34, 197, 94, 1);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.refresh-button {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 6px;
+  color: rgba(34, 197, 94, 1);
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refresh-button:hover {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.wallet-balance-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.token-balance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.token-balance-item:last-child {
+  border-bottom: none;
+}
+
+.token-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.token-symbol {
+  font-weight: 700;
+  color: rgba(34, 197, 94, 1);
+  font-size: 0.9rem;
+}
+
+.token-name {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.token-amount {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+}
+
+.error {
+  color: #ef4444;
+  font-style: italic;
 }
 
 /* Responsive design */
@@ -86,12 +186,29 @@
     min-width: 180px;
     padding: 14px;
   }
-  
+
   .wallet-balance-title {
     font-size: 0.8rem;
   }
-  
+
   .wallet-balance-value {
     font-size: 1rem;
+  }
+
+  .wallet-balance {
+    min-width: 240px;
+    padding: 14px;
+  }
+
+  .wallet-balance-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .token-symbol {
+    font-size: 0.8rem;
+  }
+
+  .token-amount {
+    font-size: 0.8rem;
   }
 }
