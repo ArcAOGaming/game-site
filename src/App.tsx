@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout, Analytics, Loading } from './shared/components'
-import { ThemeProvider, EthereumWalletProvider, EthereumWalletTokensProvider, AOSTETHStakingProvider, AOSDAIStakingProvider, BazarProvider, DelegationProvider, ArweaveAOWalletProvider } from './shared/contexts'
+import { ThemeProvider, EthereumWalletProvider, EthereumWalletTokensProvider, AOSTETHStakingProvider, AODAIStakingProvider, BazarProvider, DelegationProvider, ArweaveAOWalletProvider } from './shared/contexts'
 import { createRoute } from './utils/routing'
 import Home from './pages/Home/Home'
 
@@ -16,7 +16,7 @@ function App() {
         <EthereumWalletProvider>
           <EthereumWalletTokensProvider>
             <AOSTETHStakingProvider>
-              <AOSDAIStakingProvider>
+              <AODAIStakingProvider>
                 <BazarProvider>
                   <DelegationProvider>
                     <BrowserRouter>
@@ -34,7 +34,7 @@ function App() {
                     </BrowserRouter>
                   </DelegationProvider>
                 </BazarProvider>
-              </AOSDAIStakingProvider>
+              </AODAIStakingProvider>
             </AOSTETHStakingProvider>
           </EthereumWalletTokensProvider>
         </EthereumWalletProvider>

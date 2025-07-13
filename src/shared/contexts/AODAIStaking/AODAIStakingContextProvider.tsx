@@ -1,10 +1,10 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useAccount, useReadContract, usePublicClient } from 'wagmi';
 import { daiStaking, DAI_STAKING_CONTRACT_ADDRESS } from '../../../utils/AO/DAIStaking';
-import { AOSDAIStakingContextType, AOSDAIStakingProviderProps, StakingBalance } from './types';
-import { AOSDAIStakingContext } from './AOSDAIStakingContext';
+import { AODAIStakingContextType, AODAIStakingProviderProps, StakingBalance } from './types';
+import { AODAIStakingContext } from './AODAIStakingContext';
 
-export const AOSDAIStakingProvider: React.FC<AOSDAIStakingProviderProps> = ({ children }) => {
+export const AODAIStakingProvider: React.FC<AODAIStakingProviderProps> = ({ children }) => {
     const { address, isConnected } = useAccount();
     const [lastFetchTime, setLastFetchTime] = useState<Date | null>(null);
     const [contractExists, setContractExists] = useState<boolean | null>(null);
@@ -96,7 +96,6 @@ export const AOSDAIStakingProvider: React.FC<AOSDAIStakingProviderProps> = ({ ch
     // DAI contract usersData returns [lastStake, deposited] (2 values)
     const userData = userDataQuery.data as readonly [bigint, bigint] | undefined;
     // DAI contract poolsData returns [lastUpdate, totalDeposited] (2 values)
-    const poolData = poolDataQuery.data as readonly [bigint, bigint] | undefined;
 
     // Create staking balance object
     const stakingBalance: StakingBalance = useMemo(() => {
@@ -155,7 +154,6 @@ export const AOSDAIStakingProvider: React.FC<AOSDAIStakingProviderProps> = ({ ch
         totalDepositedQuery.data,
         totalDepositedQuery.isLoading,
         totalDepositedQuery.error,
-        poolData,
         userDataQuery.isLoading,
         userDataQuery.error,
         poolDataQuery.isLoading,
@@ -182,7 +180,7 @@ export const AOSDAIStakingProvider: React.FC<AOSDAIStakingProviderProps> = ({ ch
         }
     };
 
-    const contextValue: AOSDAIStakingContextType = {
+    const contextValue: AODAIStakingContextType = {
         isConnected,
         address,
         stakingBalance,
@@ -216,8 +214,8 @@ export const AOSDAIStakingProvider: React.FC<AOSDAIStakingProviderProps> = ({ ch
     };
 
     return (
-        <AOSDAIStakingContext.Provider value={contextValue}>
+        <AODAIStakingContext.Provider value={contextValue}>
             {children}
-        </AOSDAIStakingContext.Provider>
+        </AODAIStakingContext.Provider>
     );
 };

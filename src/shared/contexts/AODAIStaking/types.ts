@@ -9,7 +9,7 @@ export interface StakingBalance {
     error: Error | null;
 }
 
-export interface AOSDAIStakingContextType {
+export interface AODAIStakingContextType {
     // Connection state
     isConnected: boolean;
     address: Address | undefined;
@@ -33,6 +33,6 @@ export interface AOSDAIStakingContextType {
     };
 }
 
-export interface AOSDAIStakingProviderProps {
+export interface AODAIStakingProviderProps {
     children: React.ReactNode;
 }
