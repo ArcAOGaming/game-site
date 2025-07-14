@@ -1,0 +1,650 @@
+/* Wallet Connections Interface */
+.wallet-connections-interface {
+    margin: 48px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.wallet-connections-card {
+    background: linear-gradient(135deg,
+            rgba(15, 23, 42, 0.8) 0%,
+            rgba(30, 41, 59, 0.8) 100%);
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(16px);
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.wallet-connections-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(5, 150, 105, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.wallet-connections-card:hover::before {
+    opacity: 1;
+}
+
+.wallet-connections-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(34, 197, 94, 0.6);
+    box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.4);
+}
+
+.wallet-connections-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(34, 197, 94, 1);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.wallet-connections-description {
+    color: #9ca3af;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.wallet-connections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Individual Connection Cards */
+.wallet-connection-card {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.wallet-connection-card:hover {
+    border-color: rgba(34, 197, 94, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px -8px rgba(34, 197, 94, 0.3);
+}
+
+.wallet-connection-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.wallet-connection-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.wallet-connection-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.wallet-connection-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(34, 197, 94, 1);
+    margin: 0;
+}
+
+.wallet-connection-network {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+/* Connection Status */
+.wallet-connection-status {
+    margin-bottom: 20px;
+}
+
+.connection-status-connected {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.connection-status-disconnected {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #ef4444;
+}
+
+.connection-address {
+    font-family: 'Courier New', monospace;
+    color: rgba(34, 197, 94, 1);
+    font-weight: 600;
+}
+
+/* Balance Display */
+.wallet-connection-balances {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.balance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.balance-item:last-child {
+    border-bottom: none;
+}
+
+.balance-label {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.balance-value {
+    font-weight: 600;
+    color: rgba(34, 197, 94, 1);
+    font-family: 'Courier New', monospace;
+}
+
+.balance-placeholder {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.balance-loading {
+    color: #9ca3af;
+    font-style: italic;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Connect Button */
+.wallet-connect-button {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wallet-connect-button-arweave {
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(5, 150, 105, 0.1) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: rgba(34, 197, 94, 1);
+}
+
+.wallet-connect-button-arweave:hover {
+    border-color: rgba(34, 197, 94, 0.6);
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.15) 0%,
+            rgba(5, 150, 105, 0.15) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+}
+
+.wallet-connect-button-ethereum {
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(99, 102, 241, 0.1) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: rgba(59, 130, 246, 1);
+}
+
+.wallet-connect-button-ethereum:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.15) 0%,
+            rgba(99, 102, 241, 0.15) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.wallet-disconnect-button {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: #ef4444;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.wallet-disconnect-button:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wallet-connections-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .wallet-connections-card {
+        padding: 24px;
+        margin: 24px 16px;
+    }
+
+    .wallet-connections-title {
+        font-size: 1.5rem;
+    }
+
+    .wallet-connection-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wallet-connections-card {
+        padding: 20px;
+        margin: 20px 12px;
+    }
+
+    .wallet-connection-header {
+        gap: 8px;
+    }
+
+    .wallet-connection-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .wallet-connection-icon img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .wallet-connection-title {
+        font-size: 1rem;
+    }
+}
+
+/* Deposit/Withdraw Actions */
+.deposit-withdraw-actions {
+    margin: 16px 0;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.deposit-withdraw-button {
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(5, 150, 105, 0.1) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    color: rgba(34, 197, 94, 1);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.deposit-withdraw-button:hover {
+    border-color: rgba(34, 197, 94, 0.6);
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.15) 0%,
+            rgba(5, 150, 105, 0.15) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+}
+
+.swap-button {
+    width: 100%;
+    padding: 8px 16px;
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(99, 102, 241, 0.1) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 6px;
+    color: rgba(59, 130, 246, 1);
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.swap-button:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.15) 0%,
+            rgba(99, 102, 241, 0.15) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: linear-gradient(135deg,
+            rgba(15, 23, 42, 0.95) 0%,
+            rgba(30, 41, 59, 0.95) 100%);
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.modal-header h3 {
+    color: rgba(34, 197, 94, 1);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.modal-close-button:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.modal-body {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+.modal-body p {
+    margin-bottom: 16px;
+}
+
+.modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Game Yield Section */
+.game-yield-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(34, 197, 94, 0.2);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.game-yield-section .wallet-connection-card {
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Game Yield Specific Styles */
+.game-yield-disconnected {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+}
+
+.game-yield-connected {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-yield-efficiency {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.efficiency-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.efficiency-percentage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.efficiency-value {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(90deg,
+            rgba(34, 197, 94, 1) 0%,
+            rgba(5, 150, 105, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: treasure-glow 3s ease-in-out infinite;
+}
+
+.efficiency-loading {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.efficiency-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.efficiency-loading-message {
+    color: #9ca3af;
+    font-style: italic;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.efficiency-button {
+    padding: 12px 24px;
+    background: linear-gradient(90deg,
+            rgba(34, 197, 94, 1) 0%,
+            rgba(5, 150, 105, 1) 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 160px;
+}
+
+.efficiency-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px rgba(34, 197, 94, 0.5);
+}
+
+.efficiency-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.efficiency-congratulations {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(5, 150, 105, 0.1) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    text-align: left;
+}
+
+.congratulations-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.congratulations-text h4 {
+    color: rgba(34, 197, 94, 1);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.congratulations-text p {
+    color: #9ca3af;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Animations */
+@keyframes treasure-glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        filter: brightness(1.2);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Responsive adjustments for Game Yield */
+@media (max-width: 768px) {
+    .efficiency-value {
+        font-size: 2.5rem;
+    }
+
+    .efficiency-congratulations {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .congratulations-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .efficiency-value {
+        font-size: 2rem;
+    }
+
+    .efficiency-button {
+        min-width: 140px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

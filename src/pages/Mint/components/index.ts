@@ -2,3 +2,4 @@ export { default as ConnectArweaveAOWalletButton } from './ConnectArweaveAOWalle
 export { default as ConnectEthereumWalletButton } from './ConnectEthereumWalletButton';
 export { ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance } from './WalletBalance';
 export { DAIStakingActions, ETHStakingActions } from './StakingActions';
+export { WalletConnections } from './WalletConnections';

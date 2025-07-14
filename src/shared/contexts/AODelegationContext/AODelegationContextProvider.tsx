@@ -1,4 +1,4 @@
-import React, {  useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { PIDelegateClient } from 'ao-js-sdk';
 import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
 import { useArweaveAOWallet } from '../ArweaveAOWallet';
@@ -21,16 +21,16 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
     const [loading, setLoading] = useState(false);
     const [settingDelegation, setSettingDelegation] = useState(false);
     const isFetchingRef = useRef(false);
-    
+
 
     // Fetch delegations from the AO network
     const fetchDelegations = useCallback(async () => {
         // Check connection and address
         if (!isConnected || !address) return;
-        
+
         // Prevent multiple simultaneous fetches
         if (loading || isFetchingRef.current) return;
-        
+
         // Set ref to true to prevent concurrent calls
         isFetchingRef.current = true;
 
@@ -57,7 +57,7 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
             setLoading(false);
             isFetchingRef.current = false;
         }
-    }, [isConnected, address, loading]); // Remove loading from dependencies
+    }, [isConnected, address]); // Remove loading from dependencies
 
     // Set $GAME as the sole delegate (100%) and all others to 0%
     const setGameDelegation = useCallback(async () => {
@@ -74,7 +74,7 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
             for (const delegation of delegations) {
                 // Skip if it's already the GAME delegation
                 if (delegation.delegatee === AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME) continue;
-                
+
                 clearDelegationPromises.push(
                     client.setDelegation({
                         walletFrom: address,
@@ -86,7 +86,7 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
 
             // Wait for all other delegations to be cleared first
             await Promise.all(clearDelegationPromises);
-            
+
             // Only after all other delegations are cleared, set GAME to 100%
             await client.setDelegation({
                 walletFrom: address,
@@ -102,11 +102,11 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
             setSettingDelegation(false);
         }
     }, [isConnected, address, fetchDelegations, delegations]);
-    
+
     // Fetch delegations when wallet connection or address changes
     useEffect(() => {
         let isMounted = true;
-        
+
         if (isConnected && address && isMounted) {
             // Add a small delay to prevent immediate fetching on mount
             const timer = setTimeout(() => {
@@ -114,14 +114,14 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
                     fetchDelegations();
                 }
             }, 500);
-            
+
             return () => {
                 isMounted = false;
                 clearTimeout(timer);
             };
         }
     }, [isConnected, address, fetchDelegations]);
-    
+
     // Context value
     const value = {
         delegations,

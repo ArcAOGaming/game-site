@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
-import { ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance, DAIStakingActions, ETHStakingActions } from './components';
+import { WalletConnections, ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance, DAIStakingActions, ETHStakingActions } from './components';
 import './Mint.css';
 
 const Mint = () => {
@@ -65,6 +65,9 @@ const Mint = () => {
             <div className="mint-headline-label">Distribution</div>
           </div>
         </div>
+
+        {/* Wallet Connections */}
+        <WalletConnections />
 
         {/* Minting Interface */}
         <div className="mint-interface">
