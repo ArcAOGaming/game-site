@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 interface FlipLogoProps {
-    size?: 'small' | 'large';
+    size?: 'small' | 'medium' | 'large';
     className?: string;
 }
 
@@ -23,8 +23,32 @@ const FlipLogo: React.FC<FlipLogoProps> = ({ size = 'small', className = '' }) =
         return () => clearInterval(interval);
     }, [walletLogos.length]);
 
-    const containerClass = size === 'large' ? 'wallet-logo-container' : 'wallet-logo-container-small';
-    const logoClass = size === 'large' ? 'wallet-logo' : 'wallet-logo-small';
+    const getContainerClass = () => {
+        switch (size) {
+            case 'large':
+                return 'wallet-logo-container';
+            case 'medium':
+                return 'wallet-logo-container-medium';
+            case 'small':
+            default:
+                return 'wallet-logo-container-small';
+        }
+    };
+
+    const getLogoClass = () => {
+        switch (size) {
+            case 'large':
+                return 'wallet-logo';
+            case 'medium':
+                return 'wallet-logo-medium';
+            case 'small':
+            default:
+                return 'wallet-logo-small';
+        }
+    };
+
+    const containerClass = getContainerClass();
+    const logoClass = getLogoClass();
 
     return (
         <div className={`${containerClass} ${className}`}>

@@ -75,40 +75,6 @@ const Mint = () => {
         {/* Wallet Connections */}
         <WalletConnections />
 
-        {/* Minting Interface */}
-        <div className="mint-interface">
-          <div className="mint-interface-card">
-            <h2 className="mint-interface-title">Mint $GAME Tokens</h2>
-            <p className="mint-interface-description">
-              Connect your wallet and participate in the fair launch. No pre-mine, no insider allocations.
-            </p>
-
-            <div className="wallet-balances-section">
-              <ArweaveWalletBalance />
-              <EthereumWalletBalance />
-              <EthereumWalletTokenBalance />
-              <EthereumStakingBalance />
-              <DAIStakingBalance />
-            </div>
-
-            <div className="staking-actions-section">
-              <ETHStakingActions />
-              <DAIStakingActions />
-            </div>
-
-            <div className="mint-actions">
-              <div className="wallet-buttons-container">
-                <ConnectArweaveAOWalletButton />
-                <ConnectEthereumWalletButton />
-              </div>
-              <button className="mint-tokens-btn">
-                <span>⚡</span>
-                <span>MINT $GAME</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   );

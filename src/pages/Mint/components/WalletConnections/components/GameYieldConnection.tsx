@@ -57,7 +57,7 @@ const GameYieldConnection: React.FC = () => {
                         className="wallet-connect-button wallet-connect-button-arweave"
                         onClick={handleConnect}
                     >
-                        <FlipLogo size="small" />
+                        <FlipLogo size="medium" />
                         <span>Connect AO</span>
                     </button>
                 </div>
@@ -107,7 +107,7 @@ const GameYieldConnection: React.FC = () => {
                                 <span className="congratulations-icon">🎉</span>
                                 <div className="congratulations-text">
                                     <h4>Maximum Efficiency Achieved!</h4>
-                                    <p>You're earning the maximum $GAME yield possible.</p>
+                                    <p>You're earning the maximum $GAME yield possible. Deposit more tokens to yeild more $GAME!</p>
                                 </div>
                             </div>
                         ) : (

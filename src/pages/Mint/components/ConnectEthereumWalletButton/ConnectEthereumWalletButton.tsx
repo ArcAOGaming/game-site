@@ -45,14 +45,14 @@ const ConnectEthereumWalletButton: React.FC<ConnectEthereumWalletButtonProps> = 
   return (
     <div className="ethereum-wallet-container">
       {!isConnected ? (
-        <button 
-          className="ethereum-wallet-button ethereum-wallet-button-primary" 
+        <button
+          className="ethereum-wallet-button ethereum-wallet-button-primary"
           onClick={handleConnect}
         >
           <div className="ethereum-logo-container">
-            <img 
-              src="/ethereum-logo.png" 
-              alt="Ethereum Logo" 
+            <img
+              src="/ethereum-logo.svg"
+              alt="Ethereum Logo"
               className="ethereum-logo"
             />
           </div>
@@ -66,9 +66,9 @@ const ConnectEthereumWalletButton: React.FC<ConnectEthereumWalletButtonProps> = 
             <div className="ethereum-profile-container">
               <div className="ethereum-user-profile">
                 <div className="ethereum-profile-avatar-placeholder">
-                  <img 
-                    src="/ethereum-logo.png" 
-                    alt="Ethereum" 
+                  <img
+                    src="/ethereum-logo.svg"
+                    alt="Ethereum"
                     className="ethereum-avatar-icon"
                   />
                 </div>
@@ -76,8 +76,8 @@ const ConnectEthereumWalletButton: React.FC<ConnectEthereumWalletButtonProps> = 
                   <div className="ethereum-profile-name">
                     {`${address.slice(0, 6)}...${address.slice(-4)}`}
                   </div>
-                  <div 
-                    className="ethereum-profile-address" 
+                  <div
+                    className="ethereum-profile-address"
                     onClick={() => handleCopyAddress(address)}
                     title="Click to copy address"
                   >
@@ -90,7 +90,7 @@ const ConnectEthereumWalletButton: React.FC<ConnectEthereumWalletButtonProps> = 
               </div>
             </div>
           )}
-          <button 
+          <button
             className="ethereum-wallet-button ethereum-wallet-button-secondary"
             onClick={handleDisconnect}
           >

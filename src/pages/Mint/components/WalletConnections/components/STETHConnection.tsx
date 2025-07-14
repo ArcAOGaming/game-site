@@ -1,21 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
-import { useAccount, useBalance } from 'wagmi';
-import { formatEther } from 'viem';
-import { useAOSTETHStaking } from '../../../../../shared/contexts';
-import { ethStaking } from '../../../../../utils/AO';
+import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
+import { formatEther, parseEther } from 'viem';
+import { useAOSTETHStaking, useArweaveAOWallet } from '../../../../../shared/contexts';
+import { ethStaking, STETH_TOKEN_ADDRESS } from '../../../../../utils/AO/ETHStaking';
+import { ERC20_ABI } from '../../../../../utils/AO/shared/erc20Abi';
 
 const STETHConnection: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [stakeAmount, setStakeAmount] = useState('');
+    const [unstakeAmount, setUnstakeAmount] = useState('');
+    const [isStaking, setIsStaking] = useState(false);
+    const [isUnstaking, setIsUnstaking] = useState(false);
     const { open } = useAppKit();
     const { address, isConnected } = useAppKitAccount();
     const { address: wagmiAddress } = useAccount();
+    const { address: arweaveAddress } = useArweaveAOWallet();
     const { data: balance } = useBalance({ address: wagmiAddress });
     const { data: stethBalance } = useBalance({
         address: wagmiAddress,
-        token: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84' // STETH token address
+        token: STETH_TOKEN_ADDRESS
     });
-    const { stakingBalance } = useAOSTETHStaking();
+    const { stakingBalance, refetch } = useAOSTETHStaking();
+
+    // Read STETH allowance
+    const { data: stethAllowance, refetch: refetchAllowance } = useReadContract({
+        address: STETH_TOKEN_ADDRESS,
+        abi: ERC20_ABI,
+        functionName: 'allowance',
+        args: wagmiAddress ? [wagmiAddress, ethStaking.getStakingContractAddress()] : undefined,
+        query: {
+            enabled: !!wagmiAddress && isConnected,
+        },
+    });
+
+    // Contract write hooks
+    const { writeContract: writeApprove, data: approveHash } = useWriteContract();
+    const { writeContract: writeStake, data: stakeHash } = useWriteContract();
+    const { writeContract: writeUnstake, data: unstakeHash } = useWriteContract();
+
+    // Transaction receipt hooks
+    const { isLoading: isApproveLoading, isSuccess: isApproveSuccess } = useWaitForTransactionReceipt({
+        hash: approveHash,
+    });
+
+    const { isLoading: isStakeLoading, isSuccess: isStakeSuccess } = useWaitForTransactionReceipt({
+        hash: stakeHash,
+    });
+
+    const { isLoading: isUnstakeLoading, isSuccess: isUnstakeSuccess } = useWaitForTransactionReceipt({
+        hash: unstakeHash,
+    });
+
+    // Handle successful transactions
+    useEffect(() => {
+        if (isApproveSuccess) {
+            refetchAllowance();
+        }
+    }, [isApproveSuccess, refetchAllowance]);
+
+    useEffect(() => {
+        if (isStakeSuccess) {
+            setStakeAmount('');
+            setIsStaking(false);
+            refetch();
+        }
+    }, [isStakeSuccess, refetch]);
+
+    useEffect(() => {
+        if (isUnstakeSuccess) {
+            setUnstakeAmount('');
+            setIsUnstaking(false);
+            refetch();
+        }
+    }, [isUnstakeSuccess, refetch]);
 
     const handleConnect = () => {
         open();
@@ -35,14 +93,68 @@ const STETHConnection: React.FC = () => {
         return parseFloat(formatted).toFixed(4);
     };
 
+    const handleApprove = async () => {
+        if (!stakeAmount || !wagmiAddress) return;
+
+        try {
+            const amount = parseEther(stakeAmount);
+            writeApprove({
+                address: STETH_TOKEN_ADDRESS,
+                abi: ERC20_ABI,
+                functionName: 'approve',
+                args: [ethStaking.getStakingContractAddress(), amount],
+            } as any);
+        } catch (error) {
+            console.error('Approve error:', error);
+        }
+    };
+
+    const handleStake = async () => {
+        if (!stakeAmount || !wagmiAddress || !arweaveAddress) return;
+
+        try {
+            setIsStaking(true);
+            const stakeConfig = ethStaking.createStakeConfig(0, stakeAmount, arweaveAddress);
+            writeStake(stakeConfig as any);
+        } catch (error) {
+            console.error('Stake error:', error);
+            setIsStaking(false);
+        }
+    };
+
+    const handleUnstake = async () => {
+        if (!unstakeAmount || !wagmiAddress || !arweaveAddress) return;
+
+        try {
+            setIsUnstaking(true);
+            const unstakeConfig = ethStaking.createWithdrawConfig(0, unstakeAmount, arweaveAddress);
+            writeUnstake(unstakeConfig as any);
+        } catch (error) {
+            console.error('Unstake error:', error);
+            if (error instanceof Error) {
+                alert(`Unstake failed: ${error.message}`);
+            } else {
+                alert('Unstake failed. Please check your wallet and try again.');
+            }
+            setIsUnstaking(false);
+        }
+    };
+
+    const needsApproval = stakeAmount && stethAllowance !== undefined &&
+        parseEther(stakeAmount) > (stethAllowance as bigint);
+
+    const maxStakeAmount = stethBalance?.value ? formatEther(stethBalance.value) : '0';
+    const maxUnstakeAmount = stakingBalance.stakedAmount ?
+        ethStaking.formatAmount(stakingBalance.stakedAmount) : '0';
+
     return (
         <div className="wallet-connection-card">
             <div className="wallet-connection-header">
                 <div className="wallet-connection-icon">
-                    <img src="/ethereum-logo.png" alt="Ethereum" />
+                    <img src="/lido-stETH-logo-transparent.svg" alt="Ethereum" />
                 </div>
                 <div>
-                    <h3 className="wallet-connection-title">STETH Deposits</h3>
+                    <h3 className="wallet-connection-title">stETH Deposits</h3>
                     <p className="wallet-connection-network">Ethereum Network</p>
                 </div>
             </div>
@@ -140,7 +252,7 @@ const STETHConnection: React.FC = () => {
                     className="wallet-connect-button wallet-connect-button-ethereum"
                     onClick={handleConnect}
                 >
-                    <img src="/ethereum-logo.png" alt="Ethereum" style={{ width: '16px', height: '16px' }} />
+                    <img src="/ethereum-logo.svg" alt="Ethereum" style={{ width: '16px', height: '16px' }} />
                     <span>Connect Ethereum</span>
                 </button>
             ) : (
@@ -166,8 +278,101 @@ const STETHConnection: React.FC = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p>Deposit and withdraw functionality will be implemented here.</p>
-                            <p>This modal will contain the staking interface for STETH.</p>
+                            {!arweaveAddress ? (
+                                <div className="staking-actions-status">
+                                    <p>Please connect your Arweave wallet to enable staking functionality.</p>
+                                </div>
+                            ) : (
+                                <div className="staking-actions-content">
+                                    {/* Stake Section */}
+                                    <div className="staking-action-section">
+                                        <h4 className="staking-action-title">Deposit STETH</h4>
+                                        <div className="staking-balance-info">
+                                            Available: {maxStakeAmount} STETH
+                                        </div>
+                                        <div className="staking-input-group">
+                                            <input
+                                                type="number"
+                                                className="staking-input"
+                                                placeholder="0.0"
+                                                value={stakeAmount}
+                                                min="0"
+                                                step="any"
+                                                onChange={(e) => {
+                                                    const value = e.target.value;
+                                                    if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
+                                                        setStakeAmount(value);
+                                                    }
+                                                }}
+                                                disabled={isStaking || isApproveLoading}
+                                            />
+                                            <button
+                                                className="staking-max-btn"
+                                                onClick={() => setStakeAmount(maxStakeAmount)}
+                                                disabled={isStaking || isApproveLoading}
+                                            >
+                                                MAX
+                                            </button>
+                                        </div>
+                                        {needsApproval ? (
+                                            <button
+                                                className="staking-action-btn approve-btn"
+                                                onClick={handleApprove}
+                                                disabled={!stakeAmount || isApproveLoading || isStaking}
+                                            >
+                                                {isApproveLoading ? 'Approving...' : 'Approve STETH'}
+                                            </button>
+                                        ) : (
+                                            <button
+                                                className="staking-action-btn stake-btn"
+                                                onClick={handleStake}
+                                                disabled={!stakeAmount || isStaking || isStakeLoading}
+                                            >
+                                                {isStaking || isStakeLoading ? 'Depositing...' : 'Deposit STETH'}
+                                            </button>
+                                        )}
+                                    </div>
+
+                                    {/* Unstake Section */}
+                                    <div className="staking-action-section">
+                                        <h4 className="staking-action-title">Withdraw STETH</h4>
+                                        <div className="staking-balance-info">
+                                            Deposited: {maxUnstakeAmount} STETH
+                                        </div>
+                                        <div className="staking-input-group">
+                                            <input
+                                                type="number"
+                                                className="staking-input"
+                                                placeholder="0.0"
+                                                value={unstakeAmount}
+                                                min="0"
+                                                step="any"
+                                                onChange={(e) => {
+                                                    const value = e.target.value;
+                                                    if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
+                                                        setUnstakeAmount(value);
+                                                    }
+                                                }}
+                                                disabled={isUnstaking}
+                                            />
+                                            <button
+                                                className="staking-max-btn"
+                                                onClick={() => setUnstakeAmount(maxUnstakeAmount)}
+                                                disabled={isUnstaking}
+                                            >
+                                                MAX
+                                            </button>
+                                        </div>
+                                        <button
+                                            className="staking-action-btn unstake-btn"
+                                            onClick={handleUnstake}
+                                            disabled={!unstakeAmount || isUnstaking || isUnstakeLoading}
+                                        >
+                                            {isUnstaking || isUnstakeLoading ? 'Withdrawing...' : 'Withdraw STETH'}
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

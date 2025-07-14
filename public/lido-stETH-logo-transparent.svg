@@ -1,0 +1,25 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50" height="50">
+	<title>stETH</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m25-13c22.09 0 40 17.91 40 40 0 22.09-17.91 40-40 40-22.09 0-40-17.91-40-40 0-22.09 17.91-40 40-40z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { opacity: .6;fill: #00a3ff } 
+		.s1 { opacity: .2;fill: #00a3ff } 
+		.s2 { fill: #00a3ff } 
+	</style>
+	<g id="Clip-Path" clip-path="url(#cp1)">
+		<g>
+			<path class="s0" d="m39.8 22.5l0.4 0.6c4.5 6.9 3.5 16-2.5 21.8-3.5 3.4-8.1 5.1-12.7 5.1 0 0 0 0 14.8-27.5z"/>
+			<path class="s1" d="m25 30.8l14.8-8.3c-14.8 27.5-14.8 27.5-14.8 27.5 0-6 0-12.9 0-19.2z"/>
+			<path class="s2" d="m10.2 22.5l-0.4 0.6c-4.5 6.9-3.5 16 2.5 21.8 3.5 3.4 8.1 5.1 12.7 5.1 0 0 0 0-14.8-27.5z"/>
+			<path class="s0" d="m25 30.8l-14.8-8.3c14.8 27.5 14.8 27.5 14.8 27.5 0-6 0-12.9 0-19.2z"/>
+			<path class="s1" d="m25 12.1v14.5l12.7-7.2z"/>
+			<path class="s0" d="m25 12.1l-12.7 7.3 12.7 7.2z"/>
+			<path class="s2" d="m25 0l-12.7 19.4 12.7-7.3z"/>
+			<path class="s0" d="m25 12.1l12.7 7.3-12.7-19.4z"/>
+		</g>
+	</g>
+</svg>

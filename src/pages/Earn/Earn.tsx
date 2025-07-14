@@ -7,7 +7,7 @@ const Earn = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Load the form embed script
     const script = document.createElement('script');
     script.src = 'https://link.we-grow.agency/js/form_embed.js';
@@ -48,16 +48,16 @@ const Earn = () => {
       <div className="earn-bg-layer-1"></div>
       <div className="earn-bg-layer-2"></div>
       <div className="earn-bg-layer-3"></div>
-      
+
       {/* Grid overlay */}
       <div className="earn-grid-overlay"></div>
-      
+
       {/* Coin Elements */}
       <div className="coin-element coin-stack-1">🪙</div>
       <div className="coin-element coin-stack-2">💰</div>
       <div className="coin-element coin-rain-1">🪙</div>
       <div className="coin-element coin-rain-2">💰</div>
-      
+
       {/* Floating particles */}
       <div className="earn-particles">
         <div className="earn-particle-1"></div>
@@ -66,50 +66,50 @@ const Earn = () => {
         <div className="earn-particle-4"></div>
         <div className="earn-particle-5"></div>
         <div className="earn-particle-6"></div>
-        
+
         {/* Geometric shapes */}
         <div className="earn-shape-1"></div>
         <div className="earn-shape-2"></div>
         <div className="earn-shape-3"></div>
         <div className="earn-shape-4"></div>
       </div>
-      
+
       <div className="earn-content">
-        <h1 className="earn-title">$GAME*</h1>
+        <h1 className="earn-title">$GAME</h1>
         <EarnCoinFlowAnimation />
         <p className="earn-description">
-          Multiple ways to earn rewards and build your gaming empire. Play, stream, refer, and lead 
+          Multiple ways to earn rewards and build your gaming empire. Play, stream, refer, and lead
           your way to success in the ARCAO ecosystem.
         </p>
 
         <div className="earn-rewards">
-          
+
           <div className="earn-reward-card earn-reward-card-clickable" onClick={handleStreamClick}>
             <span className="earn-reward-icon">📺</span>
             <h3 className="earn-reward-title">Stream & Create</h3>
             <div className="earn-reward-amount">Get Paid</div>
             <p className="earn-reward-description">
-              Get paid to stream ARCAO games and create content. Join our creator program and earn 
+              Get paid to stream ARCAO games and create content. Join our creator program and earn
               revenue sharing, sponsorship opportunities, and exclusive creator rewards.
             </p>
           </div>
-          
+
           <div className="earn-reward-card earn-reward-card-clickable" onClick={handleAffiliateClick}>
             <span className="earn-reward-icon">💼</span>
             <h3 className="earn-reward-title">Affiliate Sales</h3>
             <div className="earn-reward-amount">Commission</div>
             <p className="earn-reward-description">
-              Earn commission on game sales through your unique affiliate codes. Share ARCAO games 
+              Earn commission on game sales through your unique affiliate codes. Share ARCAO games
               with your network and earn a percentage of every sale you generate.
             </p>
           </div>
-          
+
           <div className="earn-reward-card earn-reward-card-clickable ambassador-card" onClick={handleAmbassadorClick}>
             <span className="earn-reward-icon">👑</span>
             <h3 className="earn-reward-title">ARCAO Ambassador</h3>
             <div className="earn-reward-amount">Leadership</div>
             <p className="earn-reward-description">
-              Apply to become an official ARCAO Ambassador. Lead the community, represent the brand, 
+              Apply to become an official ARCAO Ambassador. Lead the community, represent the brand,
               and unlock exclusive benefits, early access, and leadership opportunities.
             </p>
             <div className="ambassador-hover-text">Apply Now</div>

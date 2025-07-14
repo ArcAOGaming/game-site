@@ -38,7 +38,7 @@ const TokenomicsSection: React.FC = () => {
 
                     <div className="tokenomics-item">
                         <span className="tokenomics-highlight">Exchange Listing</span>
-                        <span className="tokenomics-label">Imminent - Your Early</span>
+                        <span className="tokenomics-label">Imminent - You are early</span>
                     </div>
                 </div>
             </div>

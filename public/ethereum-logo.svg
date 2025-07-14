@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 167 167" width="167" height="167">
+	<title>eth-diamond-rainbow</title>
+	<style>
+		.s0 { fill: #5a9ded } 
+		.s1 { fill: #53d3e0 } 
+		.s2 { fill: #ff9c92 } 
+		.s3 { fill: #ffe94d } 
+		.s4 { opacity: 80;fill: #9fdb6f } 
+		.s5 { opacity: 80;fill: #d28ecb } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m83.4 125.9l50-31.3-50 72zm23.3-6.1l-15.9 10.1v13.1z"/>
+	<path fill-rule="evenodd" class="s1" d="m83.4 166.6l-49.9-72 49.9 31.3zm-7.3-23.6v-13.1l-16-10.1z"/>
+	<path fill-rule="evenodd" class="s2" d="m83.4-0.1l50 85.9-50 31.6zm7.4 27.5v76.5l32.6-20.5z"/>
+	<path fill-rule="evenodd" class="s3" d="m83.5 117.4l-50-31.6 50-85.9zm-40-34l32.5 20.6v-76.5z"/>
+	<path class="s4" d="m76 70.3l-28.2 15.9-4.3-2.8 2.7-4.8 29.8-16.7z"/>
+	<path class="s5" d="m90.9 70.3l28.1 15.9 4.4-2.8-2.8-4.8-29.7-16.7z"/>
+</svg>

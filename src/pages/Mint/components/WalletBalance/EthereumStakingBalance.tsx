@@ -14,7 +14,7 @@ export const EthereumStakingBalance: React.FC = () => {
         return (
             <div className="wallet-balance-card">
                 <div className="wallet-balance-header">
-                    <img src="/ethereum-logo.png" alt="Ethereum" className="wallet-balance-icon" />
+                    <img src="/ethereum-logo.svg" alt="Ethereum" className="wallet-balance-icon" />
                     <div className="wallet-balance-title">ETH Staking</div>
                 </div>
                 <div className="wallet-balance-content">
@@ -31,7 +31,7 @@ export const EthereumStakingBalance: React.FC = () => {
     return (
         <div className="wallet-balance-card">
             <div className="wallet-balance-header">
-                <img src="/ethereum-logo.png" alt="Ethereum" className="wallet-balance-icon" />
+                <img src="/ethereum-logo.svg" alt="Ethereum" className="wallet-balance-icon" />
                 <div className="wallet-balance-title">ETH Staking</div>
                 <button
                     onClick={handleRefresh}

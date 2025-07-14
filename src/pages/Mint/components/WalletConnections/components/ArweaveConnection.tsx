@@ -72,7 +72,7 @@ const ArweaveConnection: React.FC = () => {
                     className="wallet-connect-button wallet-connect-button-arweave"
                     onClick={handleConnect}
                 >
-                    <FlipLogo size="large" />
+                    <FlipLogo size="medium" />
                     <span>Connect AO</span>
                 </button>
             ) : (

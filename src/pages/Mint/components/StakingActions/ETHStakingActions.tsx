@@ -131,7 +131,7 @@ export const ETHStakingActions: React.FC = () => {
         return (
             <div className="staking-actions-card">
                 <div className="staking-actions-header">
-                    <img src="/ethereum-logo.png" alt="Ethereum" className="staking-actions-icon" />
+                    <img src="/ethereum-logo.svg" alt="Ethereum" className="staking-actions-icon" />
                     <div className="staking-actions-title">ETH Staking Actions</div>
                 </div>
                 <div className="staking-actions-content">
@@ -145,7 +145,7 @@ export const ETHStakingActions: React.FC = () => {
         return (
             <div className="staking-actions-card">
                 <div className="staking-actions-header">
-                    <img src="/ethereum-logo.png" alt="Ethereum" className="staking-actions-icon" />
+                    <img src="/ethereum-logo.svg" alt="Ethereum" className="staking-actions-icon" />
                     <div className="staking-actions-title">ETH Staking Actions</div>
                 </div>
                 <div className="staking-actions-content">
@@ -165,7 +165,7 @@ export const ETHStakingActions: React.FC = () => {
     return (
         <div className="staking-actions-card">
             <div className="staking-actions-header">
-                <img src="/ethereum-logo.png" alt="Ethereum" className="staking-actions-icon" />
+                <img src="/ethereum-logo.svg" alt="Ethereum" className="staking-actions-icon" />
                 <div className="staking-actions-title">ETH Staking Actions</div>
             </div>
             <div className="staking-actions-content">

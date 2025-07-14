@@ -5,8 +5,8 @@ interface CoinFlowAnimationProps {
   className?: string;
 }
 
-const CoinFlowAnimation: React.FC<CoinFlowAnimationProps> = ({ 
-  className = '' 
+const CoinFlowAnimation: React.FC<CoinFlowAnimationProps> = ({
+  className = ''
 }) => {
   return (
     <div className={`mint-coin-flow-animation ${className}`}>
@@ -14,9 +14,9 @@ const CoinFlowAnimation: React.FC<CoinFlowAnimationProps> = ({
       <div className="mint-forge-container">
         <div className="mint-forge-core">
           <div className="mint-forge-inner">
-            <img 
-              src="/logo-white-transparent.png" 
-              alt="$GAME Token Forge" 
+            <img
+              src="/logo-white-transparent.png"
+              alt="$GAME Token Forge"
               className="mint-forge-logo"
             />
           </div>
@@ -29,7 +29,7 @@ const CoinFlowAnimation: React.FC<CoinFlowAnimationProps> = ({
 
       {/* Ethereum and DAI tokens on left side */}
       <div className="mint-ethereum-token">
-        <img src="/ethereum-logo.png" alt="Ethereum" className="mint-source-token-logo" />
+        <img src="/ethereum-logo.svg" alt="Ethereum" className="mint-source-token-logo" />
       </div>
       <div className="mint-dai-token">
         <img src="/dai-logo.png" alt="DAI" className="mint-source-token-logo" />
