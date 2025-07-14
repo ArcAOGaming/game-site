@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
-import { WalletConnections, ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance, DAIStakingActions, ETHStakingActions } from './components';
+import { WalletConnections, ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance, DAIStakingActions, ETHStakingActions, TokenomicsSection, UtilityBenefitsSection } from './components';
 import './Mint.css';
 
 const Mint = () => {
@@ -66,6 +66,12 @@ const Mint = () => {
           </div>
         </div>
 
+        {/* Tokenomics and Utility Sections */}
+        <div className="tokenomics-utility-container">
+          <TokenomicsSection />
+          <UtilityBenefitsSection />
+        </div>
+
         {/* Wallet Connections */}
         <WalletConnections />
 
@@ -103,64 +109,6 @@ const Mint = () => {
           </div>
         </div>
 
-        {/* Detailed Information */}
-        <div className="mint-details">
-          <div className="mint-detail-section">
-            <h3 className="mint-detail-title">Tokenomics</h3>
-            <div className="mint-detail-grid">
-              <div className="mint-detail-item">
-                <div className="mint-detail-label">Total Supply</div>
-                <div className="mint-detail-value">21,000,000 $GAME</div>
-              </div>
-              <div className="mint-detail-item">
-                <div className="mint-detail-label">Fair Launch</div>
-                <div className="mint-detail-value">100%</div>
-              </div>
-              <div className="mint-detail-item">
-                <div className="mint-detail-label">Pre-mine</div>
-                <div className="mint-detail-value">0%</div>
-              </div>
-              <div className="mint-detail-item">
-                <div className="mint-detail-label">Release Model</div>
-                <div className="mint-detail-value">Bitcoin-inspired</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mint-detail-section">
-            <h3 className="mint-detail-title">Utility & Benefits</h3>
-            <div className="mint-utility-list">
-              <div className="mint-utility-item">
-                <span className="mint-utility-icon">🎮</span>
-                <div className="mint-utility-content">
-                  <h4>Gaming Ecosystem</h4>
-                  <p>Use $GAME across all ARCAO games and platforms</p>
-                </div>
-              </div>
-              <div className="mint-utility-item">
-                <span className="mint-utility-icon">🏆</span>
-                <div className="mint-utility-content">
-                  <h4>Staking Rewards</h4>
-                  <p>Stake tokens to earn passive income and governance rights</p>
-                </div>
-              </div>
-              <div className="mint-utility-item">
-                <span className="mint-utility-icon">🛒</span>
-                <div className="mint-utility-content">
-                  <h4>In-Game Purchases</h4>
-                  <p>Buy items, upgrades, and exclusive content</p>
-                </div>
-              </div>
-              <div className="mint-utility-item">
-                <span className="mint-utility-icon">🗳️</span>
-                <div className="mint-utility-content">
-                  <h4>Governance</h4>
-                  <p>Vote on game development and ecosystem decisions</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

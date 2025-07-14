@@ -289,6 +289,37 @@
   transform: scale(1.05);
 }
 
+/* Tokenomics and Utility Container */
+.tokenomics-utility-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 48px 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .tokenomics-utility-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tokenomics-utility-container {
+    margin: 32px 16px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tokenomics-utility-container {
+    margin: 24px 12px;
+    gap: 16px;
+  }
+}
+
 /* Mint Headliners */
 .mint-headliners {
   display: flex;

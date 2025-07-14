@@ -1,11 +1,15 @@
 import React from 'react';
 import { useDelegation } from '../../../../../shared/contexts/AODelegationContext';
 import { useArweaveAOWallet } from '../../../../../shared/contexts/ArweaveAOWallet';
+import { useGameFLP } from '../../../../../shared/contexts/GameFLP';
 import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
+import { formatTokenAmount } from '../../../../../utils/formatting';
+import FlipLogo from './FlipLogo';
 
 const GameYieldConnection: React.FC = () => {
     const { delegations, loading, settingDelegation, setGameDelegation } = useDelegation();
     const { isConnected, connect, disconnect, address } = useArweaveAOWallet();
+    const { recentDistribution, isLoadingDistribution } = useGameFLP();
 
     // Find the GAME delegation
     const gameDelegation = delegations.find(
@@ -53,7 +57,7 @@ const GameYieldConnection: React.FC = () => {
                         className="wallet-connect-button wallet-connect-button-arweave"
                         onClick={handleConnect}
                     >
-                        <img src="/ao-logo-white-transparent.png" alt="AO" style={{ width: '16px', height: '16px' }} />
+                        <FlipLogo size="small" />
                         <span>Connect AO</span>
                     </button>
                 </div>
@@ -70,15 +74,28 @@ const GameYieldConnection: React.FC = () => {
                     </div>
 
                     <div className="game-yield-efficiency">
-                        <div className="efficiency-display">
-                            <div className="efficiency-percentage">
-                                {loading ? (
-                                    <span className="efficiency-loading">--</span>
-                                ) : (
-                                    <span className="efficiency-value">{gamePercentage.toFixed(0)}%</span>
-                                )}
+                        <div className="efficiency-displays-container">
+                            <div className="efficiency-display">
+                                <div className="efficiency-percentage">
+                                    {isLoadingDistribution ? (
+                                        <span className="efficiency-loading">--</span>
+                                    ) : (
+                                        <span className="efficiency-value">{formatTokenAmount(recentDistribution)}</span>
+                                    )}
+                                </div>
+                                <div className="efficiency-label">Last Distribution</div>
                             </div>
-                            <div className="efficiency-label">$GAME Minting Efficiency</div>
+
+                            <div className="efficiency-display">
+                                <div className="efficiency-percentage">
+                                    {loading ? (
+                                        <span className="efficiency-loading">--</span>
+                                    ) : (
+                                        <span className="efficiency-value">{gamePercentage.toFixed(0)}%</span>
+                                    )}
+                                </div>
+                                <div className="efficiency-label">$GAME Minting Efficiency</div>
+                            </div>
                         </div>
 
                         {loading ? (

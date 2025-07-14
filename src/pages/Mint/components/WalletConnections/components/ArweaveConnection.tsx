@@ -1,5 +1,6 @@
 import React from 'react';
 import { useArweaveAOWallet } from '../../../../../shared/contexts/ArweaveAOWallet';
+import FlipLogo from './FlipLogo';
 
 const ArweaveConnection: React.FC = () => {
     const { isConnected, arBalance, isLoadingBalance, address, connect, disconnect } = useArweaveAOWallet();
@@ -71,7 +72,7 @@ const ArweaveConnection: React.FC = () => {
                     className="wallet-connect-button wallet-connect-button-arweave"
                     onClick={handleConnect}
                 >
-                    <img src="/ao-logo-white-transparent.png" alt="AO" style={{ width: '16px', height: '16px' }} />
+                    <FlipLogo size="large" />
                     <span>Connect AO</span>
                 </button>
             ) : (

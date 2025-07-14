@@ -16,16 +16,16 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
-  const { 
-    isConnected: contextIsConnected, 
-    connect: contextConnect, 
+  const {
+    isConnected: contextIsConnected,
+    connect: contextConnect,
     disconnect: contextDisconnect,
     address,
     arBalance,
     isLoadingBalance,
     refreshBalance
   } = useArweaveAOWallet();
-  
+
   const { bazarProfile } = useBazar();
 
   // Wallet logos that rotate every 4 seconds
@@ -37,11 +37,11 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
   // Use external isConnected prop if provided, otherwise use context value
   const isConnected = typeof externalIsConnected !== 'undefined' ? externalIsConnected : contextIsConnected;
 
-  // Rotate wallet logos every 2 seconds for more dynamic animation
+  // Rotate wallet logos every 5 seconds with flip animation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentLogoIndex((prevIndex) => (prevIndex + 1) % walletLogos.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [walletLogos.length]);
@@ -70,17 +70,17 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
   return (
     <div className="wallet-container">
       {!isConnected ? (
-        <button 
-          className="wallet-button wallet-button-primary" 
-          onClick={handleConnect} 
+        <button
+          className="wallet-button wallet-button-primary"
+          onClick={handleConnect}
           disabled={isLoading}
         >
           <div className="wallet-logo-container">
             {walletLogos.map((logo, index) => (
-              <img 
+              <img
                 key={logo}
-                src={logo} 
-                alt="Wallet Logo" 
+                src={logo}
+                alt="Wallet Logo"
                 className={`wallet-logo ${index === currentLogoIndex ? 'active' : ''}`}
               />
             ))}
@@ -93,9 +93,9 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
             <div className="profile-container">
               <div className="user-profile">
                 {bazarProfile?.avatar && (
-                  <img 
-                    src={bazarProfile.avatar} 
-                    alt="Profile" 
+                  <img
+                    src={bazarProfile.avatar}
+                    alt="Profile"
                     className="profile-avatar"
                   />
                 )}
@@ -103,8 +103,8 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
                   <div className="profile-name">
                     {bazarProfile?.name || `${address.slice(0, 6)}...${address.slice(-4)}`}
                   </div>
-                  <div 
-                    className="profile-address" 
+                  <div
+                    className="profile-address"
                     onClick={() => handleCopyAddress(address)}
                     title="Click to copy address"
                   >
@@ -114,7 +114,7 @@ const ConnectArweaveAOWalletButton: React.FC<ConnectArweaveAOWalletButtonProps> 
               </div>
             </div>
           )}
-          <button 
+          <button
             className="wallet-button wallet-button-secondary"
             onClick={handleDisconnect}
           >

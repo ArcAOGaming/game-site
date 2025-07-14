@@ -1,7 +1,8 @@
 import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Layout, Analytics, Loading } from './shared/components'
-import { ThemeProvider, EthereumWalletProvider, EthereumWalletTokensProvider, AOSTETHStakingProvider, AODAIStakingProvider, BazarProvider, DelegationProvider, ArweaveAOWalletProvider } from './shared/contexts'
+import { ThemeProvider, EthereumWalletProvider, EthereumWalletTokensProvider, AOSTETHStakingProvider, AODAIStakingProvider, BazarProvider, DelegationProvider, ArweaveAOWalletProvider, GameTokenProvider } from './shared/contexts'
+import { GameFLPProvider } from './shared/contexts/GameFLP'
 import { createRoute } from './utils/routing'
 import Home from './pages/Home/Home'
 
@@ -18,21 +19,25 @@ function App() {
             <AOSTETHStakingProvider>
               <AODAIStakingProvider>
                 <BazarProvider>
-                  <DelegationProvider>
-                    <BrowserRouter>
-                      <Analytics>
-                        <Layout>
-                          <Suspense fallback={<Loading />}>
-                            <Routes>
-                              <Route path="/" element={<Home />} />
-                              <Route path="/mint" element={<Mint />} />
-                              <Route path="/earn" element={<Earn />} />
-                            </Routes>
-                          </Suspense>
-                        </Layout>
-                      </Analytics>
-                    </BrowserRouter>
-                  </DelegationProvider>
+                  <GameFLPProvider>
+                    <GameTokenProvider>
+                      <DelegationProvider>
+                        <BrowserRouter>
+                          <Analytics>
+                            <Layout>
+                              <Suspense fallback={<Loading />}>
+                                <Routes>
+                                  <Route path="/" element={<Home />} />
+                                  <Route path="/mint" element={<Mint />} />
+                                  <Route path="/earn" element={<Earn />} />
+                                </Routes>
+                              </Suspense>
+                            </Layout>
+                          </Analytics>
+                        </BrowserRouter>
+                      </DelegationProvider>
+                    </GameTokenProvider>
+                  </GameFLPProvider>
                 </BazarProvider>
               </AODAIStakingProvider>
             </AOSTETHStakingProvider>
