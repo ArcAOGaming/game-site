@@ -10,20 +10,20 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'AR.IO React App',
-        short_name: 'AR.IO App',
-        description: 'AR.IO React Application Template',
+        name: '$GAME',
+        short_name: '$GAME',
+        description: 'Experience next-generation blockchain gaming where you truly own your in-game assets, grow their value with the ecosystem, create immersive worlds, and earn by playing and streaming.',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: 'game-token.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'game-token.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -32,6 +32,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3 MiB
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/ar\.io\/.*/i,
@@ -54,8 +55,22 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'analytics': ['react-ga4']
+          'analytics': ['react-ga4'],
+          'ao-sdk': ['ao-js-sdk'],
+          'ao-connect': ['@permaweb/aoconnect'],
+          'arweave': ['arweave'],
+          'rxjs': ['rxjs'],
+          'wallet-vendor': ['@reown/appkit', '@reown/appkit-adapter-wagmi'],
+          'crypto-vendor': ['ethers', 'viem', 'wagmi'],
+          'query-vendor': ['@tanstack/react-query'],
+          'ui-vendor': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-brands-svg-icons', '@fortawesome/free-regular-svg-icons', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome']
         }
+      },
+      // Enable aggressive tree shaking for all packages
+      treeshake: {
+        moduleSideEffects: false, // Assume all modules are side-effect free for maximum tree shaking
+        propertyReadSideEffects: false, // Allow property access to be tree shaken
+        tryCatchDeoptimization: false // Don't deoptimize try-catch blocks
       }
     },
     // Enable minification
@@ -66,8 +81,8 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    // Generate sourcemaps for production
-    sourcemap: true,
+    // // Generate sourcemaps for production
+    // sourcemap: true,
     // Optimize CSS
     cssCodeSplit: true,
     // Enable asset optimization

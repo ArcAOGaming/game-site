@@ -4,9 +4,9 @@ This template is part of [ArcAO Templates](https://github.com/orgs/ArcAOGaming/r
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://frontendtemplate_game.ar.io/)
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://game.ar.io/)
 
-[View Live Demo](https://frontendtemplate_game.ar.io/) • [Development Guide](docs/development.md) • [Deployment Guide](docs/deployment.md)
+[View Live Demo](https://game.ar.io/) • [Development Guide](docs/development.md) • [Deployment Guide](docs/deployment.md)
 
 </div>
 
