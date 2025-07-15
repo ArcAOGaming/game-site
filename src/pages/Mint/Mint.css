@@ -289,13 +289,20 @@
   transform: scale(1.05);
 }
 
-/* Tokenomics and Utility Container */
+/* Tokenomics, Match, and Utility Container */
 .tokenomics-utility-container {
   display: flex;
   justify-content: center;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 24px;
   margin: 48px 0;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  .tokenomics-utility-container {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 900px) {

@@ -4,4 +4,5 @@ export { ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance
 export { DAIStakingActions, ETHStakingActions } from './StakingActions';
 export { WalletConnections } from './WalletConnections';
 export { default as TokenomicsSection } from './TokenomicsSection';
+export { PermawebMatchSection } from './PermawebMatchSection';
 export { default as UtilityBenefitsSection } from './UtilityBenefitsSection';

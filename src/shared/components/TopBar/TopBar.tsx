@@ -8,13 +8,18 @@ const TopBar = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   const location = useLocation();
 
+  // Scroll to top when location changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Check if we're at the top
       setIsAtTop(currentScrollY < 10);
-      
+
       // Show/hide based on scroll direction
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         // Scrolling up or near top - show topbar
@@ -23,12 +28,12 @@ const TopBar = () => {
         // Scrolling down and not near top - hide topbar
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -46,13 +51,13 @@ const TopBar = () => {
           <span className="topbar-link-text">Earn</span>
           {isCurrentPage('/earn') && <div className="topbar-dot"></div>}
         </Link>
-        
+
         {/* Center: Logo */}
         <Link to="/" className="topbar-logo">
           <img src="/logo-white-transparent.png" alt="Game Logo" className="topbar-logo-img" />
           {isCurrentPage('/') && <div className="topbar-dot topbar-dot-center"></div>}
         </Link>
-        
+
         {/* Right: Mint Button */}
         <Link to="/mint" className="topbar-link topbar-link-right">
           <span className="topbar-link-text">Mint</span>

@@ -12,13 +12,14 @@ const DAIConnection: React.FC = () => {
     const [unstakeAmount, setUnstakeAmount] = useState('');
     const [isStaking, setIsStaking] = useState(false);
     const [isUnstaking, setIsUnstaking] = useState(false);
+    const [pendingStakeAfterApproval, setPendingStakeAfterApproval] = useState(false);
 
     const { open } = useAppKit();
     const { address, isConnected } = useAppKitAccount();
     const { address: wagmiAddress } = useAccount();
     const { address: arweaveAddress } = useArweaveAOWallet();
-    const { data: balance } = useBalance({ address: wagmiAddress });
-    const { data: daiBalance } = useBalance({
+    const { data: balance, refetch: refetchEthBalance } = useBalance({ address: wagmiAddress });
+    const { data: daiBalance, refetch: refetchDaiBalance } = useBalance({
         address: wagmiAddress,
         token: DAI_TOKEN_ADDRESS
     });
@@ -57,8 +58,13 @@ const DAIConnection: React.FC = () => {
     useEffect(() => {
         if (isApproveSuccess) {
             refetchAllowance();
+            // Automatically trigger stake after approval if pending
+            if (pendingStakeAfterApproval) {
+                setPendingStakeAfterApproval(false);
+                handleStake();
+            }
         }
-    }, [isApproveSuccess, refetchAllowance]);
+    }, [isApproveSuccess, refetchAllowance, pendingStakeAfterApproval]);
 
     useEffect(() => {
         if (isStakeSuccess) {
@@ -75,6 +81,20 @@ const DAIConnection: React.FC = () => {
             refetch();
         }
     }, [isUnstakeSuccess, refetch]);
+
+    // Auto-refresh balances when window regains focus (after swap)
+    useEffect(() => {
+        const handleFocus = () => {
+            if (isConnected) {
+                refetchEthBalance();
+                refetchDaiBalance();
+                refetchAllowance();
+            }
+        };
+
+        window.addEventListener('focus', handleFocus);
+        return () => window.removeEventListener('focus', handleFocus);
+    }, [isConnected, refetchEthBalance, refetchDaiBalance, refetchAllowance]);
 
     const handleConnect = () => {
         open();
@@ -98,6 +118,7 @@ const DAIConnection: React.FC = () => {
         if (!stakeAmount || !wagmiAddress) return;
 
         try {
+            setPendingStakeAfterApproval(true);
             const amount = parseEther(stakeAmount);
             writeApprove({
                 address: DAI_TOKEN_ADDRESS,
@@ -107,6 +128,15 @@ const DAIConnection: React.FC = () => {
             } as any);
         } catch (error) {
             console.error('Approve error:', error);
+            setPendingStakeAfterApproval(false);
+        }
+    };
+
+    const handleDepositClick = async () => {
+        if (needsApproval) {
+            handleApprove();
+        } else {
+            handleStake();
         }
     };
 
@@ -180,6 +210,29 @@ const DAIConnection: React.FC = () => {
             </div>
 
             <div className="wallet-connection-balances">
+                {isConnected && (
+                    <button
+                        className="swap-button"
+                        onClick={() => {
+                            const ethBalance = balance?.value || 0n;
+                            const reserveAmount = BigInt('10000000000000000'); // 0.01 ETH in wei
+                            const swapAmount = ethBalance > reserveAmount ? ethBalance - reserveAmount : 0n;
+                            const formattedAmount = formatEther(swapAmount);
+
+                            open({
+                                view: 'Swap',
+                                arguments: {
+                                    fromToken: '0x0000000000000000000000000000000000000000', // ETH
+                                    toToken: '0x6B175474E89094C44Da98b954EedeAC495271d0F', // DAI
+                                    amount: formattedAmount
+                                }
+                            });
+                        }}
+                    >
+                        Swap ETH → DAI
+                    </button>
+                )}
+
                 <div className="balance-item">
                     <span className="balance-label">DAI Balance</span>
                     <span className="balance-value">
@@ -199,26 +252,6 @@ const DAIConnection: React.FC = () => {
                         >
                             Deposit / Withdraw
                         </button>
-                        <button
-                            className="swap-button"
-                            onClick={() => {
-                                const ethBalance = balance?.value || 0n;
-                                const reserveAmount = BigInt('10000000000000000'); // 0.01 ETH in wei
-                                const swapAmount = ethBalance > reserveAmount ? ethBalance - reserveAmount : 0n;
-                                const formattedAmount = formatEther(swapAmount);
-
-                                open({
-                                    view: 'Swap',
-                                    arguments: {
-                                        fromToken: '0x0000000000000000000000000000000000000000', // ETH
-                                        toToken: '0x6B175474E89094C44Da98b954EedeAC495271d0F', // DAI
-                                        amount: formattedAmount
-                                    }
-                                });
-                            }}
-                        >
-                            Swap ETH → DAI
-                        </button>
                     </div>
                 )}
 
@@ -232,7 +265,7 @@ const DAIConnection: React.FC = () => {
                         ) : stakingBalance.error ? (
                             <span className="balance-placeholder">N/A</span>
                         ) : (
-                            `${stakingBalance.stakedAmount ? daiStaking.formatAmount(stakingBalance.stakedAmount) : '0.0000'} DAI`
+                            `${stakingBalance.stakedAmount ? parseFloat(daiStaking.formatAmount(stakingBalance.stakedAmount)).toFixed(4) : '0.0000'} DAI`
                         )}
                     </span>
                 </div>
@@ -305,23 +338,15 @@ const DAIConnection: React.FC = () => {
                                                 MAX
                                             </button>
                                         </div>
-                                        {needsApproval ? (
-                                            <button
-                                                className="staking-action-btn approve-btn"
-                                                onClick={handleApprove}
-                                                disabled={!stakeAmount || isApproveLoading || isStaking}
-                                            >
-                                                {isApproveLoading ? 'Approving...' : 'Approve DAI'}
-                                            </button>
-                                        ) : (
-                                            <button
-                                                className="staking-action-btn stake-btn"
-                                                onClick={handleStake}
-                                                disabled={!stakeAmount || isStaking || isStakeLoading}
-                                            >
-                                                {isStaking || isStakeLoading ? 'Depositing...' : 'Deposit DAI'}
-                                            </button>
-                                        )}
+                                        <button
+                                            className={`staking-action-btn ${needsApproval ? 'approve-btn' : 'stake-btn'}`}
+                                            onClick={handleDepositClick}
+                                            disabled={!stakeAmount || isApproveLoading || isStaking || isStakeLoading}
+                                        >
+                                            {isApproveLoading ? 'Approving...' :
+                                                isStaking || isStakeLoading ? 'Depositing...' :
+                                                    needsApproval ? 'Approve & Deposit DAI' : 'Deposit DAI'}
+                                        </button>
                                     </div>
 
                                     {/* Unstake Section */}

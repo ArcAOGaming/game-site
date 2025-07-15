@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MintCoinFlowAnimation } from '../../shared/components/CoinFlowAnimations/Mint';
-import { WalletConnections, ConnectArweaveAOWalletButton, ConnectEthereumWalletButton, ArweaveWalletBalance, EthereumWalletBalance, EthereumWalletTokenBalance, EthereumStakingBalance, DAIStakingBalance, DAIStakingActions, ETHStakingActions, TokenomicsSection, UtilityBenefitsSection } from './components';
+import { WalletConnections, TokenomicsSection, PermawebMatchSection, UtilityBenefitsSection } from './components';
 import './Mint.css';
 
 const Mint = () => {
@@ -46,7 +46,7 @@ const Mint = () => {
         <h1 className="mint-title">$GAME TOKEN MINTING</h1>
         <MintCoinFlowAnimation />
         <p className="mint-description">
-          Experience the future of gaming finance with $GAME token. Built on cutting-edge blockchain technology
+          Experience the future of gaming finance with $GAME token. Built on AO the Hyper Parallel Computer,
           with a fair launch model inspired by Bitcoin's proven distribution mechanism.
         </p>
 
@@ -66,9 +66,10 @@ const Mint = () => {
           </div>
         </div>
 
-        {/* Tokenomics and Utility Sections */}
+        {/* Tokenomics, Match, and Utility Sections */}
         <div className="tokenomics-utility-container">
           <TokenomicsSection />
+          <PermawebMatchSection />
           <UtilityBenefitsSection />
         </div>
 

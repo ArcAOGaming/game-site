@@ -77,13 +77,13 @@ const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) => {
       const animate = () => {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function for smooth animation
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
         const current = Math.floor(start + (end - start) * easeOutQuart);
-        
+
         setAnimatedValues(prev => ({ ...prev, [key]: current }));
-        
+
         if (progress < 1) {
           requestAnimationFrame(animate);
         }

@@ -1,0 +1,155 @@
+/* Permaweb Match Section Styles */
+.permaweb-match-section {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.permaweb-match-card {
+    background: linear-gradient(135deg,
+            rgba(15, 23, 42, 0.8) 0%,
+            rgba(30, 41, 59, 0.8) 100%);
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(16px);
+    max-width: 300px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.permaweb-match-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(34, 197, 94, 0.1) 0%,
+            rgba(5, 150, 105, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.permaweb-match-card:hover::before {
+    opacity: 1;
+}
+
+.permaweb-match-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 197, 94, 0.6);
+    box-shadow: 0 15px 30px -8px rgba(34, 197, 94, 0.3);
+}
+
+.match-ratio {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(90deg,
+            rgba(34, 197, 94, 1) 0%,
+            rgba(5, 150, 105, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: ratio-glow 3s ease-in-out infinite;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.match-subtitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(34, 197, 94, 1);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
+}
+
+.match-description {
+    color: #9ca3af;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .permaweb-match-card {
+        margin: 0 16px;
+        padding: 18px;
+    }
+
+    .match-ratio {
+        font-size: 3rem;
+    }
+
+    .match-subtitle {
+        font-size: 1rem;
+    }
+
+    .match-description {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .permaweb-match-card {
+        margin: 0 12px;
+        padding: 16px;
+    }
+
+    .match-ratio {
+        font-size: 2.5rem;
+    }
+
+    .match-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .match-description {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animations */
+@keyframes ratio-glow {
+
+    0%,
+    100% {
+        filter: brightness(1);
+        transform: scale(1);
+    }
+
+    50% {
+        filter: brightness(1.2);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes dot-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes line-flow {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
