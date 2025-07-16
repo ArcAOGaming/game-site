@@ -58,20 +58,14 @@ export default defineConfig({
           'analytics': ['react-ga4'],
           'ao-sdk': ['ao-js-sdk'],
           'ao-connect': ['@permaweb/aoconnect'],
-          'arweave': ['arweave'],
+          // 'arweave': ['arweave'],
           'rxjs': ['rxjs'],
           'wallet-vendor': ['@reown/appkit', '@reown/appkit-adapter-wagmi'],
-          'crypto-vendor': ['ethers', 'viem', 'wagmi'],
-          'query-vendor': ['@tanstack/react-query'],
+          // 'crypto-vendor': ['ethers', 'viem', 'wagmi'],
+          // 'query-vendor': ['@tanstack/react-query'],
           'ui-vendor': ['@fortawesome/fontawesome-svg-core', '@fortawesome/free-brands-svg-icons', '@fortawesome/free-regular-svg-icons', '@fortawesome/free-solid-svg-icons', '@fortawesome/react-fontawesome']
         }
       },
-      // Enable aggressive tree shaking for all packages
-      treeshake: {
-        moduleSideEffects: false, // Assume all modules are side-effect free for maximum tree shaking
-        propertyReadSideEffects: false, // Allow property access to be tree shaken
-        tryCatchDeoptimization: false // Don't deoptimize try-catch blocks
-      }
     },
     // Enable minification
     minify: 'terser',
