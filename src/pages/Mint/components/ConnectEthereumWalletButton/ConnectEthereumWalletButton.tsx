@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import { useAccount, useBalance } from 'wagmi';
 import { formatEther } from 'viem';
@@ -18,18 +18,21 @@ const ConnectEthereumWalletButton: React.FC<ConnectEthereumWalletButtonProps> = 
   const { address: wagmiAddress } = useAccount();
   const { data: balance } = useBalance({ address: wagmiAddress });
 
+  // Handle connection state changes
+  useEffect(() => {
+    if (isConnected && address && onConnect) {
+      onConnect(address);
+    } else if (!isConnected && onDisconnect) {
+      onDisconnect();
+    }
+  }, [isConnected, address, onConnect, onDisconnect]);
+
   const handleConnect = () => {
     open();
-    if (address && onConnect) {
-      onConnect(address);
-    }
   };
 
   const handleDisconnect = () => {
     open({ view: 'Account' });
-    if (onDisconnect) {
-      onDisconnect();
-    }
   };
 
   const handleCopyAddress = (addr: string) => {

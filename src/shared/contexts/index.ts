@@ -4,6 +4,7 @@ export { EthereumWalletProvider } from './EthereumWallet';
 export { EthereumWalletTokensProvider, useEthereumWalletTokens } from './EthereumWalletTokens';
 export { AOSTETHStakingProvider, useAOSTETHStaking } from './AOSTETHStaking';
 export { AODAIStakingProvider, useAOSDAIStaking } from './AODAIStaking';
+export { AOUSDSStakingProvider, useAOUSDSStaking } from './AOUSDSStaking';
 export { BazarProvider, useBazar } from './Bazar';
 export { DelegationProvider, useDelegation } from './AODelegationContext';
 export { GameTokenProvider, useGameToken } from './GameToken';

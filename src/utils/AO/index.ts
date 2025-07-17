@@ -25,6 +25,18 @@ export type {
     DAIStakingHooks
 } from './DAIStaking';
 
+// Export USDS Staking - single instantiated utility and types
+export {
+    usdsStaking,
+    USDS_STAKING_CONTRACT_ADDRESS,
+    USDS_STAKING_ABI
+} from './USDSStaking';
+
+export type {
+    USDSStakingInfo,
+    USDSStakingHooks
+} from './USDSStaking';
+
 // Export shared ABIs
 export {
     DISTRIBUTION_ABI,
