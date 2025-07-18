@@ -34,7 +34,7 @@
   border-radius: 50%;
   background: linear-gradient(135deg, #27ae60, #2ecc71, #16a085);
   border: 3px solid #fff;
-  box-shadow: 
+  box-shadow:
     0 0 25px rgba(39, 174, 96, 0.8),
     inset 0 0 20px rgba(255, 255, 255, 0.4),
     0 0 50px rgba(22, 160, 133, 0.6);
@@ -96,48 +96,62 @@
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    rgba(39, 174, 96, 0.1) 0%,
-    rgba(46, 204, 113, 0.15) 30%,
-    rgba(22, 160, 133, 0.1) 60%,
-    transparent 80%
-  );
+  background: radial-gradient(circle at center,
+      rgba(39, 174, 96, 0.1) 0%,
+      rgba(46, 204, 113, 0.15) 30%,
+      rgba(22, 160, 133, 0.1) 60%,
+      transparent 80%);
   animation: mintForgeEnergyPulse 4s ease-in-out infinite;
   z-index: 1;
 }
 
-/* Ethereum and DAI tokens on left side */
+/* Source tokens on left side */
 .mint-ethereum-token {
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 3%;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #627eea, #4f6bd5);
-  border: 3px solid #fff;
-  box-shadow: 0 0 18px rgba(98, 126, 234, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   animation: mintEthereumPulse 3.5s ease-in-out infinite;
 }
 
-.mint-dai-token {
+.mint-usds-token {
   position: absolute;
-  top: 65%;
+  top: 35%;
   left: 3%;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-  border: 3px solid #fff;
-  box-shadow: 0 0 18px rgba(59, 130, 246, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mintUsdsPulse 3.5s ease-in-out infinite 0.6s;
+}
+
+.mint-dai-token {
+  position: absolute;
+  top: 55%;
+  left: 3%;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: mintDaiPulse 3.5s ease-in-out infinite 1.2s;
+}
+
+.mint-arweave-token {
+  position: absolute;
+  top: 75%;
+  left: 3%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: mintArweavePulse 3.5s ease-in-out infinite 1.8s;
 }
 
 .mint-source-token-logo {
@@ -168,28 +182,54 @@
 
 /* AO tokens from Ethereum */
 .mint-ao-from-eth-1 {
-  top: 30%;
+  top: 20%;
   left: 20%;
   animation: mintAoFromEth1 4s ease-in-out infinite;
 }
 
 .mint-ao-from-eth-2 {
-  top: 35%;
+  top: 25%;
   left: 25%;
   animation: mintAoFromEth2 4s ease-in-out infinite 1.3s;
 }
 
+/* AO tokens from USDS */
+.mint-ao-from-usds-1 {
+  top: 40%;
+  left: 20%;
+  animation: mintAoFromUsds1 4s ease-in-out infinite 0.4s;
+}
+
+.mint-ao-from-usds-2 {
+  top: 45%;
+  left: 25%;
+  animation: mintAoFromUsds2 4s ease-in-out infinite 1.7s;
+}
+
 /* AO tokens from DAI */
 .mint-ao-from-dai-1 {
-  top: 60%;
+  top: 50%;
   left: 20%;
   animation: mintAoFromDai1 4s ease-in-out infinite 0.7s;
 }
 
 .mint-ao-from-dai-2 {
-  top: 65%;
+  top: 55%;
   left: 25%;
   animation: mintAoFromDai2 4s ease-in-out infinite 2s;
+}
+
+/* AO tokens from Arweave */
+.mint-ao-from-arweave-1 {
+  top: 70%;
+  left: 20%;
+  animation: mintAoFromArweave1 4s ease-in-out infinite 1.1s;
+}
+
+.mint-ao-from-arweave-2 {
+  top: 75%;
+  left: 25%;
+  animation: mintAoFromArweave2 4s ease-in-out infinite 2.3s;
 }
 
 /* Green game tokens flowing out to the right side in varying directions */
@@ -257,38 +297,62 @@
 }
 
 .mint-eth-to-center-line {
-  top: 35%;
+  top: 25%;
   left: 13%;
   width: 130px;
   height: 2px;
-  transform: rotate(15deg);
+  transform: rotate(25deg);
   background: linear-gradient(45deg, transparent 0%, rgba(98, 126, 234, 0.6) 50%, transparent 100%);
   animation: mintLineFlow 3s ease-in-out infinite;
 }
 
-.mint-dai-to-center-line {
-  top: 65%;
+.mint-usds-to-center-line {
+  top: 45%;
   left: 13%;
   width: 130px;
   height: 2px;
-  transform: rotate(-15deg);
+  transform: rotate(5deg);
+  background: linear-gradient(45deg, transparent 0%, rgba(0, 102, 204, 0.6) 50%, transparent 100%);
+  animation: mintLineFlow 3s ease-in-out infinite 0.6s;
+}
+
+.mint-dai-to-center-line {
+  top: 55%;
+  left: 13%;
+  width: 130px;
+  height: 2px;
+  transform: rotate(-5deg);
   background: linear-gradient(45deg, transparent 0%, rgba(59, 130, 246, 0.6) 50%, transparent 100%);
   animation: mintLineFlow 3s ease-in-out infinite 1.2s;
+}
+
+.mint-arweave-to-center-line {
+  top: 75%;
+  left: 13%;
+  width: 130px;
+  height: 2px;
+  transform: rotate(-25deg);
+  background: linear-gradient(45deg, transparent 0%, rgba(59, 130, 246, 0.6) 50%,
+      transparent 100%);
+  animation: mintLineFlow 3s ease-in-out infinite 1.8s;
 }
 
 /* Keyframe Animations */
 /* Mint Forge Animations */
 @keyframes mintForgeCorePulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
       0 0 25px rgba(39, 174, 96, 0.8),
       inset 0 0 20px rgba(255, 255, 255, 0.4),
       0 0 50px rgba(22, 160, 133, 0.6);
   }
-  50% { 
-    transform: scale(1.05); 
-    box-shadow: 
+
+  50% {
+    transform: scale(1.05);
+    box-shadow:
       0 0 35px rgba(39, 174, 96, 1),
       inset 0 0 30px rgba(255, 255, 255, 0.6),
       0 0 70px rgba(22, 160, 133, 0.8);
@@ -296,249 +360,403 @@
 }
 
 @keyframes mintForgeLogoPulse {
-  0%, 100% { 
-    transform: scale(1); 
+
+  0%,
+  100% {
+    transform: scale(1);
     opacity: 0.9;
   }
-  50% { 
-    transform: scale(1.05); 
+
+  50% {
+    transform: scale(1.05);
     opacity: 1;
   }
 }
 
 @keyframes mintForgeRing1Rotate {
-  0% { 
-    transform: translate(-50%, -50%) rotate(0deg); 
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
     border-color: rgba(39, 174, 96, 0.6);
   }
-  50% { 
+
+  50% {
     border-color: rgba(46, 204, 113, 0.8);
   }
-  100% { 
-    transform: translate(-50%, -50%) rotate(360deg); 
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
     border-color: rgba(39, 174, 96, 0.6);
   }
 }
 
 @keyframes mintForgeRing2Rotate {
-  0% { 
-    transform: translate(-50%, -50%) rotate(0deg); 
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
     border-color: rgba(22, 160, 133, 0.5);
   }
-  50% { 
+
+  50% {
     border-color: rgba(39, 174, 96, 0.7);
   }
-  100% { 
-    transform: translate(-50%, -50%) rotate(-360deg); 
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
     border-color: rgba(22, 160, 133, 0.5);
   }
 }
 
 @keyframes mintForgeRing3Rotate {
-  0% { 
-    transform: translate(-50%, -50%) rotate(0deg); 
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
     border-color: rgba(46, 204, 113, 0.4);
   }
-  50% { 
+
+  50% {
     border-color: rgba(22, 160, 133, 0.6);
   }
-  100% { 
-    transform: translate(-50%, -50%) rotate(360deg); 
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
     border-color: rgba(46, 204, 113, 0.4);
   }
 }
 
 @keyframes mintForgeEnergyPulse {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1); 
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
     opacity: 0.6;
   }
-  50% { 
-    transform: translate(-50%, -50%) scale(1.1); 
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
     opacity: 0.8;
   }
 }
 
 @keyframes mintEthereumPulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 0 0 18px rgba(98, 126, 234, 0.8);
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
   }
-  50% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 28px rgba(98, 126, 234, 1);
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes mintUsdsPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
   }
 }
 
 @keyframes mintDaiPulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 0 0 18px rgba(59, 130, 246, 0.8);
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
   }
-  50% { 
-    transform: scale(1.1); 
-    box-shadow: 0 0 28px rgba(59, 130, 246, 1);
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes mintArweavePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
   }
 }
 
 /* AO token flow animations - from left to center */
 @keyframes mintAoFromEth1 {
-  0% { 
-    transform: scale(0.8); 
-    opacity: 0.7; 
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
   }
-  50% { 
-    transform: scale(1.1) translate(60px, 40px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(60px, 40px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.6) translate(120px, 80px); 
-    opacity: 0.4; 
+
+  100% {
+    transform: scale(0.6) translate(120px, 80px);
+    opacity: 0.4;
   }
 }
 
 @keyframes mintAoFromEth2 {
-  0% { 
-    transform: scale(0.8); 
-    opacity: 0.7; 
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
   }
-  50% { 
-    transform: scale(1.1) translate(50px, 35px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(50px, 35px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.6) translate(100px, 70px); 
-    opacity: 0.4; 
+
+  100% {
+    transform: scale(0.6) translate(100px, 70px);
+    opacity: 0.4;
   }
 }
 
 @keyframes mintAoFromDai1 {
-  0% { 
-    transform: scale(0.8); 
-    opacity: 0.7; 
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
   }
-  50% { 
-    transform: scale(1.1) translate(60px, -30px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(60px, -30px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.6) translate(120px, -60px); 
-    opacity: 0.4; 
+
+  100% {
+    transform: scale(0.6) translate(120px, -60px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mintAoFromUsds1 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) translate(60px, 10px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.6) translate(120px, 20px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mintAoFromUsds2 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) translate(50px, 5px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.6) translate(100px, 10px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mintAoFromDai1 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) translate(60px, -5px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.6) translate(120px, -10px);
+    opacity: 0.4;
   }
 }
 
 @keyframes mintAoFromDai2 {
-  0% { 
-    transform: scale(0.8); 
-    opacity: 0.7; 
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
   }
-  50% { 
-    transform: scale(1.1) translate(50px, -25px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(50px, -10px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.6) translate(100px, -50px); 
-    opacity: 0.4; 
+
+  100% {
+    transform: scale(0.6) translate(100px, -20px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mintAoFromArweave1 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) translate(60px, -40px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.6) translate(120px, -80px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes mintAoFromArweave2 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1) translate(50px, -35px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.6) translate(100px, -70px);
+    opacity: 0.4;
   }
 }
 
 /* Output token animations - flowing to the right in varying directions */
 @keyframes mintOutputFlow1 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(40px, -20px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(40px, -20px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(80px, -40px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(80px, -40px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintOutputFlow2 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(50px, -10px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(50px, -10px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(100px, -20px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(100px, -20px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintOutputFlow3 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(60px, 0px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(60px, 0px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(120px, 0px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(120px, 0px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintOutputFlow4 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(50px, 10px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(50px, 10px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(100px, 20px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(100px, 20px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintOutputFlow5 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(40px, 20px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(40px, 20px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(80px, 40px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(80px, 40px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintOutputFlow6 {
-  0% { 
-    transform: scale(0.6); 
-    opacity: 0.4; 
+  0% {
+    transform: scale(0.6);
+    opacity: 0.4;
   }
-  50% { 
-    transform: scale(1.1) translate(35px, -5px); 
-    opacity: 1; 
+
+  50% {
+    transform: scale(1.1) translate(35px, -5px);
+    opacity: 1;
   }
-  100% { 
-    transform: scale(0.8) translate(70px, -10px); 
-    opacity: 0.7; 
+
+  100% {
+    transform: scale(0.8) translate(70px, -10px);
+    opacity: 0.7;
   }
 }
 
 @keyframes mintLineFlow {
-  0%, 100% { 
-    opacity: 0.3; 
+
+  0%,
+  100% {
+    opacity: 0.3;
   }
-  50% { 
-    opacity: 0.8; 
+
+  50% {
+    opacity: 0.8;
   }
 }
 
@@ -548,67 +766,70 @@
     width: 320px;
     height: 200px;
   }
-  
+
   .mint-forge-container {
     width: 110px;
     height: 110px;
   }
-  
+
   .mint-forge-inner {
     width: 60px;
     height: 60px;
   }
-  
+
   .mint-forge-logo {
     width: 38px;
     height: 38px;
   }
-  
+
   .mint-forge-ring-1 {
     width: 80px;
     height: 80px;
   }
-  
+
   .mint-forge-ring-2 {
     width: 95px;
     height: 95px;
   }
-  
+
   .mint-forge-ring-3 {
     width: 110px;
     height: 110px;
   }
-  
+
   .mint-forge-energy-field {
     width: 130px;
     height: 130px;
   }
-  
-  .mint-ethereum-token, .mint-dai-token {
+
+  .mint-ethereum-token,
+  .mint-usds-token,
+  .mint-dai-token,
+  .mint-arweave-token {
     width: 35px;
     height: 35px;
   }
-  
+
   .mint-source-token-logo {
     width: 22px;
     height: 22px;
   }
-  
+
   .mint-ao-token {
     width: 24px;
     height: 24px;
   }
-  
+
   .mint-ao-token-logo {
     width: 14px;
     height: 14px;
   }
-  
+
   .mint-output-token {
     width: 22px;
     height: 22px;
   }
-  
+
   .mint-output-token-logo {
     width: 13px;
     height: 13px;
@@ -620,67 +841,70 @@
     width: 260px;
     height: 160px;
   }
-  
+
   .mint-forge-container {
     width: 90px;
     height: 90px;
   }
-  
+
   .mint-forge-inner {
     width: 50px;
     height: 50px;
   }
-  
+
   .mint-forge-logo {
     width: 32px;
     height: 32px;
   }
-  
+
   .mint-forge-ring-1 {
     width: 65px;
     height: 65px;
   }
-  
+
   .mint-forge-ring-2 {
     width: 78px;
     height: 78px;
   }
-  
+
   .mint-forge-ring-3 {
     width: 90px;
     height: 90px;
   }
-  
+
   .mint-forge-energy-field {
     width: 110px;
     height: 110px;
   }
-  
-  .mint-ethereum-token, .mint-dai-token {
+
+  .mint-ethereum-token,
+  .mint-usds-token,
+  .mint-dai-token,
+  .mint-arweave-token {
     width: 28px;
     height: 28px;
   }
-  
+
   .mint-source-token-logo {
     width: 18px;
     height: 18px;
   }
-  
+
   .mint-ao-token {
     width: 20px;
     height: 20px;
   }
-  
+
   .mint-ao-token-logo {
     width: 12px;
     height: 12px;
   }
-  
+
   .mint-output-token {
     width: 18px;
     height: 18px;
   }
-  
+
   .mint-output-token-logo {
     width: 11px;
     height: 11px;

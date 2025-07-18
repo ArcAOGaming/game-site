@@ -27,29 +27,49 @@ const CoinFlowAnimation: React.FC<CoinFlowAnimationProps> = ({
         <div className="mint-forge-energy-field"></div>
       </div>
 
-      {/* Ethereum and DAI tokens on left side */}
+      {/* Source tokens on left side */}
       <div className="mint-ethereum-token">
         <img src="/ethereum-logo.svg" alt="Ethereum" className="mint-source-token-logo" />
+      </div>
+      <div className="mint-usds-token">
+        <img src="/usds-logo-transparent.png" alt="USDS" className="mint-source-token-logo" />
       </div>
       <div className="mint-dai-token">
         <img src="/dai-logo.png" alt="DAI" className="mint-source-token-logo" />
       </div>
+      <div className="mint-arweave-token">
+        <img src="/arweave glyph (light).svg" alt="Arweave" className="mint-source-token-logo" />
+      </div>
 
       {/* Stream lines from left tokens to center */}
       <div className="mint-stream-line mint-eth-to-center-line"></div>
+      <div className="mint-stream-line mint-usds-to-center-line"></div>
       <div className="mint-stream-line mint-dai-to-center-line"></div>
+      <div className="mint-stream-line mint-arweave-to-center-line"></div>
 
-      {/* AO tokens flowing from Ethereum and DAI to center */}
+      {/* AO tokens flowing from all source tokens to center */}
       <div className="mint-ao-token mint-ao-from-eth-1">
         <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
       </div>
       <div className="mint-ao-token mint-ao-from-eth-2">
         <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
       </div>
+      <div className="mint-ao-token mint-ao-from-usds-1">
+        <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
+      </div>
+      <div className="mint-ao-token mint-ao-from-usds-2">
+        <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
+      </div>
       <div className="mint-ao-token mint-ao-from-dai-1">
         <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
       </div>
       <div className="mint-ao-token mint-ao-from-dai-2">
+        <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
+      </div>
+      <div className="mint-ao-token mint-ao-from-arweave-1">
+        <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
+      </div>
+      <div className="mint-ao-token mint-ao-from-arweave-2">
         <img src="/ao-logo-white-transparent.png" alt="AO" className="mint-ao-token-logo" />
       </div>
 

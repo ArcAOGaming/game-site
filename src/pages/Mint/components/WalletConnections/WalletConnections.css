@@ -17,7 +17,7 @@
     max-width: 1200px;
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     transition: all 0.4s ease;
 }
 
@@ -76,6 +76,16 @@
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     text-align: left;
+}
+
+.wallet-connection-card {
+    position: relative;
+    min-height: 300px;
+}
+
+.wallet-connection-card.modal-open {
+    min-height: 600px;
+    z-index: 1000000;
 }
 
 .wallet-connection-card:hover {
@@ -494,7 +504,7 @@
 
 /* Modal Styles */
 .modal-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -503,8 +513,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 10000;
     backdrop-filter: blur(4px);
+    border-radius: 16px;
 }
 
 .modal-content {
@@ -516,10 +527,9 @@
     padding: 24px;
     max-width: 500px;
     width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
     backdrop-filter: blur(16px);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
 .modal-header {
@@ -931,5 +941,36 @@
 
     .efficiency-display {
         min-width: 100px;
+    }
+
+    /* Modal responsive adjustments */
+    .modal-overlay {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .modal-content {
+        margin: 10px auto;
+        padding: 20px;
+        max-width: none;
+        width: 100%;
+    }
+
+    .modal-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .staking-action-section {
+        padding: 12px;
+    }
+
+    .staking-input-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .staking-max-btn {
+        width: 100%;
+        min-width: auto;
     }
 }

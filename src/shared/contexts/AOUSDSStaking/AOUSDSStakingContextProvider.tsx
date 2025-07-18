@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useMemo, useEffect, useState, useCallback } from 'react';
 import { useAccount, useReadContract, usePublicClient } from 'wagmi';
 import { usdsStaking, USDS_STAKING_CONTRACT_ADDRESS } from '../../../utils/AO/USDSStaking';

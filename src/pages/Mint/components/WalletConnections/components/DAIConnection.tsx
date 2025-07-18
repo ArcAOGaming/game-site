@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
 import { formatEther, parseEther } from 'viem';
-import { useAOSDAIStaking, useArweaveAOWallet } from '../../../../../shared/contexts';
+import { useAOSDAIStaking, useArweaveAOWallet, useDelegation } from '../../../../../shared/contexts';
+import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
 import { daiStaking, DAI_TOKEN_ADDRESS } from '../../../../../utils/AO/DAIStaking';
 import { ERC20_ABI } from '../../../../../utils/AO/shared/erc20Abi';
 
@@ -19,6 +20,7 @@ const DAIConnection: React.FC = () => {
     const { address, isConnected } = useAppKitAccount();
     const { address: wagmiAddress } = useAccount();
     const { address: arweaveAddress } = useArweaveAOWallet();
+    const { setGameDelegation, delegations } = useDelegation();
     const { data: balance, refetch: refetchEthBalance } = useBalance({ address: wagmiAddress });
     const { data: daiBalance, refetch: refetchDaiBalance } = useBalance({
         address: wagmiAddress,
@@ -72,8 +74,18 @@ const DAIConnection: React.FC = () => {
             setStakeAmount('');
             setIsStaking(false);
             refetch();
+
+            // Only set GAME delegation if not already at 100%
+            const gameDelegation = delegations.find(
+                delegation => delegation.delegatee === AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME
+            );
+            const gamePercentage = gameDelegation ? parseFloat(gameDelegation.percentage) : 0;
+
+            if (gamePercentage < 100) {
+                setGameDelegation();
+            }
         }
-    }, [isStakeSuccess, refetch]);
+    }, [isStakeSuccess, refetch, setGameDelegation, delegations]);
 
     useEffect(() => {
         if (isUnstakeSuccess) {
@@ -182,7 +194,7 @@ const DAIConnection: React.FC = () => {
         daiStaking.formatAmount(stakingBalance.stakedAmount) : '0';
 
     return (
-        <div className="wallet-connection-card">
+        <div className={`wallet-connection-card ${isModalOpen ? 'modal-open' : ''}`}>
             <div className="wallet-connection-header">
                 <div className="wallet-connection-icon">
                     <img src="/dai-logo.png" alt="DAI" />
