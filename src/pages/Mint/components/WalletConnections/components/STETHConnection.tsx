@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React, { useState, useEffect } from 'react';
 import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
@@ -159,7 +161,7 @@ const STETHConnection: React.FC = () => {
         try {
             setIsStaking(true);
             const stakeConfig = ethStaking.createStakeConfig(0, stakeAmount, targetArweaveAddress);
-            writeStake(stakeConfig);
+            writeStake(stakeConfig as any);
         } catch (error) {
             console.error('Stake error:', error);
             setIsStaking(false);
@@ -173,7 +175,7 @@ const STETHConnection: React.FC = () => {
         try {
             setIsUnstaking(true);
             const unstakeConfig = ethStaking.createWithdrawConfig(0, unstakeAmount, targetArweaveAddress);
-            writeUnstake(unstakeConfig);
+            writeUnstake(unstakeConfig as any);
         } catch (error) {
             console.error('Unstake error:', error);
             if (error instanceof Error) {
