@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArweaveConnection, STETHConnection, DAIConnection, GameYieldConnection } from './components';
+import { ArweaveConnection, STETHConnection, DAIConnection, USDSConnection, GameYieldConnection } from './components';
 import './WalletConnections.css';
 
 const WalletConnections: React.FC = () => {
@@ -15,6 +15,7 @@ const WalletConnections: React.FC = () => {
                     <ArweaveConnection />
                     <STETHConnection />
                     <DAIConnection />
+                    <USDSConnection />
                 </div>
 
                 <div className="game-yield-section">
