@@ -139,7 +139,7 @@ const USDSConnection: React.FC = () => {
                 abi: ERC20_ABI,
                 functionName: 'approve',
                 args: [usdsStaking.getStakingContractAddress(), amount],
-            });
+            } as any);
         } catch (error) {
             console.error('Approve error:', error);
             setPendingStakeAfterApproval(false);
@@ -161,7 +161,7 @@ const USDSConnection: React.FC = () => {
         try {
             setIsStaking(true);
             const stakeConfig = usdsStaking.createStakeConfig(stakeAmount, targetArweaveAddress);
-            writeStake(stakeConfig);
+            writeStake(stakeConfig as any);
         } catch (error) {
             console.error('Stake error:', error);
             setIsStaking(false);
@@ -175,7 +175,7 @@ const USDSConnection: React.FC = () => {
         try {
             setIsUnstaking(true);
             const unstakeConfig = usdsStaking.createWithdrawConfig(unstakeAmount, targetArweaveAddress);
-            writeUnstake(unstakeConfig);
+            writeUnstake(unstakeConfig as any);
         } catch (error) {
             console.error('Unstake error:', error);
             if (error instanceof Error) {
