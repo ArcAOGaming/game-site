@@ -1,13 +1,23 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState, useCallback } from 'react';
 import { useAccount, useReadContract, usePublicClient } from 'wagmi';
 import { usdsStaking, USDS_STAKING_CONTRACT_ADDRESS } from '../../../utils/AO/USDSStaking';
-import { AOUSDSStakingContextType, AOUSDSStakingProviderProps, StakingBalance } from './types';
+import { convertBytes32ToArweaveAddress } from '../../../utils/AO/shared/arweaveUtils';
+import { AOUSDSStakingContextType, AOUSDSStakingProviderProps, StakingBalance, EventsData } from './types';
 import { AOUSDSStakingContext } from './AOUSDSStakingContext';
 
 export const AOUSDSStakingProvider: React.FC<AOUSDSStakingProviderProps> = ({ children }) => {
     const { address, isConnected } = useAccount();
     const [lastFetchTime, setLastFetchTime] = useState<Date | null>(null);
     const [contractExists, setContractExists] = useState<boolean | null>(null);
+    const [eventsData, setEventsData] = useState<EventsData>({
+        userStaked: [],
+        userWithdrawn: [],
+        overplusBridged: [],
+        calculateOverplusResult: [],
+        isLoading: false,
+        error: null,
+        lastFetchTime: null,
+    });
     const publicClient = usePublicClient();
 
     // Check if contract exists
@@ -163,6 +173,40 @@ export const AOUSDSStakingProvider: React.FC<AOUSDSStakingProviderProps> = ({ ch
         }
     }, [stakingBalance.isLoading]);
 
+    // Refetch events function
+    const refetchEvents = useCallback(async (fromBlock?: bigint, toBlock?: bigint) => {
+        if (!publicClient || contractExists !== true) {
+            return;
+        }
+
+        setEventsData(prev => ({ ...prev, isLoading: true, error: null }));
+
+        try {
+            // For now, we'll create a simple placeholder implementation
+            // In a real implementation, you would use publicClient.getLogs() with event filters
+            // created by usdsStaking.createUserStakedEventFilter(), etc.
+
+            // Placeholder - you can implement actual event fetching here
+            const mockEvents = {
+                userStaked: [],
+                userWithdrawn: [],
+                overplusBridged: [],
+                calculateOverplusResult: [],
+                isLoading: false,
+                error: null,
+                lastFetchTime: new Date(),
+            };
+
+            setEventsData(mockEvents);
+        } catch (error) {
+            setEventsData(prev => ({
+                ...prev,
+                isLoading: false,
+                error: error as Error,
+            }));
+        }
+    }, [publicClient, contractExists]);
+
     // Refetch all queries
     const refetch = async () => {
         // Only refetch if contract exists
@@ -180,7 +224,9 @@ export const AOUSDSStakingProvider: React.FC<AOUSDSStakingProviderProps> = ({ ch
         isConnected,
         address,
         stakingBalance,
+        events: eventsData,
         refetch,
+        refetchEvents,
         debugInfo: {
             contractAddress: USDS_STAKING_CONTRACT_ADDRESS,
             lastFetchTime,

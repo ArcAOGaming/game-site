@@ -19,9 +19,32 @@ export function convertArweaveAddressToBytes32(arweaveAddress: string): `0x${str
 }
 
 /**
+ * Convert bytes32 hex string back to Arweave address
+ * @param bytes32Hex - bytes32 formatted address (0x prefixed hex string)
+ * @returns Arweave address string (Base64URL encoded)
+ */
+export function convertBytes32ToArweaveAddress(bytes32Hex: string): string {
+    // Remove 0x prefix and any trailing zeros
+    const hexString = bytes32Hex.replace(/^0x/, '').replace(/0+$/, '');
+
+    // Convert hex to buffer
+    const buffer = Buffer.from(hexString, 'hex');
+
+    // Convert to base64 and then to base64url
+    const base64 = buffer.toString('base64');
+    const base64url = base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+
+    return base64url;
+}
+
+/**
  * Example usage:
  * const arweaveAddress = '05cl5_uXbZiVRIAB17zjkDVNkop7QIsapuqrhZbulYI';
  * const hexString = convertArweaveAddressToBytes32(arweaveAddress);
  * console.log(hexString);
  * // Expected output: 0xd39725e7fb976d9895448001d7bce390354d928a7b408b1aa6eaab8596ee9582
+ * 
+ * const backToArweave = convertBytes32ToArweaveAddress(hexString);
+ * console.log(backToArweave);
+ * // Expected output: 05cl5_uXbZiVRIAB17zjkDVNkop7QIsapuqrhZbulYI
  */

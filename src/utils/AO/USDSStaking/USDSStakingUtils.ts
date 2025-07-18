@@ -124,7 +124,6 @@ export class USDSStakingUtils {
         } as const;
     }
 
-
     /**
      * Create contract configuration for reading deposit token address
      */
@@ -165,5 +164,82 @@ export class USDSStakingUtils {
             functionName: 'balanceOf',
             args: [userAddress],
         } as const;
+    }
+
+    /**
+     * Create event filter for UserStaked events
+     */
+    createUserStakedEventFilter(fromBlock?: bigint, toBlock?: bigint, userAddress?: Address) {
+        return {
+            address: this.config.stakingContractAddress,
+            event: {
+                type: 'event',
+                name: 'UserStaked',
+                inputs: [
+                    { indexed: true, name: 'user', type: 'address' },
+                    { indexed: false, name: 'amount', type: 'uint256' },
+                    { indexed: false, name: 'arweaveAddress', type: 'bytes32' },
+                ],
+            },
+            args: userAddress ? { user: userAddress } : undefined,
+            fromBlock: fromBlock || 'earliest' as const,
+            toBlock: toBlock || 'latest' as const,
+        };
+    }
+
+    /**
+     * Create event filter for UserWithdrawn events
+     */
+    createUserWithdrawnEventFilter(fromBlock?: bigint, toBlock?: bigint, userAddress?: Address) {
+        return {
+            address: this.config.stakingContractAddress,
+            event: {
+                type: 'event',
+                name: 'UserWithdrawn',
+                inputs: [
+                    { indexed: true, name: 'user', type: 'address' },
+                    { indexed: false, name: 'amount', type: 'uint256' },
+                    { indexed: false, name: 'arweaveAddress', type: 'bytes32' },
+                ],
+            },
+            args: userAddress ? { user: userAddress } : undefined,
+            fromBlock: fromBlock || 'earliest' as const,
+            toBlock: toBlock || 'latest' as const,
+        };
+    }
+
+    /**
+     * Create event filter for OverplusBridged events
+     */
+    createOverplusBridgedEventFilter(fromBlock?: bigint, toBlock?: bigint) {
+        return {
+            address: this.config.stakingContractAddress,
+            event: {
+                type: 'event',
+                name: 'OverplusBridged',
+                inputs: [{ indexed: false, name: 'amount', type: 'uint256' }],
+            },
+            fromBlock: fromBlock || 'earliest' as const,
+            toBlock: toBlock || 'latest' as const,
+        };
+    }
+
+    /**
+     * Create event filter for CalculateOverplusResult events
+     */
+    createCalculateOverplusResultEventFilter(fromBlock?: bigint, toBlock?: bigint) {
+        return {
+            address: this.config.stakingContractAddress,
+            event: {
+                type: 'event',
+                name: 'CalculateOverplusResult',
+                inputs: [
+                    { indexed: false, name: 'totalAssets', type: 'uint256' },
+                    { indexed: false, name: 'overplus', type: 'uint256' },
+                ],
+            },
+            fromBlock: fromBlock || 'earliest' as const,
+            toBlock: toBlock || 'latest' as const,
+        };
     }
 }

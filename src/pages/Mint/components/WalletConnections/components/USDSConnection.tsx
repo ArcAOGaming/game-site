@@ -10,6 +10,7 @@ const USDSConnection: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [stakeAmount, setStakeAmount] = useState('');
     const [unstakeAmount, setUnstakeAmount] = useState('');
+    const [customArweaveAddress, setCustomArweaveAddress] = useState('');
     const [isStaking, setIsStaking] = useState(false);
     const [isUnstaking, setIsUnstaking] = useState(false);
     const [pendingStakeAfterApproval, setPendingStakeAfterApproval] = useState(false);
@@ -141,12 +142,13 @@ const USDSConnection: React.FC = () => {
     };
 
     const handleStake = async () => {
-        if (!stakeAmount || !wagmiAddress || !arweaveAddress) return;
+        const targetArweaveAddress = arweaveAddress || customArweaveAddress;
+        if (!stakeAmount || !wagmiAddress || !targetArweaveAddress) return;
 
         try {
             setIsStaking(true);
-            const stakeConfig = usdsStaking.createStakeConfig(stakeAmount, arweaveAddress);
-            writeStake(stakeConfig as any);
+            const stakeConfig = usdsStaking.createStakeConfig(stakeAmount, targetArweaveAddress);
+            writeStake(stakeConfig);
         } catch (error) {
             console.error('Stake error:', error);
             setIsStaking(false);
@@ -154,12 +156,13 @@ const USDSConnection: React.FC = () => {
     };
 
     const handleUnstake = async () => {
-        if (!unstakeAmount || !wagmiAddress || !arweaveAddress) return;
+        const targetArweaveAddress = arweaveAddress || customArweaveAddress;
+        if (!unstakeAmount || !wagmiAddress || !targetArweaveAddress) return;
 
         try {
             setIsUnstaking(true);
-            const unstakeConfig = usdsStaking.createWithdrawConfig(unstakeAmount, arweaveAddress);
-            writeUnstake(unstakeConfig as any);
+            const unstakeConfig = usdsStaking.createWithdrawConfig(unstakeAmount, targetArweaveAddress);
+            writeUnstake(unstakeConfig);
         } catch (error) {
             console.error('Unstake error:', error);
             if (error instanceof Error) {
@@ -182,7 +185,7 @@ const USDSConnection: React.FC = () => {
         <div className="wallet-connection-card">
             <div className="wallet-connection-header">
                 <div className="wallet-connection-icon">
-                    <img src="/dai-logo.png" alt="USDS" />
+                    <img src="/usds-logo-transparent.png" alt="USDS" />
                 </div>
                 <div>
                     <h3 className="wallet-connection-title">USDS Deposits</h3>
@@ -302,93 +305,123 @@ const USDSConnection: React.FC = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            {!arweaveAddress ? (
-                                <div className="staking-actions-status">
-                                    <p>Please connect your Arweave wallet to enable staking functionality.</p>
-                                </div>
-                            ) : (
-                                <div className="staking-actions-content">
-                                    {/* Stake Section */}
-                                    <div className="staking-action-section">
-                                        <h4 className="staking-action-title">Deposit USDS</h4>
-                                        <div className="staking-balance-info">
-                                            Available: {maxStakeAmount} USDS
-                                        </div>
-                                        <div className="staking-input-group">
-                                            <input
-                                                type="number"
-                                                className="staking-input"
-                                                placeholder="0.0"
-                                                value={stakeAmount}
-                                                min="0"
-                                                step="any"
-                                                onChange={(e) => {
-                                                    const value = e.target.value;
-                                                    if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
-                                                        setStakeAmount(value);
-                                                    }
-                                                }}
-                                                disabled={isStaking || isApproveLoading}
-                                            />
-                                            <button
-                                                className="staking-max-btn"
-                                                onClick={() => setStakeAmount(maxStakeAmount)}
-                                                disabled={isStaking || isApproveLoading}
-                                            >
-                                                MAX
-                                            </button>
-                                        </div>
-                                        <button
-                                            className={`staking-action-btn ${needsApproval ? 'approve-btn' : 'stake-btn'}`}
-                                            onClick={handleDepositClick}
-                                            disabled={!stakeAmount || isApproveLoading || isStaking || isStakeLoading}
-                                        >
-                                            {isApproveLoading ? 'Approving...' :
-                                                isStaking || isStakeLoading ? 'Depositing...' :
-                                                    needsApproval ? 'Approve & Deposit USDS' : 'Deposit USDS'}
-                                        </button>
+                            <div className="staking-actions-content">
+                                {/* AO Wallet Address Section */}
+                                <div className="staking-action-section">
+                                    <h4 className="staking-action-title">AO Wallet Address</h4>
+                                    <div className="staking-balance-info">
+                                        {arweaveAddress ? 'Connected AO Wallet (auto-filled)' : 'Enter your AO wallet address'}
                                     </div>
+                                    <div className="staking-input-group">
+                                        <input
+                                            type="text"
+                                            className="staking-input"
+                                            placeholder="Enter AO wallet address..."
+                                            value={arweaveAddress || customArweaveAddress}
+                                            onChange={(e) => {
+                                                if (!arweaveAddress) {
+                                                    setCustomArweaveAddress(e.target.value);
+                                                }
+                                            }}
+                                            disabled={!!arweaveAddress || isStaking || isUnstaking || isApproveLoading}
+                                            style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}
+                                        />
+                                        {arweaveAddress && (
+                                            <div style={{
+                                                fontSize: '0.8rem',
+                                                color: 'rgba(34, 197, 94, 1)',
+                                                marginTop: '4px'
+                                            }}>
+                                                ✓ Auto-filled from connected AO wallet
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
 
-                                    {/* Unstake Section */}
-                                    <div className="staking-action-section">
-                                        <h4 className="staking-action-title">Withdraw USDS</h4>
-                                        <div className="staking-balance-info">
-                                            Deposited: {maxUnstakeAmount} USDS
-                                        </div>
-                                        <div className="staking-input-group">
-                                            <input
-                                                type="number"
-                                                className="staking-input"
-                                                placeholder="0.0"
-                                                value={unstakeAmount}
-                                                min="0"
-                                                step="any"
-                                                onChange={(e) => {
-                                                    const value = e.target.value;
-                                                    if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
-                                                        setUnstakeAmount(value);
-                                                    }
-                                                }}
-                                                disabled={isUnstaking}
-                                            />
+                                {(arweaveAddress || customArweaveAddress) && (
+                                    <>
+                                        {/* Stake Section */}
+                                        <div className="staking-action-section">
+                                            <h4 className="staking-action-title">Deposit USDS</h4>
+                                            <div className="staking-balance-info">
+                                                Available: {maxStakeAmount} USDS
+                                            </div>
+                                            <div className="staking-input-group">
+                                                <input
+                                                    type="number"
+                                                    className="staking-input"
+                                                    placeholder="0.0"
+                                                    value={stakeAmount}
+                                                    min="0"
+                                                    step="any"
+                                                    onChange={(e) => {
+                                                        const value = e.target.value;
+                                                        if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
+                                                            setStakeAmount(value);
+                                                        }
+                                                    }}
+                                                    disabled={isStaking || isApproveLoading}
+                                                />
+                                                <button
+                                                    className="staking-max-btn"
+                                                    onClick={() => setStakeAmount(maxStakeAmount)}
+                                                    disabled={isStaking || isApproveLoading}
+                                                >
+                                                    MAX
+                                                </button>
+                                            </div>
                                             <button
-                                                className="staking-max-btn"
-                                                onClick={() => setUnstakeAmount(maxUnstakeAmount)}
-                                                disabled={isUnstaking}
+                                                className={`staking-action-btn ${needsApproval ? 'approve-btn' : 'stake-btn'}`}
+                                                onClick={handleDepositClick}
+                                                disabled={!stakeAmount || isApproveLoading || isStaking || isStakeLoading}
                                             >
-                                                MAX
+                                                {isApproveLoading ? 'Approving...' :
+                                                    isStaking || isStakeLoading ? 'Depositing...' :
+                                                        needsApproval ? 'Approve & Deposit USDS' : 'Deposit USDS'}
                                             </button>
                                         </div>
-                                        <button
-                                            className="staking-action-btn unstake-btn"
-                                            onClick={handleUnstake}
-                                            disabled={!unstakeAmount || isUnstaking || isUnstakeLoading}
-                                        >
-                                            {isUnstaking || isUnstakeLoading ? 'Withdrawing...' : 'Withdraw USDS'}
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
+
+                                        {/* Unstake Section */}
+                                        <div className="staking-action-section">
+                                            <h4 className="staking-action-title">Withdraw USDS</h4>
+                                            <div className="staking-balance-info">
+                                                Deposited: {maxUnstakeAmount} USDS
+                                            </div>
+                                            <div className="staking-input-group">
+                                                <input
+                                                    type="number"
+                                                    className="staking-input"
+                                                    placeholder="0.0"
+                                                    value={unstakeAmount}
+                                                    min="0"
+                                                    step="any"
+                                                    onChange={(e) => {
+                                                        const value = e.target.value;
+                                                        if (value === '' || (parseFloat(value) >= 0 && !isNaN(parseFloat(value)))) {
+                                                            setUnstakeAmount(value);
+                                                        }
+                                                    }}
+                                                    disabled={isUnstaking}
+                                                />
+                                                <button
+                                                    className="staking-max-btn"
+                                                    onClick={() => setUnstakeAmount(maxUnstakeAmount)}
+                                                    disabled={isUnstaking}
+                                                >
+                                                    MAX
+                                                </button>
+                                            </div>
+                                            <button
+                                                className="staking-action-btn unstake-btn"
+                                                onClick={handleUnstake}
+                                                disabled={!unstakeAmount || isUnstaking || isUnstakeLoading}
+                                            >
+                                                {isUnstaking || isUnstakeLoading ? 'Withdrawing...' : 'Withdraw USDS'}
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

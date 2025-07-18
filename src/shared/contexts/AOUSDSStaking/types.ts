@@ -14,6 +14,44 @@ export interface UserData {
     deposited: bigint;
 }
 
+export interface StakingEvent {
+    blockNumber: bigint;
+    transactionHash: string;
+    logIndex: number;
+    timestamp?: number;
+}
+
+export interface UserStakedEvent extends StakingEvent {
+    user: Address;
+    amount: bigint;
+    arweaveAddress: string;
+}
+
+export interface UserWithdrawnEvent extends StakingEvent {
+    user: Address;
+    amount: bigint;
+    arweaveAddress: string;
+}
+
+export interface OverplusBridgedEvent extends StakingEvent {
+    amount: bigint;
+}
+
+export interface CalculateOverplusResultEvent extends StakingEvent {
+    totalAssets: bigint;
+    overplus: bigint;
+}
+
+export interface EventsData {
+    userStaked: UserStakedEvent[];
+    userWithdrawn: UserWithdrawnEvent[];
+    overplusBridged: OverplusBridgedEvent[];
+    calculateOverplusResult: CalculateOverplusResultEvent[];
+    isLoading: boolean;
+    error: Error | null;
+    lastFetchTime: Date | null;
+}
+
 export interface AOUSDSStakingContextType {
     // Connection state
     isConnected: boolean;
@@ -22,8 +60,12 @@ export interface AOUSDSStakingContextType {
     // Staking data
     stakingBalance: StakingBalance;
 
+    // Events data
+    events: EventsData;
+
     // Actions
     refetch: () => Promise<void>;
+    refetchEvents: (fromBlock?: bigint, toBlock?: bigint) => Promise<void>;
 
     // Debug info
     debugInfo: {
