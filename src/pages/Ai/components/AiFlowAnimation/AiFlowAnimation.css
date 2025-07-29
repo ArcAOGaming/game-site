@@ -1,0 +1,214 @@
+/* AI Flow Animation - GAME AI logo following stock graph trajectory */
+.ai-flow-animation {
+    position: relative;
+    width: clamp(250px, 60vw, 400px);
+    height: clamp(200px, 50vw, 300px);
+    pointer-events: none;
+    z-index: 1;
+    margin: clamp(20px, 5vw, 30px) auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    overflow: visible;
+}
+
+/* Visible stock graph line */
+.stock-graph-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.graph-path {
+    animation: drawLine 1s ease-in-out infinite;
+}
+
+@keyframes drawLine {
+    0% {
+        stroke-dashoffset: 100;
+        opacity: 0.4;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+        opacity: 0.8;
+    }
+
+    100% {
+        stroke-dashoffset: -100;
+        opacity: 0.4;
+    }
+}
+
+/* Moving AI Logo following stock graph path */
+.ai-logo-moving {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    width: clamp(60px, 15vw, 90px);
+    height: clamp(60px, 15vw, 90px);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: clamp(2px, 0.5vw, 3px) solid #fff;
+    box-shadow:
+        0 0 clamp(25px, 6vw, 40px) rgba(102, 126, 234, 0.8),
+        inset 0 0 clamp(15px, 4vw, 25px) rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: stockGraphMovement 3s ease-in-out infinite;
+    z-index: 5;
+}
+
+.ai-logo {
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Stock graph movement animation with turbulence */
+@keyframes stockGraphMovement {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+
+    /* Initial steep upward movement */
+    15% {
+        transform: translate(clamp(60px, 15vw, 100px), clamp(-40px, -10vw, -60px)) scale(1.05);
+        opacity: 1;
+    }
+
+    /* Small turbulence dip */
+    25% {
+        transform: translate(clamp(120px, 30vw, 160px), clamp(-30px, -7vw, -45px)) scale(0.95);
+        opacity: 0.9;
+    }
+
+    /* Strong recovery and continued steep upward movement */
+    35% {
+        transform: translate(clamp(160px, 40vw, 240px), clamp(-80px, -20vw, -120px)) scale(1.1);
+        opacity: 1;
+    }
+
+    /* Minor turbulence */
+    45% {
+        transform: translate(clamp(200px, 50vw, 280px), clamp(-70px, -17vw, -105px)) scale(0.98);
+        opacity: 0.95;
+    }
+
+    /* Final steep push to top right */
+    60% {
+        transform: translate(clamp(240px, 60vw, 320px), clamp(-120px, -30vw, -180px)) scale(1.15);
+        opacity: 1;
+    }
+
+    /* Peak movement */
+    80% {
+        transform: translate(clamp(280px, 70vw, 360px), clamp(-160px, -40vw, -240px)) scale(1.2);
+        opacity: 1;
+    }
+
+    /* Fade out and reset */
+    95% {
+        transform: translate(clamp(320px, 80vw, 400px), clamp(-180px, -45vw, -270px)) scale(0.8);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ai-flow-animation {
+        margin: 15px auto;
+    }
+
+    .ai-logo-moving {
+        box-shadow:
+            0 0 clamp(20px, 5vw, 35px) rgba(102, 126, 234, 0.7),
+            inset 0 0 clamp(12px, 3vw, 20px) rgba(255, 255, 255, 0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-flow-animation {
+        margin: 10px auto;
+    }
+
+    .ai-logo-moving {
+        box-shadow:
+            0 0 clamp(15px, 4vw, 25px) rgba(102, 126, 234, 0.6),
+            inset 0 0 clamp(10px, 2vw, 15px) rgba(255, 255, 255, 0.3);
+    }
+
+    /* Adjust animation distances for mobile */
+    @keyframes stockGraphMovement {
+        0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.8;
+        }
+
+        15% {
+            transform: translate(clamp(20px, 6vw, 30px), clamp(-15px, -4vw, -20px)) scale(1.05);
+            opacity: 1;
+        }
+
+        25% {
+            transform: translate(clamp(40px, 12vw, 60px), clamp(-8px, -2vw, -12px)) scale(0.95);
+            opacity: 0.9;
+        }
+
+        35% {
+            transform: translate(clamp(60px, 18vw, 90px), clamp(-30px, -8vw, -40px)) scale(1.1);
+            opacity: 1;
+        }
+
+        45% {
+            transform: translate(clamp(80px, 24vw, 120px), clamp(-22px, -6vw, -30px)) scale(0.98);
+            opacity: 0.95;
+        }
+
+        60% {
+            transform: translate(clamp(100px, 30vw, 150px), clamp(-50px, -13vw, -70px)) scale(1.15);
+            opacity: 1;
+        }
+
+        80% {
+            transform: translate(clamp(120px, 36vw, 180px), clamp(-70px, -18vw, -100px)) scale(1.2);
+            opacity: 1;
+        }
+
+        95% {
+            transform: translate(clamp(140px, 42vw, 210px), clamp(-85px, -22vw, -120px)) scale(0.8);
+            opacity: 0.3;
+        }
+
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .ai-flow-animation {
+        margin: 8px auto;
+    }
+}
+
+/* Performance optimization for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .ai-logo-moving {
+        animation: none;
+        transform: translate(clamp(100px, 25vw, 150px), clamp(-50px, -12vw, -75px));
+        opacity: 0.8;
+    }
+}

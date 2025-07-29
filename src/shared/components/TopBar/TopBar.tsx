@@ -52,6 +52,12 @@ const TopBar = () => {
           {isCurrentPage('/earn') && <div className="topbar-dot"></div>}
         </Link>
 
+        {/* Left-Center: AI Button */}
+        <Link to="/ai" className="topbar-link topbar-link-left-center">
+          <span className="topbar-link-text">AI</span>
+          {isCurrentPage('/ai') && <div className="topbar-dot"></div>}
+        </Link>
+
         {/* Center: Logo */}
         <Link to="/" className="topbar-logo">
           <img src="/logo-white-transparent.png" alt="Game Logo" className="topbar-logo-img" />

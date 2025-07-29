@@ -97,36 +97,47 @@
   display: block;
 }
 
-/* Left positioned link - Close to center */
+/* Left positioned link - Furthest left */
 .topbar-link-left {
   position: absolute;
   left: 50%;
-  transform: translateX(-140px);
+  transform: translateX(-220px);
 }
 
 .topbar-link-left:hover {
-  transform: translateX(-140px) translateY(-2px);
+  transform: translateX(-220px) translateY(-2px);
+}
+
+/* Left-center positioned link - Between left and center */
+.topbar-link-left-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-110px);
+}
+
+.topbar-link-left-center:hover {
+  transform: translateX(-110px) translateY(-2px);
 }
 
 /* Right positioned link - Close to center */
 .topbar-link-right {
   position: absolute;
   right: 50%;
-  transform: translateX(140px);
+  transform: translateX(110px);
 }
 
 .topbar-link-right:hover {
-  transform: translateX(140px) translateY(-2px);
+  transform: translateX(110px) translateY(-2px);
 }
 
 /* Minimalistic dot indicators */
 .topbar-dot {
   width: 4px;
   height: 4px;
-  background: linear-gradient(90deg, 
-    rgba(168, 85, 247, 1) 0%, 
-    rgba(59, 130, 246, 1) 50%, 
-    rgba(6, 182, 212, 1) 100%);
+  background: linear-gradient(90deg,
+      rgba(168, 85, 247, 1) 0%,
+      rgba(59, 130, 246, 1) 50%,
+      rgba(6, 182, 212, 1) 100%);
   border-radius: 50%;
   opacity: 0.8;
   animation: dot-glow 2s ease-in-out infinite;
@@ -142,7 +153,8 @@
 
 /* Override the dot positioning for center logo to account for parent transform */
 .topbar-logo .topbar-dot-center {
-  left: 20px; /* Half of logo width (40px) */
+  left: 20px;
+  /* Half of logo width (40px) */
   transform: none;
 }
 
@@ -152,37 +164,46 @@
     padding: 0 16px;
     height: 60px;
   }
-  
+
   .topbar-logo-img {
     width: 32px;
     height: 32px;
   }
-  
+
   /* Adjust center dot for mobile logo size */
   .topbar-logo .topbar-dot-center {
-    left: 16px; /* Half of mobile logo width (32px) */
+    left: 16px;
+    /* Half of mobile logo width (32px) */
   }
-  
+
   .topbar-link {
     font-size: 0.85rem;
     padding: 8px 14px;
   }
-  
+
   /* Adjust positioning for mobile - account for larger buttons */
   .topbar-link-left {
-    transform: translateX(-100px);
+    transform: translateX(-140px);
   }
-  
+
   .topbar-link-left:hover {
-    transform: translateX(-100px) translateY(-2px);
+    transform: translateX(-140px) translateY(-2px);
   }
-  
+
+  .topbar-link-left-center {
+    transform: translateX(-70px);
+  }
+
+  .topbar-link-left-center:hover {
+    transform: translateX(-70px) translateY(-2px);
+  }
+
   .topbar-link-right {
-    transform: translateX(100px);
+    transform: translateX(70px);
   }
-  
+
   .topbar-link-right:hover {
-    transform: translateX(100px) translateY(-2px);
+    transform: translateX(70px) translateY(-2px);
   }
 }
 
@@ -191,37 +212,46 @@
     padding: 0 12px;
     height: 55px;
   }
-  
+
   .topbar-logo-img {
     width: 28px;
     height: 28px;
   }
-  
+
   /* Adjust center dot for small mobile logo size */
   .topbar-logo .topbar-dot-center {
-    left: 14px; /* Half of small mobile logo width (28px) */
+    left: 14px;
+    /* Half of small mobile logo width (28px) */
   }
-  
+
   .topbar-link {
     font-size: 0.75rem;
     padding: 6px 10px;
   }
-  
+
   /* Closer positioning for small mobile */
   .topbar-link-left {
-    transform: translateX(-75px);
+    transform: translateX(-105px);
   }
-  
+
   .topbar-link-left:hover {
-    transform: translateX(-75px) translateY(-2px);
+    transform: translateX(-105px) translateY(-2px);
   }
-  
+
+  .topbar-link-left-center {
+    transform: translateX(-52px);
+  }
+
+  .topbar-link-left-center:hover {
+    transform: translateX(-52px) translateY(-2px);
+  }
+
   .topbar-link-right {
-    transform: translateX(75px);
+    transform: translateX(52px);
   }
-  
+
   .topbar-link-right:hover {
-    transform: translateX(75px) translateY(-2px);
+    transform: translateX(52px) translateY(-2px);
   }
 }
 
@@ -231,6 +261,7 @@
     transform: translateY(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -242,6 +273,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(-100%);
     opacity: 0;
@@ -259,10 +291,13 @@
 
 /* Dot glow animation */
 @keyframes dot-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
