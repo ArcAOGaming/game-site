@@ -10,7 +10,7 @@ const FIXED_TOTAL_SUPPLY = new BigNumber('1000000000000000000000000000'); // 1B 
 // Wallet addresses to exclude from circulation calculation
 const EXCLUDED_WALLETS = [
     'nYHhoSEtelyL3nQ6_CFoOVnZfnz2VHK-nEez962YMm8',
-    'N90q65iT59dCo01-gtZRUlLMX0w6_ylFHv2uHaSUFNk'
+    '4beBWZx0B1_v15p0RO0zPpxM042IzgEeJQ0FP5j5gng'
 ];
 
 export const GameTokenProvider: React.FC<GameTokenProviderProps> = ({ children }) => {
