@@ -23,23 +23,20 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
       }
     };
 
-    const formatAddress = (address: string) => {
-      return `${address.slice(0, 3)}...${address.slice(-3)}`;
-    };
     return (
-      <section 
+      <section
         ref={ref}
-        id="mint" 
+        id="mint"
         className={`mint-section ${className}`}
       >
         {/* Animated background layers */}
         <div className="mint-bg-layer-1"></div>
         <div className="mint-bg-layer-2"></div>
         <div className="mint-bg-layer-3"></div>
-        
+
         {/* Grid overlay */}
         <div className="mint-grid-overlay"></div>
-        
+
         {/* Treasure Elements */}
         <div className="treasure-element treasure-chest-1">🏴‍☠️</div>
         <div className="treasure-element treasure-chest-2">💰</div>
@@ -54,7 +51,7 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
           <div className="mint-particle-3"></div>
           <div className="mint-particle-4"></div>
           <div className="mint-particle-5"></div>
-          
+
           {/* Geometric shapes */}
           <div className="mint-shape-1"></div>
           <div className="mint-shape-2"></div>
@@ -64,11 +61,11 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
 
         <div className="mint-content">
           <h2 className="mint-title">MINT $GAME</h2>
-          
+
           {/* Coin Flow Animation */}
           <CoinFlowAnimation />
           <p className="mint-description">
-            Join the fair launch of $GAME token with the same release rate as <a href="https://bitcoin.org" target="_blank" rel="noopener noreferrer" className="bitcoin-link">Bitcoin</a>. 
+            Join the fair launch of $GAME token with the same release rate as <a href="https://bitcoin.org" target="_blank" rel="noopener noreferrer" className="bitcoin-link">Bitcoin</a>.
             Secure your position in the future of gaming finance.
           </p>
 
@@ -92,7 +89,7 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
                   <p>No pre-mine, no insider allocations. Everyone gets the same opportunity to participate in the $GAME token launch.</p>
                 </div>
               </div>
-              
+
               <div className="mint-feature">
                 <div className="mint-feature-icon">🔒</div>
                 <div className="mint-feature-content">
@@ -100,7 +97,7 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
                   <p>Built on <a href={AO.website} target="_blank" rel="noopener noreferrer" className="ao-link">Arweave AO fairlaunch</a> with proven security and decentralization for maximum trust and reliability.</p>
                 </div>
               </div>
-              
+
               <div className="mint-feature">
                 <div className="mint-feature-icon">💰</div>
                 <div className="mint-feature-content">
@@ -117,34 +114,22 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
                 </div>
                 <h3 className="mint-token-title">$GAME Token</h3>
                 <p className="mint-token-supply">Fair Launch • Deflationary</p>
-                
-                {/* Contract Verification Section */}
+
+                {/* Contract Address Section */}
                 <div className="contract-verification-section">
                   <div className="contract-info">
                     <span className="contract-label">Contract Address</span>
                     <div className="contract-actions">
-                      <button 
-                        className="contract-address-btn"
+                      <button
+                        className="contract-address-btn expanded"
                         onClick={handleCopyAddress}
                         title="Click to copy full address"
                       >
                         <span className="contract-address-text">
-                          {formatAddress(CONTRACT_ADDRESSES.GAME_TOKEN)}
+                          {CONTRACT_ADDRESSES.GAME_TOKEN}
                         </span>
                         <span className="copy-icon">📋</span>
                       </button>
-                      <div className="branta-verify-wrapper">
-                        <a 
-                          href={EXTERNAL_LINKS.BRANTA_VERIFY}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="branta-verify-btn"
-                          title="Verify contract on Branta"
-                        >
-                          <span>Verify</span>
-                          <img src="/branta-logo-white.svg" alt="Branta" className="branta-logo" />
-                        </a>
-                      </div>
                     </div>
                     {copySuccess && <span className="copy-success">Address copied to clipboard!</span>}
                   </div>
@@ -152,7 +137,7 @@ const MintSection = forwardRef<HTMLElement, MintSectionProps>(
 
                 {/* Botega Buy Section */}
                 <div className="botega-buy-section">
-                  <a 
+                  <a
                     href={EXTERNAL_LINKS.BOTEGA_BUY}
                     target="_blank"
                     rel="noopener noreferrer"
