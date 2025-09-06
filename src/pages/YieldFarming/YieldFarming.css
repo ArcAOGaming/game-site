@@ -1,0 +1,63 @@
+/* Yield Farming Page Styles */
+
+.yield-farming-page {
+    background:
+        /* Ownership section - Purple to Blue gradient */
+        linear-gradient(180deg,
+            /* Ownership theme - Purple/Blue representing ownership */
+            rgba(142, 68, 173, 0.15) 0%,
+            rgba(142, 68, 173, 0.1) 30%,
+            rgba(52, 152, 219, 0.1) 50%,
+            rgba(52, 152, 219, 0.15) 70%,
+
+            /* Earning section - Golden/Amber theme */
+            rgba(245, 158, 11, 0.1) 75%,
+            rgba(245, 158, 11, 0.15) 85%,
+            rgba(245, 158, 11, 0.1) 100%),
+        /* Base dark background */
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+    background-attachment: fixed;
+    color: var(--text-gaming);
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.yield-farming-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 100px 100px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.yield-farming-page>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+}
+
+.hero-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}

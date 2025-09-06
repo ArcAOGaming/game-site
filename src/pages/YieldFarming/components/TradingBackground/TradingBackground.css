@@ -1,0 +1,329 @@
+/* Trading Background Component Styles */
+
+/* Trading Background Layers */
+.trading-bg-layer-1 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(142, 68, 173, 0.3) 0%,
+            rgba(52, 152, 219, 0.2) 50%,
+            rgba(245, 158, 11, 0.3) 100%);
+}
+
+.trading-bg-layer-2 {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%,
+            rgba(142, 68, 173, 0.15) 0%,
+            transparent 50%),
+        radial-gradient(circle at 70% 30%,
+            rgba(245, 158, 11, 0.15) 0%,
+            transparent 50%);
+}
+
+.trading-flow-layer {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(45deg, transparent 48%, rgba(142, 68, 173, 0.1) 49%, rgba(142, 68, 173, 0.1) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(52, 152, 219, 0.1) 49%, rgba(52, 152, 219, 0.1) 51%, transparent 52%);
+    background-size: 200px 200px, 150px 150px;
+    animation: trading-flow 15s linear infinite;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+/* Trading Data Streams */
+.trading-streams {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.data-stream {
+    position: absolute;
+    width: clamp(1px, 0.3vw, 3px);
+    height: clamp(60px, 15vw, 120px);
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(245, 158, 11, 0.8) 50%,
+            transparent 100%);
+    animation: stream-flow 3s linear infinite;
+}
+
+/* Mobile stream adjustments */
+@media (max-width: 767px) {
+    .data-stream {
+        width: 1.5px;
+        height: 80px;
+    }
+}
+
+/* Ultra-wide stream adjustments */
+@media (min-width: 1440px) {
+    .data-stream {
+        width: 3px;
+        height: 140px;
+    }
+}
+
+.data-stream.stream-1 {
+    left: 15%;
+    animation-delay: 0s;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(142, 68, 173, 0.8) 50%,
+            transparent 100%);
+}
+
+.data-stream.stream-2 {
+    left: 35%;
+    animation-delay: 0.6s;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(52, 152, 219, 0.8) 50%,
+            transparent 100%);
+}
+
+.data-stream.stream-3 {
+    left: 55%;
+    animation-delay: 1.2s;
+}
+
+.data-stream.stream-4 {
+    left: 75%;
+    animation-delay: 1.8s;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(142, 68, 173, 0.8) 50%,
+            transparent 100%);
+}
+
+.data-stream.stream-5 {
+    left: 85%;
+    animation-delay: 2.4s;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(52, 152, 219, 0.8) 50%,
+            transparent 100%);
+}
+
+/* Trading Elements */
+.trading-elements {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.trading-node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(60px, 12vw, 100px);
+    height: clamp(30px, 6vw, 50px);
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(142, 68, 173, 0.3);
+    border-radius: clamp(6px, 1vw, 12px);
+    backdrop-filter: blur(8px);
+    animation: node-float 4s ease-in-out infinite;
+}
+
+/* Mobile node adjustments */
+@media (max-width: 767px) {
+    .trading-node {
+        width: 70px;
+        height: 35px;
+        border-radius: 8px;
+    }
+}
+
+/* Tablet node adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .trading-node {
+        width: 85px;
+        height: 42px;
+        border-radius: 10px;
+    }
+}
+
+/* Ultra-wide node adjustments */
+@media (min-width: 1440px) {
+    .trading-node {
+        width: 120px;
+        height: 60px;
+        border-radius: 16px;
+    }
+}
+
+.trading-node.node-1 {
+    top: 20%;
+    left: clamp(5%, 10vw, 15%);
+    border-color: rgba(142, 68, 173, 0.5);
+    animation-delay: 0s;
+}
+
+.trading-node.node-2 {
+    top: 60%;
+    right: clamp(10%, 15vw, 20%);
+    border-color: rgba(245, 158, 11, 0.5);
+    animation-delay: 1s;
+}
+
+.trading-node.node-3 {
+    top: 40%;
+    left: clamp(65%, 70vw, 75%);
+    border-color: rgba(52, 152, 219, 0.5);
+    animation-delay: 2s;
+}
+
+.trading-node.node-4 {
+    bottom: 30%;
+    left: clamp(15%, 20vw, 25%);
+    border-color: rgba(245, 158, 11, 0.5);
+    animation-delay: 3s;
+}
+
+/* Mobile node positioning adjustments */
+@media (max-width: 767px) {
+    .trading-node.node-1 {
+        top: 25%;
+        left: 8%;
+    }
+
+    .trading-node.node-2 {
+        top: 65%;
+        right: 8%;
+    }
+
+    .trading-node.node-3 {
+        top: 45%;
+        left: 65%;
+    }
+
+    .trading-node.node-4 {
+        bottom: 35%;
+        left: 15%;
+    }
+}
+
+/* Ultra-wide node positioning adjustments */
+@media (min-width: 1440px) {
+    .trading-node.node-1 {
+        top: 18%;
+        left: 12%;
+    }
+
+    .trading-node.node-2 {
+        top: 58%;
+        right: 18%;
+    }
+
+    .trading-node.node-3 {
+        top: 38%;
+        left: 72%;
+    }
+
+    .trading-node.node-4 {
+        bottom: 28%;
+        left: 22%;
+    }
+}
+
+.node-pulse {
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: inherit;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.node-value {
+    position: relative;
+    z-index: 10;
+    font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* Mobile node value adjustments */
+@media (max-width: 767px) {
+    .node-value {
+        font-size: 0.7rem;
+    }
+}
+
+/* Ultra-wide node value adjustments */
+@media (min-width: 1440px) {
+    .node-value {
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes trading-flow {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 200px 200px, -150px -150px;
+    }
+}
+
+@keyframes stream-flow {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes node-float {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
