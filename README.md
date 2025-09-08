@@ -1,6 +1,6 @@
-# ArcAO Front End Template
+# ARC Front End Template
 
-This template is part of [ArcAO Templates](https://github.com/orgs/ArcAOGaming/repositories?q=template%3Atrue+archived%3Afalse), designed to help you get your game idea up and running fast!
+This template is part of [ARC Templates](https://github.com/orgs/ArcAOGaming/repositories?q=template%3Atrue+archived%3Afalse), designed to help you get your game idea up and running fast!
 
 <div align="center">
 

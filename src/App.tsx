@@ -9,6 +9,7 @@ import Home from './pages/Home/Home'
 // Create routes with automatic eager loading
 const Mint = createRoute(() => import('./pages/Mint/Mint'))
 const Earn = createRoute(() => import('./pages/Earn/Earn'))
+const YieldFarming = createRoute(() => import('./pages/YieldFarming/YieldFarming'))
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                                     <Route path="/" element={<Home />} />
                                     <Route path="/mint" element={<Mint />} />
                                     <Route path="/earn" element={<Earn />} />
+                                    <Route path="/yield-farming" element={<YieldFarming />} />
                                   </Routes>
                                 </Suspense>
                               </Layout>

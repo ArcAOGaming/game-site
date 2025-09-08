@@ -79,7 +79,7 @@ const Earn = () => {
         <EarnCoinFlowAnimation />
         <p className="earn-description">
           Multiple ways to earn rewards and build your gaming empire. Play, stream, refer, and lead
-          your way to success in the ARCAO ecosystem.
+          your way to success in the ARC Gaming ecosystem.
         </p>
 
         <div className="earn-rewards">
@@ -89,7 +89,7 @@ const Earn = () => {
             <h3 className="earn-reward-title">Stream & Create</h3>
             <div className="earn-reward-amount">Get Paid</div>
             <p className="earn-reward-description">
-              Get paid to stream ARCAO games and create content. Join our creator program and earn
+              Get paid to stream ARC games and create content. Join our creator program and earn
               revenue sharing, sponsorship opportunities, and exclusive creator rewards.
             </p>
           </div>
@@ -99,17 +99,17 @@ const Earn = () => {
             <h3 className="earn-reward-title">Affiliate Sales</h3>
             <div className="earn-reward-amount">Commission</div>
             <p className="earn-reward-description">
-              Earn commission on game sales through your unique affiliate codes. Share ARCAO games
+              Earn commission on game sales through your unique affiliate codes. Share ARC games
               with your network and earn a percentage of every sale you generate.
             </p>
           </div>
 
           <div className="earn-reward-card earn-reward-card-clickable ambassador-card" onClick={handleAmbassadorClick}>
             <span className="earn-reward-icon">👑</span>
-            <h3 className="earn-reward-title">ARCAO Ambassador</h3>
+            <h3 className="earn-reward-title">ARC Ambassador</h3>
             <div className="earn-reward-amount">Leadership</div>
             <p className="earn-reward-description">
-              Apply to become an official ARCAO Ambassador. Lead the community, represent the brand,
+              Apply to become an official ARC Ambassador. Lead the community, represent the brand,
               and unlock exclusive benefits, early access, and leadership opportunities.
             </p>
             <div className="ambassador-hover-text">Apply Now</div>
@@ -118,9 +118,9 @@ const Earn = () => {
 
         {/* Ambassador Application Section */}
         <div className="ambassador-application">
-          <h2 className="ambassador-section-title">Apply to Become an ARCAO Ambassador</h2>
+          <h2 className="ambassador-section-title">Apply to Become an ARC Ambassador</h2>
           <p className="ambassador-section-description">
-            Ready to lead the ARCAO community? Fill out the application below to join our elite Ambassador program.
+            Ready to lead the ARC community? Fill out the application below to join our elite Ambassador program.
           </p>
           <div className="ambassador-form-container">
             <iframe

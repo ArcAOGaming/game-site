@@ -23,14 +23,14 @@ const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) => {
   const stats: StatItem[] = [
     {
       value: 10000,
-      label: 'Active Players',
+      label: 'Players',
       color: 'purple',
       suffix: '+',
       animate: true
     },
     {
       value: 2000000,
-      label: 'Fair Launch Deposits',
+      label: 'Deposits',
       color: 'cyan',
       prefix: '$',
       suffix: '+',
@@ -123,15 +123,15 @@ const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) => {
 
   return (
     <div ref={sectionRef} className={`stats-section ${className}`}>
-      <div className="hero-stats">
+      <div className="play-hero-stats">
         {stats.map((stat, index) => (
-          <div key={index} className="stat-item">
-            <div className={`stat-number ${stat.color}`}>
+          <div key={index} className="play-stat-item">
+            <div className={`play-stat-number ${stat.color}`}>
               {stat.prefix || ''}
               {getDisplayValue(stat, index)}
               {stat.suffix || ''}
             </div>
-            <div className="stat-label">{stat.label}</div>
+            <div className="play-stat-label">{stat.label}</div>
           </div>
         ))}
       </div>
