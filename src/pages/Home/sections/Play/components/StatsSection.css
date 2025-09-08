@@ -12,32 +12,36 @@
 }
 
 /* Stats Grid */
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 512px;
+.play-hero-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
   margin: 0 auto;
+  width: 100%;
 }
 
-.stat-item {
+.play-stat-item {
   text-align: center;
   position: relative;
-  padding: 16px;
+  padding: 12px 8px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
+  flex: 1;
+  min-width: 0;
 }
 
-.stat-item:hover {
+.play-stat-item:hover {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.stat-number {
+.play-stat-number {
   font-size: 1.875rem;
   font-weight: 700;
   margin-bottom: 4px;
@@ -48,19 +52,19 @@
   transition: all 0.3s ease;
 }
 
-.stat-number.purple {
+.play-stat-number.purple {
   color: var(--gaming-purple);
 }
 
-.stat-number.cyan {
+.play-stat-number.cyan {
   color: var(--gaming-cyan);
 }
 
-.stat-number.pink {
+.play-stat-number.pink {
   color: var(--gaming-pink);
 }
 
-.stat-label {
+.play-stat-label {
   font-size: 0.875rem;
   color: #9ca3af;
   text-transform: uppercase;
@@ -69,45 +73,47 @@
 }
 
 /* Glow effect on hover */
-.stat-item:hover .stat-number.purple {
+.play-stat-item:hover .play-stat-number.purple {
   text-shadow: 0 0 20px var(--gaming-purple);
 }
 
-.stat-item:hover .stat-number.cyan {
+.play-stat-item:hover .play-stat-number.cyan {
   text-shadow: 0 0 20px var(--gaming-cyan);
 }
 
-.stat-item:hover .stat-number.pink {
+.play-stat-item:hover .play-stat-number.pink {
   text-shadow: 0 0 20px var(--gaming-pink);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .hero-stats {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    max-width: 300px;
+  .play-hero-stats {
+    gap: 12px;
   }
-  
-  .stat-number {
+
+  .play-stat-number {
     font-size: 1.5rem;
   }
-  
-  .stat-item {
-    padding: 12px;
+
+  .play-stat-item {
+    padding: 10px 6px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-stats {
-    gap: 16px;
+  .play-hero-stats {
+    gap: 8px;
   }
-  
-  .stat-number {
+
+  .play-stat-number {
     font-size: 1.25rem;
   }
-  
-  .stat-label {
+
+  .play-stat-label {
     font-size: 0.75rem;
+  }
+
+  .play-stat-item {
+    padding: 8px 4px;
   }
 }

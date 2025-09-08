@@ -1,0 +1,279 @@
+/* Gamer Loader - Futuristic Gaming Style */
+.gamer-loader {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Size variants */
+.gamer-loader--small {
+    --loader-size: 24px;
+    --text-size: 12px;
+}
+
+.gamer-loader--medium {
+    --loader-size: 32px;
+    --text-size: 14px;
+}
+
+.gamer-loader--large {
+    --loader-size: 48px;
+    --text-size: 16px;
+}
+
+/* Color variants */
+.gamer-loader--primary {
+    --primary-color: #00ff88;
+    --secondary-color: #0088ff;
+    --accent-color: #ff0088;
+    --glow-color: rgba(0, 255, 136, 0.6);
+}
+
+.gamer-loader--secondary {
+    --primary-color: #ff6b35;
+    --secondary-color: #f7931e;
+    --accent-color: #ffcc02;
+    --glow-color: rgba(255, 107, 53, 0.6);
+}
+
+.gamer-loader--accent {
+    --primary-color: #8b5cf6;
+    --secondary-color: #a855f7;
+    --accent-color: #c084fc;
+    --glow-color: rgba(139, 92, 246, 0.6);
+}
+
+/* Spinner container */
+.gamer-loader__spinner {
+    position: relative;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Outer ring with segments */
+.gamer-loader__ring--outer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: gamer-spin 2s linear infinite;
+}
+
+.gamer-loader__segment {
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    background: linear-gradient(180deg, var(--primary-color), transparent);
+    border-radius: 2px;
+    transform-origin: 50% calc(var(--loader-size) / 2);
+    box-shadow: 0 0 8px var(--glow-color);
+}
+
+.gamer-loader__segment:nth-child(1) {
+    transform: rotate(0deg) translateY(calc(var(--loader-size) / -2 + 2px));
+}
+
+.gamer-loader__segment:nth-child(2) {
+    transform: rotate(90deg) translateY(calc(var(--loader-size) / -2 + 2px));
+}
+
+.gamer-loader__segment:nth-child(3) {
+    transform: rotate(180deg) translateY(calc(var(--loader-size) / -2 + 2px));
+}
+
+.gamer-loader__segment:nth-child(4) {
+    transform: rotate(270deg) translateY(calc(var(--loader-size) / -2 + 2px));
+}
+
+/* Inner ring with dots */
+.gamer-loader__ring--inner {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    animation: gamer-spin-reverse 1.5s linear infinite;
+}
+
+.gamer-loader__dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--secondary-color);
+    transform-origin: 50% calc(var(--loader-size) * 0.35 / 2);
+}
+
+.gamer-loader__dot:nth-child(1) {
+    transform: rotate(0deg) translateY(calc(var(--loader-size) * 0.35 / -2 + 1.5px));
+    animation: gamer-pulse 1s ease-in-out infinite;
+}
+
+.gamer-loader__dot:nth-child(2) {
+    transform: rotate(120deg) translateY(calc(var(--loader-size) * 0.35 / -2 + 1.5px));
+    animation: gamer-pulse 1s ease-in-out infinite 0.33s;
+}
+
+.gamer-loader__dot:nth-child(3) {
+    transform: rotate(240deg) translateY(calc(var(--loader-size) * 0.35 / -2 + 1.5px));
+    animation: gamer-pulse 1s ease-in-out infinite 0.66s;
+}
+
+/* Core pulse */
+.gamer-loader__core {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gamer-loader__pulse {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--accent-color), transparent 70%);
+    border-radius: 50%;
+    animation: gamer-core-pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 12px var(--accent-color);
+}
+
+/* Text styling */
+.gamer-loader__text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--text-size);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px var(--glow-color);
+}
+
+.gamer-loader__text-content {
+    white-space: nowrap;
+}
+
+.gamer-loader__text-dots {
+    display: flex;
+    gap: 1px;
+}
+
+.gamer-loader__text-dots span {
+    animation: gamer-dot-blink 1.5s ease-in-out infinite;
+}
+
+.gamer-loader__text-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.gamer-loader__text-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.gamer-loader__text-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Animations */
+@keyframes gamer-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gamer-spin-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes gamer-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes gamer-core-pulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes gamer-dot-blink {
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.3;
+    }
+
+    30% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gamer-loader--large {
+        --loader-size: 40px;
+        --text-size: 14px;
+    }
+
+    .gamer-loader--medium {
+        --loader-size: 28px;
+        --text-size: 12px;
+    }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .gamer-loader {
+        filter: brightness(1.1) contrast(1.1);
+    }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .gamer-loader__ring--outer,
+    .gamer-loader__ring--inner {
+        animation-duration: 4s;
+    }
+
+    .gamer-loader__pulse,
+    .gamer-loader__dot {
+        animation-duration: 3s;
+    }
+}

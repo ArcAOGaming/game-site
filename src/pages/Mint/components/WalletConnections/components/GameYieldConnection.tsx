@@ -2,7 +2,7 @@ import React from 'react';
 import { useDelegation } from '../../../../../shared/contexts/AODelegationContext';
 import { useArweaveAOWallet } from '../../../../../shared/contexts/ArweaveAOWallet';
 import { useGameFLP } from '../../../../../shared/contexts/GameFLP';
-import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
+import { PROCESS_IDS } from 'ao-js-sdk';
 import { formatTokenAmount } from '../../../../../utils/formatting';
 import FlipLogo from './FlipLogo';
 
@@ -13,7 +13,7 @@ const GameYieldConnection: React.FC = () => {
 
     // Find the GAME delegation
     const gameDelegation = delegations.find(
-        delegation => delegation.delegatee === AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME
+        delegation => delegation.delegatee === PROCESS_IDS.AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME
     );
 
     const gamePercentage = gameDelegation ? parseFloat(gameDelegation.percentage) : 0;

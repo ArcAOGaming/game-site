@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { PIDelegateClient } from 'ao-js-sdk';
-import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
+import { PROCESS_IDS } from 'ao-js-sdk';
 import { useArweaveAOWallet } from '../ArweaveAOWallet';
 import { Delegation, DelegationProviderProps } from './types';
 import { DelegationContext } from './AODelegationContext';
@@ -73,7 +73,7 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
             // First, set all existing delegations to 0% (except GAME)
             for (const delegation of delegations) {
                 // Skip if it's already the GAME delegation
-                if (delegation.delegatee === AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME) continue;
+                if (delegation.delegatee === PROCESS_IDS.AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME) continue;
 
                 clearDelegationPromises.push(
                     client.setDelegation({
@@ -90,7 +90,7 @@ export const DelegationProvider: React.FC<DelegationProviderProps> = ({ children
             // Only after all other delegations are cleared, set GAME to 100%
             await client.setDelegation({
                 walletFrom: address,
-                walletTo: AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME,
+                walletTo: PROCESS_IDS.AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME,
                 factor: 10000 // 100% in basis points
             });
 

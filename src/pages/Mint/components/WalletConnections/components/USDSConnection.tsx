@@ -4,7 +4,7 @@ import { useAppKit, useAppKitAccount } from '@reown/appkit/react';
 import { useAccount, useBalance, useWriteContract, useWaitForTransactionReceipt, useReadContract } from 'wagmi';
 import { formatEther, parseEther } from 'viem';
 import { useAOUSDSStaking, useArweaveAOWallet, useDelegation } from '../../../../../shared/contexts';
-import { AUTONOMOUS_FINANCE } from 'ao-js-sdk/src/processes/ids/autonomous-finance';
+import { PROCESS_IDS } from 'ao-js-sdk';
 import { usdsStaking, USDS_TOKEN_ADDRESS } from '../../../../../utils/AO/USDSStaking';
 import { ERC20_ABI } from '../../../../../utils/AO/shared/erc20Abi';
 
@@ -78,7 +78,7 @@ const USDSConnection: React.FC = () => {
 
             // Only set GAME delegation if not already at 100%
             const gameDelegation = delegations.find(
-                delegation => delegation.delegatee === AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME
+                delegation => delegation.delegatee === PROCESS_IDS.AUTONOMOUS_FINANCE.FAIR_LAUNCH_PROCESSES.GAME
             );
             const gamePercentage = gameDelegation ? parseFloat(gameDelegation.percentage) : 0;
 
