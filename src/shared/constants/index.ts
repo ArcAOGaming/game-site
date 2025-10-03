@@ -8,3 +8,5 @@ export const EXTERNAL_LINKS = {
 export const CONTRACT_ADDRESSES = {
   GAME_TOKEN: 's6jcB3ctSbiDNwR-paJgy5iOAhahXahLul8exSLHbGE'
 } as const;
+
+export * from './partners';

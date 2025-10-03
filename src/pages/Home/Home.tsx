@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './Home.css';
-import { PlaySection, OwnSection, CreateSection, MintSection, EarnSection, FooterSection } from './sections';
+import { PlaySection, OwnSection, CreateSection, MintSection, EarnSection, PartnersSection, FooterSection } from './sections';
 
 function Home() {
   const playRef = useRef<HTMLElement>(null);
@@ -8,6 +8,7 @@ function Home() {
   const earnRef = useRef<HTMLElement>(null);
   const createRef = useRef<HTMLElement>(null);
   const mintRef = useRef<HTMLElement>(null);
+  const partnersRef = useRef<HTMLElement>(null);
   const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function Home() {
       });
     }, observerOptions);
 
-    const sections = [ownRef.current, earnRef.current, createRef.current, mintRef.current, footerRef.current];
+    const sections = [ownRef.current, earnRef.current, createRef.current, mintRef.current, partnersRef.current, footerRef.current];
     sections.forEach((section) => {
       if (section) {
         observer.observe(section);
@@ -61,6 +62,9 @@ function Home() {
 
       {/* Mint Section */}
       <MintSection ref={mintRef} />
+
+      {/* Partners Section */}
+      <PartnersSection ref={partnersRef} />
 
       {/* Footer Section */}
       <FooterSection ref={footerRef} />

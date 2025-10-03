@@ -1,0 +1,563 @@
+/* Partners Section Styles - Partnership/Teal Theme */
+.partners-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+    padding: 60px 0 40px;
+}
+
+.partners-section.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Partners Section Animated Backgrounds - Unique Partnership Network Theme */
+.partners-bg-layer-1 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(20, 184, 166, 0.2) 0%,
+            rgba(6, 182, 212, 0.15) 50%,
+            rgba(14, 165, 233, 0.2) 100%);
+}
+
+.partners-bg-layer-2 {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%,
+            rgba(6, 182, 212, 0.15) 0%,
+            transparent 60%);
+}
+
+.partners-bg-layer-3 {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(13, 148, 136, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 25%);
+    animation: network-pulse-bg 8s ease-in-out infinite;
+}
+
+/* Floating Partnership Elements */
+.partnership-element {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.network-1 {
+    top: 15%;
+    left: 15%;
+    animation: network-pulse 7s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.network-2 {
+    bottom: 20%;
+    right: 20%;
+    animation: network-pulse 8s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.handshake-1 {
+    top: 25%;
+    right: 15%;
+    animation: handshake-bounce 6s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.handshake-2 {
+    bottom: 35%;
+    left: 10%;
+    animation: handshake-bounce 7s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.partners-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+    background-size: 65px 65px;
+    opacity: 0.4;
+}
+
+/* Partners Section Floating Particles - Teal Theme */
+.partners-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.partners-particle-1 {
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(45deg, rgba(20, 184, 166, 0.7), rgba(6, 182, 212, 0.7));
+    border-radius: 50%;
+    box-shadow: 0 0 24px rgba(20, 184, 166, 0.5);
+    animation: partnership-float 4s ease-in-out infinite;
+}
+
+.partners-particle-2 {
+    position: absolute;
+    top: 60%;
+    right: 18%;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, rgba(6, 182, 212, 0.7), rgba(14, 165, 233, 0.7));
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.5);
+    animation: partnership-float 3.2s ease-in-out infinite reverse;
+}
+
+.partners-particle-3 {
+    position: absolute;
+    bottom: 30%;
+    left: 75%;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(45deg, rgba(14, 165, 233, 0.7), rgba(20, 184, 166, 0.7));
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+    animation: partnership-float 4.5s ease-in-out infinite;
+}
+
+.partners-particle-4 {
+    position: absolute;
+    top: 45%;
+    left: 8%;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(45deg, rgba(13, 148, 136, 0.7), rgba(6, 182, 212, 0.7));
+    border-radius: 50%;
+    box-shadow: 0 0 14px rgba(13, 148, 136, 0.5);
+    animation: partnership-float 3.5s ease-in-out infinite;
+}
+
+.partners-particle-5 {
+    position: absolute;
+    bottom: 25%;
+    right: 65%;
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(45deg, rgba(6, 182, 212, 0.6), rgba(20, 184, 166, 0.6));
+    border-radius: 50%;
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.4);
+    animation: partnership-float 5s ease-in-out infinite reverse;
+}
+
+/* Partners Section Geometric Shapes - Partnership Theme */
+.partners-shape-1 {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(45deg, rgba(20, 184, 166, 0.25), rgba(6, 182, 212, 0.25));
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: partnership-glow 5.5s ease-in-out infinite;
+}
+
+.partners-shape-2 {
+    position: absolute;
+    bottom: 40%;
+    left: 6%;
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgba(6, 182, 212, 0.4);
+    transform: rotate(45deg);
+    animation: partnership-pulse 3.5s ease-in-out infinite;
+}
+
+.partners-shape-3 {
+    position: absolute;
+    top: 65%;
+    right: 78%;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg,
+            rgba(6, 182, 212, 0.3),
+            rgba(14, 165, 233, 0.3));
+    border-radius: 50%;
+    animation: partnership-bounce 2.2s infinite;
+    animation-delay: 0.4s;
+}
+
+.partners-shape-4 {
+    position: absolute;
+    top: 38%;
+    left: 3%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(13, 148, 136, 0.5);
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: partnership-ping 5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.partners-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.partners-content {
+    text-align: center;
+}
+
+.partners-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 32px;
+    background: linear-gradient(90deg,
+            var(--gaming-cyan) 0%,
+            rgba(20, 184, 166, 1) 50%,
+            rgba(14, 165, 233, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Partners Grid - Optimized Layout for 13 Partners */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    max-width: 950px;
+    margin: 0 auto 40px;
+    justify-items: center;
+}
+
+.partner-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.partner-item:hover {
+    transform: translateY(-6px) scale(1.05);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 15px 30px -8px rgba(6, 182, 212, 0.3);
+}
+
+.partner-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(6, 182, 212, 0.08),
+            rgba(20, 184, 166, 0.08),
+            rgba(14, 165, 233, 0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 16px;
+}
+
+.partner-item:hover::before {
+    opacity: 1;
+}
+
+.partner-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    filter: brightness(0.85) grayscale(0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.partner-item:hover .partner-logo {
+    filter: brightness(1.1) grayscale(0) drop-shadow(0 0 10px rgba(6, 182, 212, 0.4));
+    transform: scale(1.1);
+}
+
+/* Partners Stats - Compact */
+.partners-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-number.teal {
+    color: rgba(20, 184, 166, 1);
+}
+
+.stat-number.cyan {
+    color: var(--gaming-cyan);
+}
+
+.stat-number.emerald {
+    color: rgba(16, 185, 129, 1);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Responsive Design for 13 Partners */
+@media (max-width: 1200px) {
+    .partners-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partners-section {
+        padding: 40px 0 30px;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        max-width: 480px;
+        margin-bottom: 32px;
+    }
+
+    .partner-item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .partner-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .partners-stats {
+        gap: 20px;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-section {
+        padding: 30px 0 20px;
+    }
+
+    .partners-title {
+        margin-bottom: 24px;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        max-width: 300px;
+        margin-bottom: 24px;
+    }
+
+    .partner-item {
+        width: 70px;
+        height: 70px;
+    }
+
+    .partner-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .partners-stats {
+        gap: 16px;
+        max-width: 300px;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 240px;
+    }
+
+    .partner-item {
+        width: 60px;
+        height: 60px;
+    }
+
+    .partner-logo {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Animations */
+@keyframes network-pulse-bg {
+
+    0%,
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    25% {
+        opacity: 0.8;
+        filter: brightness(1.1);
+    }
+
+    50% {
+        opacity: 0.9;
+        filter: brightness(1.2);
+    }
+
+    75% {
+        opacity: 0.85;
+        filter: brightness(1.05);
+    }
+}
+
+@keyframes partnership-float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: translateY(-10px) rotate(90deg) scale(1.03);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(180deg) scale(1);
+    }
+
+    75% {
+        transform: translateY(-6px) rotate(270deg) scale(1.02);
+    }
+}
+
+@keyframes network-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+    }
+
+    25% {
+        opacity: 0.5;
+        transform: translateY(-8px) translateX(6px) scale(1.08) rotate(45deg);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translateY(-12px) translateX(-4px) scale(1.12) rotate(90deg);
+    }
+
+    75% {
+        opacity: 0.4;
+        transform: translateY(-6px) translateX(-10px) scale(1.04) rotate(135deg);
+    }
+}
+
+@keyframes handshake-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.08) rotate(8deg);
+    }
+}
+
+@keyframes partnership-glow {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        filter: brightness(1) drop-shadow(0 0 6px rgba(6, 182, 212, 0.25));
+    }
+
+    50% {
+        opacity: 0.5;
+        filter: brightness(1.2) drop-shadow(0 0 12px rgba(6, 182, 212, 0.4));
+    }
+}
+
+@keyframes partnership-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.08);
+    }
+}
+
+@keyframes partnership-bounce {
+
+    0%,
+    100% {
+        transform: translateY(-20%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@keyframes partnership-ping {
+
+    75%,
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
