@@ -21,6 +21,31 @@ const ArweaveConnection: React.FC = () => {
         return `${addr.slice(0, 3)}...${addr.slice(-3)}`;
     };
 
+    // If not connected, show minimized view
+    if (!isConnected) {
+        return (
+            <div className="wallet-connection-card wallet-connection-card-minimized">
+                <div className="wallet-connection-header">
+                    <div className="wallet-connection-icon">
+                        <img src="/arweave glyph (light).svg" alt="Arweave" />
+                    </div>
+                    <div>
+                        <h3 className="wallet-connection-title">Arweave Holdings</h3>
+                        <p className="wallet-connection-network">Arweave Network</p>
+                    </div>
+                </div>
+
+                <button
+                    className="wallet-connect-button wallet-connect-button-arweave"
+                    onClick={handleConnect}
+                >
+                    <FlipLogo size="medium" />
+                    <span>Connect AO</span>
+                </button>
+            </div>
+        );
+    }
+
     return (
         <div className="wallet-connection-card">
             <div className="wallet-connection-header">

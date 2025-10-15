@@ -194,6 +194,44 @@ const DAIConnection: React.FC = () => {
     const maxUnstakeAmount = stakingBalance.stakedAmount ?
         daiStaking.formatAmount(stakingBalance.stakedAmount) : '0';
 
+    // Check if should show consolidated/minimized view
+    const hasDeposits = stakingBalance.stakedAmount && parseFloat(daiStaking.formatAmount(stakingBalance.stakedAmount)) > 0;
+    const shouldMinimize = !isConnected || (!hasDeposits && !stakingBalance.isLoading);
+
+    // If minimized, show compact view
+    if (shouldMinimize) {
+        return (
+            <div className="wallet-connection-card wallet-connection-card-minimized">
+                <div className="wallet-connection-header">
+                    <div className="wallet-connection-icon">
+                        <img src="/dai-logo.png" alt="DAI" />
+                    </div>
+                    <div>
+                        <h3 className="wallet-connection-title">DAI Deposits</h3>
+                        <p className="wallet-connection-network">Ethereum Network</p>
+                    </div>
+                </div>
+
+                {!isConnected ? (
+                    <button
+                        className="wallet-connect-button wallet-connect-button-ethereum"
+                        onClick={handleConnect}
+                    >
+                        <img src="/ethereum-logo.svg" alt="Ethereum" style={{ width: '16px', height: '16px' }} />
+                        <span>Connect Ethereum</span>
+                    </button>
+                ) : (
+                    <div className="wallet-connection-status">
+                        <div className="connection-status-connected">
+                            <span>🟢</span>
+                            <span>No Deposits</span>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    }
+
     return (
         <div className={`wallet-connection-card ${isModalOpen ? 'modal-open' : ''}`}>
             <div className="wallet-connection-header">
